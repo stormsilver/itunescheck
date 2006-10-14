@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Title</title>
+	<style type="text/css">
+    body
+    {
+    	margin: 0;
+    	overflow: hidden;
+    }
+    #body
+    {
+    	background-image: url("./bg.png");
+    	padding: 0.3em;
+    	border: 0.15em solid #7EADD9;
+    	-webkit-border-radius: 0.7em;
+    	float: left;
+    	font-size: 18pt;
+    	color: #333;
+    	font-family: 'Helvetica', sans-serif;
+    }
+    .shadow
+    {
+    	margin: 0;
+    	text-shadow: #111 0px 1px 2px;
+    }
+    .bold
+    {
+    	font-weight: bold;
+    }
+    .italic
+    {
+    	font-style: italic;
+    }
+    .large
+    {
+    	font-size: 150%;
+    }
+    img
+    {
+    	padding: 0;
+    	margin: 0;
+    	margin-right: 0.2em;
+    }
+    </style>
+    <script type="text/javascript" src="./js/prototype.js"></script>
+    <script type="text/javascript" src="./js/scriptaculous.js"></script>
+</head>
+<body>
+<div id="body">
+	<table border="0">
+		<tr>
+			<td>
+				[[artwork]] 
+			</td>
+			<td style="vertical-align:top;">
+				<div class="large bold shadow">[[title]]</div>
+				<div class="large">[[artist]]</div>
+				<div class="italic">[[album]]</div>
+				<div class="large">[[rating]]</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<script type="text/javascript">
+	
+	document.getElementById('body').style.visibility = 'hidden';
+	this.setTimeout("dostuff()", 500);
+	function dostuff()
+	{
+		document.getElementById('body').style.visibility = 'inherit';
+		document.getElementById('body').style.display = 'none';
+		new Effect.Appear('body', {duration: 0.75});
+	}
+	
+</script>
+</body>
+</html>
