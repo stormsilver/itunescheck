@@ -1,0 +1,49 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {"" = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {
+                enableHotKey = id; 
+                enableOption1 = id; 
+                enableShowInfo = id; 
+                hotKeyDown = id; 
+                loadPlugins = id; 
+                setHotKey = id; 
+            }; 
+            CLASS = PluginsController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {currentSelection = id; objectController = id; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {
+                factorySettings = id; 
+                quitProgram = id; 
+                readme = id; 
+                runDisplaySetupPanel = id; 
+                toggleHeadless = id; 
+                togglePositioner = id; 
+                visitWebsite = id; 
+            }; 
+            CLASS = PrefsController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_roundedView" = RoundedView; 
+                backgroundColorWell = NSColorWell; 
+                pluginsController = PluginsController; 
+                positioner = id; 
+                positionerButton = id; 
+                prefsWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = RoundedView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {CLASS = TransparentWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }
+    ); 
+    IBVersion = 1; 
+}

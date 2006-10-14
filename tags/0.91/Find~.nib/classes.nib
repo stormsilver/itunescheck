@@ -1,0 +1,44 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                cancelSelect = id; 
+                close = id; 
+                performFind = id; 
+                playList = id; 
+                refreshPlaylists = id; 
+            }; 
+            CLASS = FindController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_errorField" = NSTextField; 
+                "_findField" = id; 
+                "_findRounded" = id; 
+                "_findWindow" = id; 
+                "_numResultsField" = id; 
+                "_playlistMenu" = id; 
+                "_searchProgressIndicator" = id; 
+                "_selectRounded" = id; 
+                "_selectTable" = id; 
+                "_selectWindow" = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {"" = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = RoundedView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {
+            ACTIONS = {createPlaylist = id; tableViewDoubleClicked = id; }; 
+            CLASS = SelectTableSource; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {itemsTable = NSTableView; selectWindow = NSWindow; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = TransparentWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }
+    ); 
+    IBVersion = 1; 
+}

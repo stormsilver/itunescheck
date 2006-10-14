@@ -1,0 +1,9 @@
+0.9
+----------------------
+- When using the "while playing" option, if iTunes is paused, it is possible to hit play at exactly the wrong moment
+    (just as the "iTunes is not playing anything" window is fading away). The infoController, being visible when the notifcation
+    that iTunes is playing again comes through, will show the appropriate track info and then fade away, even though it should 
+    fade up and stay there.
+- The find window doesn't display its border correctly on display, it doesn't seem to be antialiased. Going to the preferences and turning
+    the draw borders option on and off with the find window open will cause it to redraw correctly.
+- Playlist feature of quickplay doesn't play the entire playlist if you select a song that's not the first one - it starts at the selection. It should put the selection at the top of the playlist and then play the rest.

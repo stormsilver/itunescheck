@@ -1,0 +1,25 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {loadPlugins = id; }; 
+            CLASS = DisplayPluginsController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                displaySetupField = NSTextView; 
+                displayTable = NSTableView; 
+                objectController = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {cancel = id; ok = id; toggleFontPanel = id; }; 
+            CLASS = DisplaySetupPanel; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_roundedView" = RoundedView; table = NSTableView; textView = NSTextView; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = RoundedView; LANGUAGE = ObjC; SUPERCLASS = NSView; }
+    ); 
+    IBVersion = 1; 
+}

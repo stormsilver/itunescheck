@@ -1,0 +1,19 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = InfoController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {infoRounded = id; infoWindow = id; streamingField = id; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = RoundedView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {
+            CLASS = TransparentWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mainController = Controller; songsTableSource = TableSource; }; 
+            SUPERCLASS = NSWindow; 
+        }
+    ); 
+    IBVersion = 1; 
+}

@@ -1,0 +1,32 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                about = id; 
+                findHotKeyDown = id; 
+                infoHotKeyDown = id; 
+                nextHotKeyDown = id; 
+                playPauseHotKeyDown = id; 
+                preferencesHotKeyDown = id; 
+                previousHotKeyDown = id; 
+                rateFiveHotKeyDown = id; 
+                rateFourHotKeyDown = id; 
+                rateOneHotKeyDown = id; 
+                rateThreeHotKeyDown = id; 
+                rateTwoHotKeyDown = id; 
+                rateZeroHotKeyDown = id; 
+                toggleShuffleHotKeyDown = id; 
+                volumeDownHotKeyDown = id; 
+                volumeUpHotKeyDown = id; 
+                watchiTunes = id; 
+            }; 
+            CLASS = AppController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {splashWindow = id; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = TransparentWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }
+    ); 
+    IBVersion = 1; 
+}

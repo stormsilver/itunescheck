@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ActionPath</key>
+	<string>VolumeUp.plug/volumeUp.scpt</string>
+	<key>Enabled</key>
+	<false/>
+	<key>Key</key>
+	<integer>126</integer>
+	<key>Kind</key>
+	<string>Built-In</string>
+	<key>Modifiers</key>
+	<integer>2304</integer>
+	<key>Name</key>
+	<string>Volume Up</string>
+	<key>Option 1 ActionPath</key>
+	<string>VolumeUp.plug/volumeUpPrecise.scpt</string>
+	<key>Option 1 Enabled</key>
+	<true/>
+	<key>Option 1 Title</key>
+	<string>Precise</string>
+</dict>
+</plist>

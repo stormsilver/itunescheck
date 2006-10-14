@@ -1,0 +1,278 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf330
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;\f1\fswiss\fcharset77 Helvetica-Bold;\f2\fswiss\fcharset77 Helvetica-Oblique;
+}
+{\colortbl;\red255\green255\blue255;\red89\green89\blue89;}
+\vieww13260\viewh14380\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs24 \cf0 {{\NeXTGraphic iTunesCheckSplash.png \width11000 \height2440
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1\b\fs32 \cf0 \ul \ulc0 About
+\fs24 \
+
+\f0\b0 \ulnone 	iTunesCheck is a program that I wrote after checking out several other programs and not finding exactly what I wanted. It provides global hot keys for controlling iTunes without switching to it, it provides a hotkeyable floating window that shows the currently playing song, and it provides a hotkey for quickly finding a song without switching to iTunes.\
+\
+
+\f1\b\fs32 \ul \
+Installation
+\fs24 \
+
+\f0\b0 \ulnone 	Copy the iTunesCheck program to your favorite spot.\
+	/Applications is nice if you don't have a favorite spot. :)\
+\
+\
+
+\f1\b\fs32 \ul Upgrading
+\fs24 \
+	
+\f0\b0 \ulnone You'll need to delete the following files, depending on which version you're upgrading from.
+\f1\b \ul \
+	
+\f0\b0 \ulnone Before 0.85:\
+		~/Library/Preferences/net.stormsilver.iTunesCheck.plist\
+
+\f1\b \ul \
+	
+\f0\b0 \ulnone Before 0.5:\
+		iTunesCheck (from wherever you put it when you installed it)\
+		~/Library/PreferencePanes/SSNiTCheck.prefPane\
+		~/Library/Preferences/net.stormsilver.iTCheck.plist\
+\
+	Since the program is still in a state of flux at this point, it might be a good idea to delete the preferences file every time you upgrade. You never know what oddities can be caused by bad prefs. In fact, if you're having trouble, you should delete the prefs file and see if it goes away before emailing me.\
+\
+\
+
+\f1\b\fs32 \ul Usage
+\f0\b0\fs24 \ulnone \
+	Open iTunesCheck when you have it where you want it. The first time you run it, the preferences window will open. I tried to pick reasonable default values for everything, but feel free to customize them. (That's why they're preferences, after all) Be sure to note the hotkey for showing the preferences window (
+\f1\b command-option-P
+\f0\b0  by default).\
+\
+	To set the position of the floating window, click the "Set Position" button, and then drag the resulting window to where you want it. Click the "Set Position" button again when you're done to make the window go away.\
+\
+	Using fewer things in the display window will enhance performance. Adding shadows and bolding to different parts of the display will make it look really cool. :)\
+\
+	Typing something in the quick play window is exactly the same as typing it into the search field in iTunes. As you know, this will search song name, artist, and album... everything, really. The more specific you are about the song you want, the better. If your search returns multiple results, a selection window will come up. For really large result sets, it's really slow. :( You can select a specific playlist to search within. If you decide you just want to hear all the results, the "Playlist" button on the selection window will create a playlist called "QuickPlay" and start playing it.\
+\
+	Clicking on the info window will make it go away instantly. Useful if it's in your way.\
+\
+	If you think the info window is too big, just decrease the font size. Go to the preferences window, click "Setup Display", click "Font Panel", and then choose appropriate font sizes.\
+\
+\
+
+\f1\b\fs32 \ul To Do
+\f0\b0\fs24 \ulnone \
+	- You tell me!	
+\f1\b ssilver@stormsilver.net\
+\
+	
+\f0\b0 The name of the program seems cumbersome to me. Anyone have a better idea? 
+\f2\i Please?
+\f0\i0 \
+\
+\
+
+\f1\b\fs32 \ul Known Issues
+\f0\b0\fs24 \ulnone \
+	- Resetting to factory defaults won't set the hot keys properly the first time. Something to do with defaults caching. Just 		hit the button again once or twice.\
+	- Don't position the info window with the origin (the lower-left corner) of the window off the screen (or on a screen that 		doesn't exist, if you have more than one display). The sizing will be very, very off.\
+	\
+	
+\fs28 Notes:\
+	
+\fs20 (things that you might think are broken, but aren't, really)
+\fs24 \
+	- To listen to your iPod with quick play, you'll need to have it set to update songs 
+\f1\b manually
+\f0\b0 . The reason for this\
+		is that iTunes won't let you play songs from it if it's set to update automatically. You'll still be able to see the\
+		playlists on your iPod, and even search from them, but you can't play the songs. Thanks, Apple.\
+	- To listen to a shared library with quick play, you have to first select it in iTunes so that iTunes will go grab\
+		the songs and playlists in that library. (This only has to be done once.) The reason for this is because iTunes 		won't show the shared library as a viable source until it knows that it can play things from it. Unfortunately, this 		decreases the usefulness somewhat, but it's a limitation in iTunes that can't be overcome.\
+	- You won't be able to click on anything if you set your window opacity to 0. Your clicks will just go straight through\
+		the window you were trying to click in.\
+	- Using the playlist feature of quick play won't work with anything other than tracks from your library, because iTunes\
+		won't let you add iPod or shared tracks to a playlist. Thanks, Apple.\
+\
+\
+
+\f1\b\fs32 \ul Release History
+\f2\i\b0\fs24 \ulnone \
+1/20/2006 - version 0.91\
+	
+\f0\i0 - 
+\f1\b Modularized display options for easy expansion
+\f0\b0 .\
+	- Fixed bug where iTC would launch iTunes if you set the info window to show all the time. Fixed associated bug 		where you couldn't quit iTunes if iTC was running.\
+	- Fixed a bug where iTC would crash if you set it to display the last played date and the current track didn't have one.\
+	- Added Read Me button to About tab.\
+	- Added "Increment Play Count" hot key.\
+	- Rewrote info window controller. Artwork should be higher quality, you can choose from three sizes, and there is an 		option to look inside the file's folder for artwork (in case that's how you roll).\
+	- Updated the title, artist, and album scripts to work more intelligently with streaming data.\
+	- Changed iTC to work with the notifications iTunes now sends out when it changes songs. No more processor-		intensive polling of iTunes, awww yeah!\
+	- Fixed the crashing bug related to iTC being open too long that everyone who ever used the program reported. 		Thanks guys. But thanks to Guy Brooker for being a stud and fixing it!\
+	- Added a "while playing" display option.\
+	- Miscellaneous other improvements made over a year of poking around, of which there are a lot.\
+
+\f2\i \
+8/29/2004 - version 0.8\
+	
+\f0\i0 - Added minimize/unminimize iTunes hot key.\
+	- Added album year to display options.\
+	- Added confirmation dialog to factory defaults button.\
+	- Added confirmation dialog to quit button, and a preference to disable it.\
+	- Added track number to display options.\
+	- Added preference to constrain the info window to a single screen (this was actually the behavior before, but now you 		can turn it off)\
+	- Fixed problem where you couldn't hit return or escape to select buttons the quickplay selection window.\
+	- You can hit 'P' to select the Playlist button on the quickplay selection window now.\
+	- Rewrote the info window sizing code. Again. I think it's finally up to par now.\
+
+\f2\i \
+8/17/2004 - version 0.8a\
+	
+\f0\i0 - Added preference to disable window animation. Also updated animation to apply to window fadeout.\
+	- Added preference to disable splash screen at startup.\
+	- Added visualizer toggle hot key.\
+	- Added hot key to hide/unhide iTunes\
+	- Added option to have more precise increments on volume control.\
+	- Added fast forward and rewind hot keys.\
+	- Added option to have the info window be always on.\
+	- Added album artwork to display options.\
+	- Added genre, equalizer, grouping, and comments to display options.\
+	- Added play button to QuickPlay window so that you can just play a playlist without having to search for something in 		it.\
+	- Changed delay time and check frequency sliders to have more increments.
+\f2\i \
+
+\f0\i0 	- Fixed bug that wouldn't allow you to move the info window to a screen other than your main one. Also fixed up the 		display sizing code a great deal. It should be more accurate.\
+	- Fixed a bug where window borders would only show up once.\
+	- Fixed a problem where there was no way to get out of the QuickPlay window if you didn't want to search. Escape 		makes the window leave, now.\
+	- Fixed a bug where auto-display wouldn't let you quit iTunes (iTunesCheck would just open it again).\
+	- 
+\f1\b Modularized the hot keys for easy expansion
+\f0\b0 . Along with this comes a new hot key interface, which I think 		is less cluttered.\
+\
+
+\f2\i \
+7/31/2004 - version 0.7\
+
+\f0\i0 	- Added preference to show the info window after previous/next actions\
+	- Added ability to show the info window automatically when the song changes. (requested feature!)\
+	- Added current volume to choices for info window. (requested feature!)\
+	- Added hotkey to toggle shuffle play on/off. (requested feature!)\
+	- Added preference to not have the border on windows.\
+	- Added preference to have previous action back track instead of just go to the previous song.\
+	- Added option to run with Dock icon and menu bar.\
+	- Changed preferences hotkey to bring the prefs window to the front if it's already open, instead of closing it.\
+	- Fixed a tremendous bug where changing a hotkey wouldn't remove the old one.\
+	- Fixed some weirdness that was going on with preference storage.\
+	- Fixed quick play bug where you couldn't click on any buttons if the result set had really short items.\
+	- Fixed quick play bug where sometimes it wouldn't do anything.\
+
+\f2\i \
+7/22/2004 - version 0.6\
+
+\f0\i0 	- Fixed bug where disabling keys wouldn't really disable them, it would just stop them from functioning. (But\
+		the key would still be registered so it wouldn't activate in other applications. Doh!)\
+	- Added capability to search specific playlists in quick play. This means that you can now listen to music from\
+		your iPod, a shared library, an audio CD... anything, really.\
+	- Added capability to create a playlist from quick play results and play that list.\
+	- Added last played to choices for info window.\
+
+\f2\i \
+6/24/2004 - version 0.51\
+	
+\f0\i0 - Added preference to enable/disable showing the info window after rating songs\
+	- Made next/prev actions show the info window\
+	- Finally fixed the shadow on the icon so it doesn't get clipped off\
+
+\f2\i \
+6/23/2004 - version 0.5\
+	
+\f0\i0 - 
+\f1\b Rewrote entire program
+\f0\b0 \
+		- Compressed preference pane and iTC application into one.\
+		- Split application into several lazy-loading parts, meaning that parts you don't use don't get loaded, so\
+			they don't take up memory\
+		- Fixed a lot of long-standing problems\
+		- Added splash screen!\
+		- Generally made the thing suck less\
+
+\f1\b \ul \
+
+\f2\i\b0 \ulnone 5/4/2004 - version 0.45\
+	
+\f0\i0 - Fixed display so that with long song titles the window won't go off the screen\
+	- Removed checkbox to enable/disable window animation. It never worked right, caused problems, and 		was actually not useful. Disabling animation was intended to speed up display time but ended up just 		making the display look laggy.\
+	- Fixed bug where if you changed the background color while iTC was running, the find window wouldn't 		reflect the change\
+	- Updated display so that when a particular item is missing, it removes the line it would have been on. This 		provides a more compact display when information is missing.\
+	- Updated display setup in preference pane to handle font panel better\
+
+\f1\b \ul \
+
+\f2\i\b0 \ulnone 5/3/2004 - version 0.4\
+	
+\f0\i0 - Added customization for info window. You can now customize the font, as well as what appears, with a 		variety of different things.
+\f2\i \
+	
+\f0\i0 - Added checkbox to enable/disable window animation\
+	- Cut down on the amount of memory needed by iTC (I think...)\
+	- Added border to windows, decreased corner size on quick play window\
+	- Fixed scripts to work with streams\
+	- Fixed scripts to handle missing values correctly\
+	- Fixed bug where if you quick played a song, then paused, then played again, iTunes would start playing 		a different song\
+	- Fixed a bug where if the song you quick played didn't exist, iTC would just display a blank window\
+	- Generally cleaned up the code for maintainability\
+
+\f1\b \ul \
+
+\f2\i\b0 \ulnone 5/1/2004 - version 0.3\
+	
+\f0\i0 - Added exciting icons\
+	- Added checkboxes to enable/disable hotkeys\
+	- Added quick play\
+	- Added volume up/down controls\
+
+\f1\b \ul \
+
+\f2\i\b0 \ulnone 4/26/2004 - version 0.2\
+	
+\f0\i0 - Fixed a bug where if you used combos too rapidly, the program would get confused and never go away\
+	- Fixed the prefpane to update properly whether the program is running or not\
+
+\f1\b \ul \
+
+\f2\i\b0 \ulnone 4/25/2004\
+	
+\f0\i0 - Initial release\
+\
+\
+
+\f1\b\fs32 \ul Contact
+\f0\b0\fs24 \ulnone \
+	You can contact me at my website, http://stormsilver.net/ with questions, comments, change/feature requests, and so on. If email is more of your thang, hook it up at 
+\f1\b ssilver@stormsilver.net
+\f0\b0 \
+If you would like the source code, just ask.\
+\
+	I 
+\f2\i really
+\f0\i0  appreciate emails from people. Even if it's just a quick email saying, "Hey. Like the prog. Later" that's enough. I've gotten lots of emails and it makes me feel all giddy inside. Then I begin to giggle like a schoolgirl, and ... uh, well. 
+\f2\i Yeah
+\f0\i0 .\
+\
+\
+This program is provided free of charge, and \CocoaLigature0 is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\CocoaLigature1 \
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+\cf0 {{\NeXTGraphic StormSilver.png \width1760 \height620
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+\cf0 	{{\NeXTGraphic CreativeCommons.png \width1760 \height620
+}¬}\
+
+\fs20 \cf2 This software is licensed under a Creative Commons License and is copyright 2004 StormSilver.}
