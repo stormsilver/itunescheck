@@ -1,9 +1,9 @@
 //
 //  ScriptController.h
-//  iTCWebRenderTest
+//  iTunesCheck
 //
-//  Created by StormSilver on 8/20/06.
-//  Copyright 2006 __MyCompanyName__. All rights reserved.
+//  Created by StormSilver on 9/1/04.
+//  Copyright 2004 __MyCompanyName__. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -11,11 +11,19 @@
 
 @interface ScriptController : NSObject
 {
+    NSAppleScript *ps;
+    NSAppleScript *playing;
 }
 
 + (id) sharedController;
 
-- (NSString *) infoForTag:(NSString *)tag;
-//- (void) runHotKey:(NSString *)key;
-- (NSAppleEventDescriptor *) runAppleScript:(NSString *)script;
+- (BOOL) iTunesRunning;
+- (BOOL) iTunesPlaying;
+- (int) iTunesState;
+
+- (void) launchiTunes:(id)sender;
+
+- (NSAppleEventDescriptor *) doAppleScript:(NSString *)script;
+- (NSAppleEventDescriptor *) search:(NSString *)search inPlaylist:(NSString *)playlist;
+
 @end

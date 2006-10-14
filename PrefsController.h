@@ -1,29 +1,37 @@
-//
-//  PrefsController.h
-//  iTCWebRenderTest
-//
-//  Created by StormSilver on 8/27/06.
-//  Copyright 2006 __MyCompanyName__. All rights reserved.
-//
+/* PrefsController */
 
 #import <Cocoa/Cocoa.h>
-
+#import "PluginsController.h"
+#import "RoundedView.h"
 
 @interface PrefsController : NSObject
 {
-    NSMutableDictionary     *_prefs;
-    NSMutableDictionary     *_displayPlugins;
-    NSMutableDictionary     *_hotKeyPlugins;
-    NSUserDefaults          *_defaults;
+    IBOutlet NSWindow *prefsWindow;
+    IBOutlet id positioner;
+    IBOutlet id positionerButton;
+    IBOutlet PluginsController *pluginsController;
+    IBOutlet NSColorWell *      backgroundColorWell;
+    IBOutlet RoundedView *      _roundedView;
 }
+
 + (id) sharedController;
 
-- (id) prefForKey:(id)key;
-- (NSString *) pathForScript:(NSString *)name;
+- (void) display;
+- (void) about;
 
-- (void) loadPlugins;
-- (NSArray *) displayPlugins;
-- (void) setDisplayPlugins:(NSDictionary *)plugins;
-- (NSArray *) hotKeyPlugins;
-- (void) setHotKeyPlugins:(NSArray *)plugins;
+#pragma mark -
+#pragma mark IB Methods
+- (IBAction) runDisplaySetupPanel:(id)sender;
+- (IBAction) togglePositioner:(id)sender;
+- (IBAction) visitWebsite:(id)sender;
+- (IBAction) quitProgram:(id)sender;
+- (IBAction) toggleHeadless:(id)sender;
+- (IBAction) factorySettings:(id)sender;
+- (IBAction) readme:(id)sender;
+
+#pragma mark -
+#pragma mark Support Methods
+- (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
+
+
 @end

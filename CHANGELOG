@@ -1,0 +1,4 @@
+version 4
+¥	fixed Xcode project to automatically copy PlugIns directory (thanks Guy)
+¥	completely rewrote InfoController, split it out into a couple of other classes.
+	It's really a lot more sensible now, probably more efficient, and definitely less buggy.

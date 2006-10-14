@@ -1,0 +1,7 @@
+- current time should update realtime
+- preemptive checking for song end on autodisplay
+- see if it's possible to start displaying quickplay results after a few have come in and then keep working in the background.
+- hold down skip hot key to fast forward (hah, probably not possible. It's hard to catch the key events for this. the only way would be to tell itunes to ff on keydown, and then tell it to play again on keyup. would that work?)
+- be able to set a maximum size for the floater
+- Preference to set iTunesCheck to start automatically on login
+- graphical volume level display

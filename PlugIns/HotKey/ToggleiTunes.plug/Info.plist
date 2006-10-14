@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ActionPath</key>
+	<string>ToggleiTunes.plug/toggleHidden.scpt</string>
+	<key>Enabled</key>
+	<false/>
+	<key>Key</key>
+	<integer>34</integer>
+	<key>Kind</key>
+	<string>Built-In</string>
+	<key>Modifiers</key>
+	<integer>2304</integer>
+	<key>Name</key>
+	<string>Hide/Unhide iTunes</string>
+</dict>
+</plist>

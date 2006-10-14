@@ -5,24 +5,24 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
 	<string>iTunesCheck</string>
+	<key>CFBundleIconFile</key>
+	<string>iTunesCheck.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.stormsilver.iTunesCheck</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
-	<string>STMY</string>
+	<string>EN-K</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>0.91</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+    <key>LSUIElement</key>
+    <string>1</string>
 </dict>
 </plist>

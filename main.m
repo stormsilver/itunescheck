@@ -1,14 +1,14 @@
 //
 //  main.m
-//  iTCWebRenderTest
+//  iTunesCheck
 //
-//  Created by StormSilver on 8/14/06.
-//  Copyright __MyCompanyName__ 2006. All rights reserved.
+//  Created by StormSilver on Mon Jun 21 2004.
+//  Copyright (c) 2004 __MyCompanyName__. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, char *argv[])
+int main(int argc, const char *argv[])
 {
-    return NSApplicationMain(argc,  (const char **) argv);
+    return NSApplicationMain(argc, argv);
 }

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Hide/Unhide iTunesEnabled</key>
+	<false/>
+	<key>Increment Play CountEnabled</key>
+	<false/>
+	<key>NSWindow Frame positioner</key>
+	<string>22 83 235 144 0 0 1024 746 </string>
+	<key>Next SongShowInfo</key>
+	<true/>
+	<key>Previous SongShowInfo</key>
+	<true/>
+	<key>Rate Song 0Enabled</key>
+	<false/>
+	<key>Toggle Repeat ModeEnabled</key>
+	<false/>
+	<key>Toggle ShuffleEnabled</key>
+	<false/>
+	<key>Toggle VisualizerEnabled</key>
+	<false/>
+	<key>Volume DownEnabled</key>
+	<false/>
+	<key>Volume UpEnabled</key>
+	<false/>
+	<key>albumArtSize</key>
+	<real>160</real>
+	<key>animateWindows</key>
+	<true/>
+	<key>backgroundColor</key>
+	<data>
+	BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
+	ZmZmAAAAgz9AAACG
+	</data>
+	<key>confirmQuit</key>
+	<true/>
+	<key>delayTime</key>
+	<real>5</real>
+	<key>displayString</key>
+	<data>
+	BAt0eXBlZHN0cmVhbYED6IQBQISEhBJOU0F0dHJpYnV0ZWRTdHJpbmcAhIQITlNPYmpl
+	Y3QAhZKEhIQITlNTdHJpbmcBlIQBKyk8PHRpdGxlPj4KPDxhcnRpc3Q+Pgo8PGFsYnVt
+	Pj4KPDxyYXRpbmc+PoaEAmlJAQmShISEDE5TRGljdGlvbmFyeQCUhAFpA5KElpYHTlND
+	b2xvcoaShISEB05TQ29sb3IAlIQBYwGEBGZmZmYBAQEBhpKElpYITlNTaGFkb3eGkoSE
+	hAhOU1NoYWRvdwGUhAFTgUAHkoSbmwGcAAAAgz6qqquGhARbM2Zdg0BLpZKDwEulkoNA
+	MI0+hpKElpYGTlNGb250hpKEhIQGTlNGb250HpSZKIQFWzQwY10GAAAAHgAAAP7/AEgA
+	ZQBsAHYAZQB0AGkAYwBhAC0AQgBvAGwAZAAAhAFmJJsAmwGbAJsAhoaXAgyShJiZApKg
+	koSimRyEBVsyOGNdBgAAABQAAAD+/wBIAGUAbAB2AGUAdABpAGMAYaIgmwCbAZsAmwCG
+	kpmSmoaXAwmShJiZApKgkoSimSyEBVs0NGNdBgAAACQAAAD+/wBIAGUAbAB2AGUAdABp
+	AGMAYQAtAE8AYgBsAGkAcQB1AGWiGJsAmwGbAJsAhpKZkpqGlwQBkoSYmQKSoJKEopkc
+	owYAAAAUAAAA/v8ASABlAGwAdgBlAHQAaQBjAGGiGJsAmwGbAJsAhpKZkpqGlwUKkoSY
+	mQKSoJKEopkooQYAAAAeAAAA/v8ASABpAHIAYQBNAGEAcgB1AFAAcgBvAC0AVwA0AACi
+	HJsAmwGbAJsAhpKZkpqGhg==
+	</data>
+	<key>drawWindowBorder</key>
+	<true/>
+	<key>fadeInSpeed</key>
+	<real>0.10000000000000001</real>
+	<key>fadeOutSpeed</key>
+	<real>0.10000000000000001</real>
+	<key>infoWindowBackgroundColor</key>
+	<data>
+	BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMDhAJm
+	ZgCDP0AAAIY=
+	</data>
+	<key>keyPressAction</key>
+	<real>0.0</real>
+	<key>runHeadless</key>
+	<true/>
+	<key>showAlbumArt</key>
+	<true/>
+	<key>showSplashScreen</key>
+	<true/>
+	<key>textColor</key>
+	<data>
+	BAt0eXBlZHN0cmVhbYED6IQBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
+	ZmZmAQEBAYY=
+	</data>
+</dict>
+</plist>
