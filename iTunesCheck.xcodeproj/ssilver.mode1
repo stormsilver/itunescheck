@@ -284,6 +284,27 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>34</integer>
+									<integer>33</integer>
+									<integer>28</integer>
+									<integer>27</integer>
+								</array>
+								<array>
+									<integer>35</integer>
+									<integer>33</integer>
+									<integer>28</integer>
+									<integer>27</integer>
+								</array>
+								<array>
+									<integer>36</integer>
+									<integer>33</integer>
+									<integer>28</integer>
+									<integer>27</integer>
+								</array>
+								<array>
+									<integer>37</integer>
+									<integer>33</integer>
+									<integer>28</integer>
 									<integer>27</integer>
 								</array>
 							</array>
@@ -509,7 +530,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>194476936.31090999</real>
+	<real>194477645.93340501</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -524,8 +545,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/Users/ssilver/Documents/Programs/iTunesCheck/iTunesCheck.xcodeproj</string>
 		<string>E80987AD0A90E21500DCFA61</string>
+		<string>/Users/ssilver/Documents/Programs/iTunesCheck/iTunesCheck.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>-849 467 835 550 -1280 0 1280 1024 </string>
