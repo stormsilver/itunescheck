@@ -51,12 +51,11 @@ static id sharedController;
 {
     if ([tag isEqualToString:@"artwork"])
     {
-        /*
         NSAppleEventDescriptor *art = [self runAppleScript:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Scripts/artwork.scpt"]];
         if (art)
         {
             NSImage *image = [[[NSImage alloc] initWithData:[art data]] autorelease];
-            [art release];
+            //[art release];
             if ([image isValid])
             {
                 float imagePrefSize = [[[PrefsController sharedController] prefForKey:PREFKEY_IMAGE_SIZE] floatValue];
@@ -95,10 +94,8 @@ static id sharedController;
                     return [NSString stringWithFormat:@"<img src=\"data:image/tiff;base64,%@\" alt=\"\" />", [[image TIFFRepresentation] encodeBase64WithNewlines:NO]];
                 }
             }
-            //[image release];
         }
         return @"";
-         */
     }
     else
     {
@@ -106,13 +103,11 @@ static id sharedController;
         NSString *script= [[PrefsController sharedController] pathForScript:tag];
         if (script)
         {
-            NSAppleEventDescriptor *desc = [[self runAppleScript:script] retain];
+            NSAppleEventDescriptor *desc = [self runAppleScript:script];
             if (desc)
             {
                 rval = [desc stringValue];
-                [desc release];
                 //If the current replacement is the song rating, we need to do some additional stuff to change the number returned by iTunes into 0-5 stars
-                /*
                 if ([tag isEqualToString:@"rating"])
                 {
                     switch ([rval intValue])
@@ -136,7 +131,6 @@ static id sharedController;
                             rval = @"";
                     }
                 }
-                 */
             }
 
             if (!rval)
@@ -208,26 +202,26 @@ static id sharedController;
 {
     NSAppleScript *theScript;
 	NSAppleEventDescriptor *desc;
-	NSDictionary *errorDict = [[NSDictionary alloc] init];
+	NSDictionary *errorDict;
     
     theScript = [[NSAppleScript alloc] initWithContentsOfURL:[NSURL fileURLWithPath:script] error:&errorDict];
     if (!theScript)
     {
+        //NSLog(@"!theScript");
+        NSLog(@"Error: Tried to load script \"%@\" but couldn't because %@", [NSURL fileURLWithPath:script], errorDict);
         [theScript release];
-        [errorDict release];
         return nil;
     }
     
     desc = [theScript executeAndReturnError:&errorDict];
     if (!desc)
     {
-        [desc release];
+        NSLog(@"!desc");
         [theScript release];
         return nil;
     }
 	
 	[theScript release];
-	[errorDict release];
 	
 	return desc;
 }

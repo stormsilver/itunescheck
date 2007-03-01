@@ -72,6 +72,7 @@ static id sharedController;
 - (NSString *) pathForScript:(NSString *)name
 {
     NSString *rval = [_displayPlugins objectForKey:name];
+    //NSLog(@"PrefsController: found path \"%@\" for %@", rval, name);
     if (rval)
     {
         return rval;
@@ -96,11 +97,11 @@ static id sharedController;
     {
         if (![name isEqual:@".DS_Store"])
         {
-            [dict setObject:name forKey:[name stringByDeletingPathExtension]];
+            [dict setObject:[NSString stringWithFormat:@"%@/%@", directory, name] forKey:[name stringByDeletingPathExtension]];
         }
     }
     
-    return dict;
+    return [dict autorelease];
 }
 
 - (void) loadPlugins
@@ -114,8 +115,8 @@ static id sharedController;
         [_hotKeyPlugins release];
     }
     
-    _displayPlugins = [self _parsePlugins:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Scripts/Display"]];
-    _hotKeyPlugins = [self _parsePlugins:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Scripts/Hot Key"]];
+    _displayPlugins = [[self _parsePlugins:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Scripts/Display"]] retain];
+    _hotKeyPlugins = [[self _parsePlugins:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Scripts/Hot Key"]] retain];
     
     
 }

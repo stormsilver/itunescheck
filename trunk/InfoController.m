@@ -92,7 +92,6 @@
      }
      */
     // Create and show the info window
-    NSLog(@"punch and judy!");
     [_infoWindow displayPage:page relativeTo:url];
 }
 @end

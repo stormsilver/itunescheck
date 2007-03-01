@@ -402,7 +402,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -R Views \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Resources/\"";
+			shellScript = "cp -Rf Views \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Resources/\"";
 		};
 		E8A5E2470A995C46008EA57C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -415,7 +415,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -R \"Scripts\" \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Resources\"";
+			shellScript = "cp -Rf \"Scripts\" \"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Resources\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
