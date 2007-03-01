@@ -9,8 +9,8 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
-		activeExecutable = E80987520A90DEA700DCFA61 /* iTunesCheck */;
+		activeBuildConfigurationName = Release;
+		activeExecutable = E85634890B963AC500CAC5A0 /* iTunesCheck */;
 		activeTarget = 8D1107260486CEB800E47090 /* iTunesCheck */;
 		addToTargets = (
 			8D1107260486CEB800E47090 /* iTunesCheck */,
@@ -20,7 +20,7 @@
 		breakpointsGroup = E8A5DD150A97B933008EA57C /* XCBreakpointsBucket */;
 		codeSenseManager = E80987610A90DEC600DCFA61 /* Code sense */;
 		executables = (
-			E80987520A90DEA700DCFA61 /* iTunesCheck */,
+			E85634890B963AC500CAC5A0 /* iTunesCheck */,
 		);
 		perUserDictionary = {
 			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
@@ -111,6 +111,30 @@
 					PBXSymbolsDataSource_ReferenceNameID,
 				);
 			};
+			PBXConfiguration.PBXFileTableDataSource3.XCSCMDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					326,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_SCM_ColumnID,
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
 			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
 				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
@@ -133,8 +157,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 194394028;
-			PBXWorkspaceStateSaveDate = 194394028;
+			PBXPerProjectTemplateStateSaveDate = 194406771;
+			PBXWorkspaceStateSaveDate = 194406771;
 		};
 		sourceControlManager = E80987600A90DEC600DCFA61 /* Source Control */;
 		userBuildSettings = {
@@ -143,7 +167,7 @@
 	8D1107260486CEB800E47090 /* iTunesCheck */ = {
 		activeExec = 0;
 		executables = (
-			E80987520A90DEA700DCFA61 /* iTunesCheck */,
+			E85634890B963AC500CAC5A0 /* iTunesCheck */,
 		);
 	};
 	8D1107310486CEB800E47090 /* Info.plist */ = {
@@ -152,34 +176,6 @@
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRect = "{{0, 0}, {978, 613}}";
 			sepNavWindowFrame = "{{15, -1}, {1023, 742}}";
-		};
-	};
-	E80987520A90DEA700DCFA61 /* iTunesCheck */ = {
-		isa = PBXExecutable;
-		activeArgIndex = 2147483647;
-		activeArgIndices = (
-		);
-		argumentStrings = (
-		);
-		autoAttachOnCrash = 1;
-		configStateDict = {
-		};
-		customDataFormattersEnabled = 1;
-		debuggerPlugin = GDBDebugging;
-		disassemblyDisplayState = 0;
-		dylibVariantSuffix = "";
-		enableDebugStr = 1;
-		environmentEntries = (
-		);
-		executableSystemSymbolLevel = 0;
-		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
-		name = iTunesCheck;
-		savedGlobals = {
-		};
-		sourceDirectories = (
-		);
-		variableFormatDictionary = {
 		};
 	};
 	E80987600A90DEC600DCFA61 /* Source Control */ = {
@@ -207,7 +203,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1022, 700}}";
 			sepNavSelRange = "{792, 0}";
-			sepNavVisRect = "{{0, 70}, {978, 610}}";
+			sepNavVisRect = "{{0, 90}, {978, 610}}";
 			sepNavWindowFrame = "{{0, 7}, {1023, 739}}";
 		};
 	};
@@ -241,6 +237,58 @@
 			sepNavSelRange = "{2691, 0}";
 			sepNavVisRect = "{{0, 766}, {978, 610}}";
 			sepNavWindowFrame = "{{1, 7}, {1023, 739}}";
+		};
+	};
+	E85634890B963AC500CAC5A0 /* iTunesCheck */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = iTunesCheck;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	E856389C0B9647A400CAC5A0 /* AGRegex */ = {
+		activeExec = 0;
+	};
+	E85638DB0B964AE800CAC5A0 /* AGRegex.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {4244, 3192}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {978, 613}}";
+			sepNavWindowFrame = "{{-1, 4}, {1023, 742}}";
+		};
+	};
+	E85638DC0B964AE800CAC5A0 /* AGRegex.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {4244, 6566}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {0, 0}}";
+		};
+	};
+	E85638E30B964AE800CAC5A0 /* pcre.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {978, 106358}}";
+			sepNavSelRange = "{20273, 44}";
+			sepNavVisRect = "{{0, 8241}, {978, 613}}";
+			sepNavWindowFrame = "{{15, -1}, {1023, 742}}";
 		};
 	};
 	E8A5DD150A97B933008EA57C /* XCBreakpointsBucket */ = {
