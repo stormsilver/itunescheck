@@ -29,14 +29,6 @@
 		E85639B00B964DB100CAC5A0 /* AGRegex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E856389D0B9647A400CAC5A0 /* AGRegex.framework */; };
 		E85639B10B964DBC00CAC5A0 /* AGRegex.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E856389D0B9647A400CAC5A0 /* AGRegex.framework */; };
 		E88FE1A60B96619100904FD6 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E88FE1A50B96619100904FD6 /* libcrypto.dylib */; };
-		E8A5DCF00A97A41D008EA57C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A9F90B0A9205060070FF3B /* WebKit.framework */; };
-		E8A5DCF10A97A41E008EA57C /* WebCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A9F9130A9205660070FF3B /* WebCore.framework */; };
-		E8A5DCF20A97A41E008EA57C /* JavaScriptGlue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A9F9120A9205660070FF3B /* JavaScriptGlue.framework */; };
-		E8A5DCF30A97A41F008EA57C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A9F9110A9205660070FF3B /* JavaScriptCore.framework */; };
-		E8A5DE980A98FE5B008EA57C /* JavaScriptCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8A9F9110A9205660070FF3B /* JavaScriptCore.framework */; };
-		E8A5DE990A98FE5B008EA57C /* JavaScriptGlue.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8A9F9120A9205660070FF3B /* JavaScriptGlue.framework */; };
-		E8A5DE9A0A98FE5B008EA57C /* WebCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8A9F9130A9205660070FF3B /* WebCore.framework */; };
-		E8A5DE9B0A98FE5B008EA57C /* WebKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8A9F90B0A9205060070FF3B /* WebKit.framework */; };
 		E8A5DF5B0A991493008EA57C /* ScriptController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A5DF590A991493008EA57C /* ScriptController.m */; };
 		E8A5E2C10A9963E1008EA57C /* NSData-Base64Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A5E2BF0A9963E1008EA57C /* NSData-Base64Extensions.m */; };
 		E8C931880AA239650013362E /* PrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8C931860AA239650013362E /* PrefsController.m */; };
@@ -72,10 +64,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E85639B10B964DBC00CAC5A0 /* AGRegex.framework in CopyFiles */,
-				E8A5DE980A98FE5B008EA57C /* JavaScriptCore.framework in CopyFiles */,
-				E8A5DE990A98FE5B008EA57C /* JavaScriptGlue.framework in CopyFiles */,
-				E8A5DE9A0A98FE5B008EA57C /* WebCore.framework in CopyFiles */,
-				E8A5DE9B0A98FE5B008EA57C /* WebKit.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,10 +103,6 @@
 		E8A5DF590A991493008EA57C /* ScriptController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptController.m; sourceTree = "<group>"; };
 		E8A5E2BE0A9963E1008EA57C /* NSData-Base64Extensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSData-Base64Extensions.h"; sourceTree = "<group>"; };
 		E8A5E2BF0A9963E1008EA57C /* NSData-Base64Extensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSData-Base64Extensions.m"; sourceTree = "<group>"; };
-		E8A9F90B0A9205060070FF3B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Frameworks/WebKit.framework; sourceTree = "<group>"; };
-		E8A9F9110A9205660070FF3B /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Frameworks/JavaScriptCore.framework; sourceTree = "<group>"; };
-		E8A9F9120A9205660070FF3B /* JavaScriptGlue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptGlue.framework; path = Frameworks/JavaScriptGlue.framework; sourceTree = "<group>"; };
-		E8A9F9130A9205660070FF3B /* WebCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebCore.framework; path = Frameworks/WebCore.framework; sourceTree = "<group>"; };
 		E8C931850AA239650013362E /* PrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsController.h; sourceTree = "<group>"; };
 		E8C931860AA239650013362E /* PrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsController.m; sourceTree = "<group>"; };
 		E8C931930AA23AB10013362E /* Prefdefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefdefs.h; sourceTree = "<group>"; };
@@ -150,10 +134,6 @@
 			files = (
 				E85639B00B964DB100CAC5A0 /* AGRegex.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				E8A5DCF00A97A41D008EA57C /* WebKit.framework in Frameworks */,
-				E8A5DCF10A97A41E008EA57C /* WebCore.framework in Frameworks */,
-				E8A5DCF20A97A41E008EA57C /* JavaScriptGlue.framework in Frameworks */,
-				E8A5DCF30A97A41F008EA57C /* JavaScriptCore.framework in Frameworks */,
 				E85634E60B963C2600CAC5A0 /* Carbon.framework in Frameworks */,
 				E88FE1A60B96619100904FD6 /* libcrypto.dylib in Frameworks */,
 			);
@@ -181,10 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				E856389D0B9647A400CAC5A0 /* AGRegex.framework */,
-				E8A9F9110A9205660070FF3B /* JavaScriptCore.framework */,
-				E8A9F9120A9205660070FF3B /* JavaScriptGlue.framework */,
-				E8A9F9130A9205660070FF3B /* WebCore.framework */,
-				E8A9F90B0A9205060070FF3B /* WebKit.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
