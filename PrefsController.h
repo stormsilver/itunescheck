@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class PTHotKey;
 
 @interface PrefsController : NSObject
 {
@@ -19,12 +20,14 @@
 + (id) sharedController;
 
 - (id) prefForKey:(id)key;
-- (NSString *) pathForScript:(NSString *)name;
+- (id) pref:(NSString *)key forHotKeyNamed:(NSString *)name;
+- (PTHotKey *) hotKeyAtIndex:(unsigned int)index;
+- (NSString *) pathForDisplayScript:(NSString *)name;
+- (NSString *) pathForHotKeyScript:(NSString *)name;
 
 - (void) loadPlugins;
 - (NSMutableArray *) displayPlugins;
 - (void) setDisplayPlugins:(NSMutableArray *)plugins;
-- (NSArray *) hotKeyPlugins;
-- (void) setHotKeyPlugins:(NSArray *)plugins;
-- (void) setValue:(id)value forKeyPath:(NSString *)keyPath;
+- (NSMutableArray *) hotKeyPlugins;
+- (void) setHotKeyPlugins:(NSMutableArray *)plugins;
 @end

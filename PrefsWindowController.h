@@ -11,7 +11,7 @@
 
 @interface PrefsWindowController : NSWindowController
 {
-
+    IBOutlet NSArrayController *_arrayController;
 }
 
 + (id) sharedController;
@@ -19,4 +19,5 @@
 
 - (IBAction) quitProgram:(id)sender;
 - (IBAction) visitWebsite:(id)sender;
+- (IBAction) changeHotKey:(id)sender;
 @end

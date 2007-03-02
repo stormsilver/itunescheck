@@ -7,6 +7,8 @@
 //
 
 #import "PrefsWindowController.h"
+#import "PrefsController.h"
+#import "PTKeyComboPanel.h"
 
 
 @implementation PrefsWindowController
@@ -44,9 +46,6 @@
     //show transparency in the color panel
     [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
     
-    //set the delegate of the prefsWindow to us, so that we can receive windowShouldClose messages
-    //[prefsWindow setDelegate:self];
-    
     //select the first tab item
     //[[[[prefsWindow contentView] subviews] lastObject] selectFirstTabViewItem:nil];
     
@@ -54,12 +53,22 @@
     //NSLog(@"%@", self);
     //[positioner bind:@"backgroundColor" toObject:[NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.backgroundColor" options:[NSDictionary dictionaryWithObject:NSUnarchiveFromDataTransformerName forKey:@"NSValueTransformerName"]];
     //[_roundedView bind:@"backgroundColor" toObject:[NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.backgroundColor" options:[NSDictionary dictionaryWithObject:NSUnarchiveFromDataTransformerName forKey:@"NSValueTransformerName"]];
+    
+    // set the sort descriptors for the hot key plugins list
+    //NSSortDescriptor *nameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+    //[_arrayController setSortDescriptors:[NSArray arrayWithObject:nameDescriptor]];
 }
 
 - (void) show
 {
     [self showWindow:nil];
-    //NSLog(@"%@", self);
+}
+
+- (IBAction) changeHotKey:(id)sender
+{
+    [NSApp beginSheet:[[PTKeyComboPanel sharedPanel] window] modalForWindow:[self window] modalDelegate:nil didEndSelector:nil contextInfo:nil];
+    [[PTKeyComboPanel sharedPanel] runModalForHotKey:[[PrefsController sharedController] hotKeyAtIndex:[_arrayController selectionIndex]]];
+    [NSApp endSheet:[[PTKeyComboPanel sharedPanel] window]];
 }
 
 - (IBAction) quitProgram:(id)sender
