@@ -8,15 +8,16 @@
 
 #import "PrefsController.h"
 #import "Prefdefs.h"
-/*
 #import "PTHotKeyCenter.h"
 #import "PTHotKey.h"
 #import "PTKeyComboPanel.h"
 #import "PTKeyCombo.h"
-*/
+
 
 @implementation PrefsController
+
 static id sharedController;
+
 + (id) sharedController
 {
     if (!sharedController)
@@ -71,19 +72,21 @@ static id sharedController;
 
 - (NSString *) pathForScript:(NSString *)name
 {
-    NSString *rval = [_displayPlugins objectForKey:name];
-    //NSLog(@"PrefsController: found path \"%@\" for %@", rval, name);
-    if (rval)
+    /* TODO: We should eventually do some caching here to make this process faster on subsequent lookups. */
+    NSEnumerator *enumerator = [_displayPlugins objectEnumerator];
+    NSMutableDictionary *dict;
+    while (dict = [enumerator nextObject])
     {
-        return rval;
+        if ([[dict objectForKey:@"name"] isEqualToString:name])
+        {
+            return [dict objectForKey:@"path"];
+        }
     }
-    else
-    {
-        return [_hotKeyPlugins objectForKey:name];
-    }
+    
+    return nil;
 }
 
-- (NSMutableDictionary *) _parsePlugins:(NSString *)directory
+- (NSMutableArray *) _parsePlugins:(NSString *)directory
 {
     NSEnumerator *enumerator = [[[NSFileManager defaultManager] directoryContentsAtPath:directory] objectEnumerator];
     if (!enumerator)
@@ -92,16 +95,23 @@ static id sharedController;
     }
     
     NSString *name;
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSMutableArray *marr= [[NSMutableArray alloc] init];
     while (name = [enumerator nextObject])
     {
-        if (![name isEqual:@".DS_Store"])
+        // Filter out entires that start with '.'
+        if ([name characterAtIndex:0] != '.')
         {
-            [dict setObject:[NSString stringWithFormat:@"%@/%@", directory, name] forKey:[name stringByDeletingPathExtension]];
+            [marr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                [name stringByDeletingPathExtension],                   @"name",
+                                [NSString stringWithFormat:@"%@/%@", directory, name],  @"path",
+                                [NSNumber numberWithBool:NO],                           @"enabled",
+                                [PTKeyCombo clearKeyCombo],                             @"keyCombo",
+                                [NSNumber numberWithBool:NO],                           @"showInfoWindowAfter",
+                                nil]];
         }
     }
     
-    return [dict autorelease];
+    return [marr autorelease];
 }
 
 - (void) loadPlugins
@@ -122,43 +132,28 @@ static id sharedController;
 }
 
 
-- (NSArray *) displayPlugins
+- (NSMutableArray *) displayPlugins
 {
-    // NSArrayController expects the objects in the returned array to accept KVC, so we have to rebuild
-    // the list into dictionaries
-    NSMutableArray *marr = [[NSMutableArray alloc] init];
-    NSEnumerator *enumerator = [[_displayPlugins allKeys] objectEnumerator];
-    NSString *key;
-    while (key = [enumerator nextObject])
-    {
-        [marr addObject:[NSDictionary dictionaryWithObject:key forKey:@"name"]];
-    }
-    
-    return marr;
+    return _displayPlugins;
 }
-- (void) setDisplayPlugins:(NSDictionary *)plugins
+- (void) setDisplayPlugins:(NSMutableArray *)plugins
 {
-
+    NSLog(@"%@", plugins);
 }
 - (NSArray *) hotKeyPlugins
 {
-    // NSArrayController expects the objects in the returned array to accept KVC, so we have to rebuild
-    // the list into dictionaries
-    NSMutableArray *marr = [[NSMutableArray alloc] init];
-    NSEnumerator *enumerator = [[[_hotKeyPlugins allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectEnumerator];
-    NSString *key;
-    while (key = [enumerator nextObject])
-    {
-        [marr addObject:[NSMutableDictionary dictionaryWithObject:key forKey:@"name"]];
-    }
-    
-    return marr;
+    return _hotKeyPlugins;
 }
 - (void) setHotKeyPlugins:(NSArray *)plugins
 {
     NSLog(@"%@", plugins);
 }
 
+
+- (void) setValue:(id)value forKeyPath:(NSString *)keyPath
+{
+    NSLog(@"%@ for %@", value, keyPath);
+}
 
 
 @end

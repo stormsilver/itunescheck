@@ -24,7 +24,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(displayInfoWithNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
-    //[self displayPrefsWindow:nil];
+    [self displayPrefsWindow:nil];
     [self displayInfo];
 }
 

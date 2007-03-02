@@ -216,7 +216,7 @@ static id sharedController;
     desc = [theScript executeAndReturnError:&errorDict];
     if (!desc)
     {
-        NSLog(@"!desc");
+        //NSLog(@"!desc");
         [theScript release];
         return nil;
     }
