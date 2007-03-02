@@ -12,8 +12,8 @@
 @interface PrefsController : NSObject
 {
     NSMutableDictionary     *_prefs;
-    NSMutableDictionary     *_displayPlugins;
-    NSMutableDictionary     *_hotKeyPlugins;
+    NSMutableArray          *_displayPlugins;
+    NSMutableArray          *_hotKeyPlugins;
     NSUserDefaults          *_defaults;
 }
 + (id) sharedController;
@@ -22,8 +22,9 @@
 - (NSString *) pathForScript:(NSString *)name;
 
 - (void) loadPlugins;
-- (NSArray *) displayPlugins;
-- (void) setDisplayPlugins:(NSDictionary *)plugins;
+- (NSMutableArray *) displayPlugins;
+- (void) setDisplayPlugins:(NSMutableArray *)plugins;
 - (NSArray *) hotKeyPlugins;
 - (void) setHotKeyPlugins:(NSArray *)plugins;
+- (void) setValue:(id)value forKeyPath:(NSString *)keyPath;
 @end
