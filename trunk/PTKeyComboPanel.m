@@ -11,7 +11,7 @@
 #import "PTHotKey.h"
 #import "PTKeyCombo.h"
 #import "PTKeyBroadcaster.h"
-#import "PTHotKeyCenter.h"
+//#import "PTHotKeyCenter.h"
 
 @implementation PTKeyComboPanel
 
@@ -78,7 +78,7 @@ static id _sharedKeyComboPanel = nil;
 	if( resultCode == NSOKButton )
 	{
         [hotKey setKeyCombo: [self keyCombo]];
-		[[PTHotKeyCenter sharedCenter] updateHotKey: hotKey];
+		//[[PTHotKeyCenter sharedCenter] updateHotKey: hotKey];
 	}
 }
 

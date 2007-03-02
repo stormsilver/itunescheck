@@ -10,9 +10,10 @@
 #import "PTKeyCombo.h"
 #import <Carbon/Carbon.h>
 
-NSString* PTKeyBroadcasterKeyEvent = @"PTKeyBroadcasterKeyEvent";
 
 @implementation PTKeyBroadcaster
+
+//NSString* PTKeyBroadcasterKeyEvent = @"PTKeyBroadcasterKeyEvent";
 
 - (void)_bcastKeyCode: (short)keyCode modifiers: (long)modifiers
 {

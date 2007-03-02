@@ -3,9 +3,10 @@
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {CLASS = PrefsController; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
-            ACTIONS = {quitProgram = id; visitWebsite = id; }; 
+            ACTIONS = {changeHotKey = id; quitProgram = id; visitWebsite = id; }; 
             CLASS = PrefsWindowController; 
             LANGUAGE = ObjC; 
+            OUTLETS = {"_arrayController" = NSArrayController; }; 
             SUPERCLASS = NSWindowController; 
         }
     ); 

@@ -16,6 +16,6 @@
 + (id) sharedController;
 
 - (NSString *) infoForTag:(NSString *)tag;
-//- (void) runHotKey:(NSString *)key;
+- (void) runHotKey:(id)sender;
 - (NSAppleEventDescriptor *) runAppleScript:(NSString *)script;
 @end

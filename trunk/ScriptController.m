@@ -100,7 +100,7 @@ static id sharedController;
     else
     {
         NSString *rval = nil;
-        NSString *script= [[PrefsController sharedController] pathForScript:tag];
+        NSString *script = [[PrefsController sharedController] pathForDisplayScript:tag];
         if (script)
         {
             NSAppleEventDescriptor *desc = [self runAppleScript:script];
@@ -143,9 +143,42 @@ static id sharedController;
     
     return nil;
 }
-/*
-- (void) runHotKey:(NSString *)key
+
+- (void) runHotKey:(id)sender
 {
+    NSLog(@"Running hot key %@", [sender name]);
+    NSString *name = [sender name];
+    // Handle the three non-script hotkeys
+    if ([name isEqualToString:@"Show Info Window"])
+    {
+        // show the info window
+    }
+    else if ([name isEqualToString:@"Show Preferences Window"])
+    {
+    
+    }
+    else if ([name isEqualToString:@"Show Quickplay Window"])
+    {
+    
+    }
+    else
+    {
+        // run the script
+        NSString *script = [[PrefsController sharedController] pathForHotKeyScript:name];
+        if (script)
+        {
+            NSAppleEventDescriptor *desc = [self runAppleScript:script];
+            if (desc)
+            {
+                if ([[[PrefsController sharedController] pref:@"showInfoWindowAfter" forHotKeyNamed:name] boolValue])
+                {
+                    // show the info window
+                    NSLog(@"showin' the info window after a key press");
+                }
+            }
+        }
+    }
+    /*
     NSMutableDictionary *plugin = [hotKeyPlugins objectForKey:[sender name]];
     
     if ([plugin objectForKey:@"overrideAction"])
@@ -195,8 +228,9 @@ static id sharedController;
         
         [theScript release];
     }
+    */
 }
-*/
+
 
 - (NSAppleEventDescriptor *) runAppleScript:(NSString *)script
 {
