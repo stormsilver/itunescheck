@@ -18,5 +18,6 @@
 - (void) displayInfo;
 
 - (void) displayPrefsWindow:(id)sender;
+- (void) displayFindWindow:(id)sender;
 
 @end

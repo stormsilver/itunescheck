@@ -30,7 +30,7 @@
 		E85639B10B964DBC00CAC5A0 /* AGRegex.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E856389D0B9647A400CAC5A0 /* AGRegex.framework */; };
 		E8634D410B992EE700F2DB2E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8634D230B992EE700F2DB2E /* QuartzCore.framework */; };
 		E8634E010B9935A000F2DB2E /* AnimatedTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8634D840B99310800F2DB2E /* AnimatedTabView.m */; };
-		E8634FF40B995DDC00F2DB2E /* FindController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8634FF20B995DDC00F2DB2E /* FindController.m */; };
+		E8634FF40B995DDC00F2DB2E /* FindWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8634FF20B995DDC00F2DB2E /* FindWindowController.m */; };
 		E8634FFE0B995E9E00F2DB2E /* Find.nib in Resources */ = {isa = PBXBuildFile; fileRef = E8634FFC0B995E9E00F2DB2E /* Find.nib */; };
 		E86350170B995EDD00F2DB2E /* iLifeControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8634FFF0B995EDD00F2DB2E /* iLifeControls.framework */; };
 		E863502F0B995EEB00F2DB2E /* iLifeControls.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8634FFF0B995EDD00F2DB2E /* iLifeControls.framework */; };
@@ -120,12 +120,14 @@
 		E8634D230B992EE700F2DB2E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		E8634D7E0B9930AA00F2DB2E /* AnimatedTabView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AnimatedTabView.h; sourceTree = "<group>"; };
 		E8634D840B99310800F2DB2E /* AnimatedTabView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AnimatedTabView.m; sourceTree = "<group>"; };
-		E8634FF10B995DDC00F2DB2E /* FindController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindController.h; sourceTree = "<group>"; };
-		E8634FF20B995DDC00F2DB2E /* FindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindController.m; sourceTree = "<group>"; };
+		E8634FF10B995DDC00F2DB2E /* FindWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindWindowController.h; sourceTree = "<group>"; };
+		E8634FF20B995DDC00F2DB2E /* FindWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindWindowController.m; sourceTree = "<group>"; };
 		E8634FFD0B995E9E00F2DB2E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Find.nib; sourceTree = "<group>"; };
 		E8634FFF0B995EDD00F2DB2E /* iLifeControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iLifeControls.framework; path = Frameworks/iLifeControls.framework; sourceTree = "<group>"; };
 		E86350570B99616100F2DB2E /* FindController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindController.h; sourceTree = "<group>"; };
 		E86350580B99619F00F2DB2E /* FindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindController.m; sourceTree = "<group>"; };
+		E863505D0B9961E700F2DB2E /* FindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindController.m; sourceTree = "<group>"; };
+		E863505E0B9961F500F2DB2E /* FindController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindController.h; sourceTree = "<group>"; };
 		E88FE1A50B96619100904FD6 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		E8A184F10B977E47000852A1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Frameworks/JavaScriptCore.framework; sourceTree = "<group>"; };
 		E8A184F20B977E47000852A1 /* JavaScriptGlue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptGlue.framework; path = Frameworks/JavaScriptGlue.framework; sourceTree = "<group>"; };
@@ -245,9 +247,11 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				E85634880B963AC500CAC5A0 /* iTunesCheck.app */,
 				E86350570B99616100F2DB2E /* FindController.h */,
-				E8634FF10B995DDC00F2DB2E /* FindController.h */,
+				E863505E0B9961F500F2DB2E /* FindController.h */,
+				E8634FF10B995DDC00F2DB2E /* FindWindowController.h */,
 				E86350580B99619F00F2DB2E /* FindController.m */,
-				E8634FF20B995DDC00F2DB2E /* FindController.m */,
+				E863505D0B9961E700F2DB2E /* FindController.m */,
+				E8634FF20B995DDC00F2DB2E /* FindWindowController.m */,
 			);
 			name = iTCWebRenderTest;
 			sourceTree = "<group>";
@@ -467,7 +471,7 @@
 				E8F050890AA547C3005C56A2 /* PTKeyComboPanel.m in Sources */,
 				E8F052EA0AA62DF9005C56A2 /* BooleanColorTransformer.m in Sources */,
 				E8634E010B9935A000F2DB2E /* AnimatedTabView.m in Sources */,
-				E8634FF40B995DDC00F2DB2E /* FindController.m in Sources */,
+				E8634FF40B995DDC00F2DB2E /* FindWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

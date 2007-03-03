@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface FindController : NSWindowController
+@interface FindWindowController : NSWindowController
 {
 
 }

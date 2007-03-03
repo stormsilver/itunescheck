@@ -6,10 +6,10 @@
 //  Copyright 2007 __MyCompanyName__. All rights reserved.
 //
 
-#import "FindController.h"
+#import "FindWindowController.h"
 
 
-@implementation FindController
+@implementation FindWindowController
 
 static id sharedController;
 
