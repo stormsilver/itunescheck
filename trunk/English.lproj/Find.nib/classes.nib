@@ -1,0 +1,8 @@
+{
+    IBClasses = (
+        {CLASS = FindController; LANGUAGE = ObjC; SUPERCLASS = NSWindowController; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NFHUDWindow; LANGUAGE = ObjC; SUPERCLASS = NSPanel; }
+    ); 
+    IBVersion = 1; 
+}

@@ -7,6 +7,8 @@
 //
 
 #import "InfoWindow.h"
+#import "AnimatedTabView.h"
+#import <WebKit/WebKit.h>
 #import <WebKit/WebInspector.h>
 #import <WebKit/WebViewPrivate.h>
 
@@ -21,7 +23,10 @@
 }
 - (void) dealloc
 {
-    [_webView release];
+    if ([super window])
+    {
+        [_webView release];
+    }
     [super dealloc];
 }
 - (NSWindow *)window
@@ -33,7 +38,7 @@
         [window setBackgroundColor:[NSColor clearColor]];
         [window setBecomesKeyOnlyIfNeeded:YES];
         [window setOpaque:NO];
-        [window setHasShadow:YES];
+        [window setHasShadow:NO];
         [window setWorksWhenModal:YES];
         [window setAcceptsMouseMovedEvents:YES];
         [window setIgnoresMouseEvents:NO];
@@ -43,6 +48,10 @@
         [window setHidesOnDeactivate:NO];
         [window setDelegate:self];
         
+        _tabView = [[AnimatedTabView alloc] init];
+        [_tabView setTabViewType:NSNoTabsNoBorder];
+        [_tabView setDrawsBackground:NO];
+        
         _webView = [[WebView alloc] initWithFrame:[[NSScreen mainScreen] visibleFrame] frameName:nil groupName:nil];
         [_webView setFrameLoadDelegate:self];
         [_webView setUIDelegate:self];
@@ -50,7 +59,16 @@
         [_webView _setDashboardBehavior:WebDashboardBehaviorAlwaysSendMouseEventsToAllWindows to:YES];
         [_webView _setDashboardBehavior:WebDashboardBehaviorAlwaysAcceptsFirstMouse to:YES];
         //[[_webView windowScriptObject] setValue:self forKey:@"Inspector"];
-        [window setContentView:_webView];
+        
+        NSView *blankView = [[[NSView alloc] initWithFrame:[[NSScreen mainScreen] visibleFrame]] autorelease];
+        NSTabViewItem *blankTabItem = [[NSTabViewItem alloc] init];
+        [blankTabItem setView:blankView];
+        [_tabView addTabViewItem:blankTabItem];
+        NSTabViewItem *webViewTabItem = [[NSTabViewItem alloc] init];
+        [webViewTabItem setView:_webView];
+        [_tabView addTabViewItem:webViewTabItem];
+        [window setContentView:_tabView];
+        
         
         [self setWindow:window];
         return window;
@@ -58,6 +76,13 @@
     
     return window;
 }
+
+- (void) closeWindow
+{
+    [_tabView transitionOut];
+    [[self window] orderOut:nil];
+}
+
 - (void) displayPage:(NSString *)pageData relativeTo:(NSURL *)base
 {
     NSLog(@"settin it up on the line");
@@ -77,6 +102,8 @@
         //NSLog(@"    h: %i, w: %i", [height intValue], [width intValue]);
         [[self window] setFrame:NSMakeRect(20.0f, 20.0f, [width floatValue], [height floatValue]) display:YES];
         [super showWindow:nil];
+        [_tabView transitionIn];
+        [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(closeWindow) userInfo:nil repeats:NO];
     }
 }
 

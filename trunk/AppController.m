@@ -1,23 +1,43 @@
 #import "AppController.h"
 #import "Prefdefs.h"
+#import "InfoController.h"
+#import "PrefsController.h"
 #import "PrefsWindowController.h"
+#import "FindWindowController.h"
 
 @implementation AppController
+static id sharedController;
++ (id) sharedController
+{
+    if (!sharedController)
+    {
+        [[self alloc] init];
+    }
+    
+    return sharedController;
+}
 - (id)init
 {
-    if (![super init])
-        return nil;
+    if (!sharedController)
+    {
+        self = [super init];
+        
+        if (self)
+        {
+            _infoController = [InfoController sharedController];
+            _prefsController = [PrefsController sharedController];
+        }
+        
+        sharedController = self;
+    }
     
-    _infoController = [InfoController sharedController];
-    _prefsController = [PrefsController sharedController];
-    
-    return self;
+    return sharedController;
 }
 - (void) dealloc
 {
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
-    [_infoController release];
-    [_prefsController release];
+    //[_infoController release];
+    //[_prefsController release];
     [super dealloc];
 }
 
@@ -26,6 +46,7 @@
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(displayInfoWithNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
     [self displayPrefsWindow:nil];
     //[self displayInfo];
+    [self displayFindWindow:nil];
 }
 
 - (void) displayInfo
@@ -45,5 +66,11 @@
 {
     PrefsWindowController *pwc = [PrefsWindowController sharedController];
     [pwc show];
+}
+
+- (void) displayFindWindow:(id)sender
+{
+    FindWindowController *fc = [FindWindowController sharedController];
+    [fc show];
 }
 @end
