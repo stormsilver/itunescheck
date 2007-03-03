@@ -14,6 +14,7 @@
 		E809876A0A90DF2400DCFA61 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = E80987690A90DF2400DCFA61 /* AppController.m */; };
 		E80987820A90DFFC00DCFA61 /* InfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E80987810A90DFFC00DCFA61 /* InfoWindow.m */; };
 		E809886F0A91329000DCFA61 /* InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = E809886E0A91329000DCFA61 /* InfoController.m */; };
+		E825F6840B9A22E800EA4DDB /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = E825F6830B9A22E700EA4DDB /* UserDefaults.plist */; };
 		E85634E60B963C2600CAC5A0 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85634D10B963C2600CAC5A0 /* Carbon.framework */; };
 		E85638E60B964AE800CAC5A0 /* AGRegex.h in Headers */ = {isa = PBXBuildFile; fileRef = E85638DB0B964AE800CAC5A0 /* AGRegex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E85638E70B964AE800CAC5A0 /* AGRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = E85638DC0B964AE800CAC5A0 /* AGRegex.m */; };
@@ -103,6 +104,7 @@
 		E80987810A90DFFC00DCFA61 /* InfoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoWindow.m; sourceTree = "<group>"; };
 		E809886D0A91329000DCFA61 /* InfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoController.h; sourceTree = "<group>"; };
 		E809886E0A91329000DCFA61 /* InfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoController.m; sourceTree = "<group>"; };
+		E825F6830B9A22E700EA4DDB /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
 		E85634880B963AC500CAC5A0 /* iTunesCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85634D10B963C2600CAC5A0 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		E856389D0B9647A400CAC5A0 /* AGRegex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AGRegex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,8 +128,6 @@
 		E8634FFF0B995EDD00F2DB2E /* iLifeControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iLifeControls.framework; path = Frameworks/iLifeControls.framework; sourceTree = "<group>"; };
 		E86350570B99616100F2DB2E /* FindController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindController.h; sourceTree = "<group>"; };
 		E86350580B99619F00F2DB2E /* FindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindController.m; sourceTree = "<group>"; };
-		E863505D0B9961E700F2DB2E /* FindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindController.m; sourceTree = "<group>"; };
-		E863505E0B9961F500F2DB2E /* FindController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindController.h; sourceTree = "<group>"; };
 		E88FE1A50B96619100904FD6 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		E8A184F10B977E47000852A1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Frameworks/JavaScriptCore.framework; sourceTree = "<group>"; };
 		E8A184F20B977E47000852A1 /* JavaScriptGlue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptGlue.framework; path = Frameworks/JavaScriptGlue.framework; sourceTree = "<group>"; };
@@ -247,10 +247,8 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				E85634880B963AC500CAC5A0 /* iTunesCheck.app */,
 				E86350570B99616100F2DB2E /* FindController.h */,
-				E863505E0B9961F500F2DB2E /* FindController.h */,
 				E8634FF10B995DDC00F2DB2E /* FindWindowController.h */,
 				E86350580B99619F00F2DB2E /* FindController.m */,
-				E863505D0B9961E700F2DB2E /* FindController.m */,
 				E8634FF20B995DDC00F2DB2E /* FindWindowController.m */,
 			);
 			name = iTCWebRenderTest;
@@ -282,6 +280,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E825F6830B9A22E700EA4DDB /* UserDefaults.plist */,
 				E8F0508A0AA547D8005C56A2 /* PTKeyCodes.plist */,
 				E8F0508C0AA547D8005C56A2 /* PTKeyComboPanel.nib */,
 				E8F050A20AA54A47005C56A2 /* Preferences.nib */,
@@ -417,6 +416,7 @@
 				E8F0508E0AA547D8005C56A2 /* PTKeyCodes.plist in Resources */,
 				E8F0508F0AA547D8005C56A2 /* PTKeyComboPanel.nib in Resources */,
 				E8634FFE0B995E9E00F2DB2E /* Find.nib in Resources */,
+				E825F6840B9A22E800EA4DDB /* UserDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

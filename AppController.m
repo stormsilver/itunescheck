@@ -46,7 +46,7 @@ static id sharedController;
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(displayInfoWithNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
     [self displayPrefsWindow:nil];
     //[self displayInfo];
-    [self displayFindWindow:nil];
+    //[self displayFindWindow:nil];
 }
 
 - (void) displayInfo

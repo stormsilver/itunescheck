@@ -9,6 +9,7 @@
 #import "PrefsWindowController.h"
 #import "PrefsController.h"
 #import "PTKeyComboPanel.h"
+#import "BooleanColorTransformer.h"
 
 
 @implementation PrefsWindowController
@@ -22,6 +23,12 @@
     }
     
     return sharedController;
+}
+
++ (void) initialize
+{
+    BooleanColorTransformer *enabler = [[[BooleanColorTransformer alloc] init] autorelease];
+    [NSValueTransformer setValueTransformer:enabler forName:@"BooleanColorTransformer"];
 }
 
 - (id) init
