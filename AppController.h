@@ -1,14 +1,17 @@
 /* AppController */
 
 #import <Cocoa/Cocoa.h>
-#import "InfoController.h"
-#import "PrefsController.h"
+
+@class InfoController;
+@class PrefsController;
 
 @interface AppController : NSObject
 {
     InfoController  *_infoController;
     PrefsController *_prefsController;
 }
+
++ (id) sharedController;
 
 - (void) displayInfo:(id)sender;
 - (void) displayInfoWithNotification:(NSNotification *)note;

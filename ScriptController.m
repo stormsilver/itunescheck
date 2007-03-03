@@ -10,6 +10,7 @@
 #import "NSData-Base64Extensions.h"
 #import "PrefsController.h"
 #import "Prefdefs.h"
+#import "AppController.h"
 
 
 @implementation ScriptController
@@ -152,6 +153,7 @@ static id sharedController;
     if ([name isEqualToString:@"Show Info Window"])
     {
         // show the info window
+        [[AppController sharedController] displayInfo];
     }
     else if ([name isEqualToString:@"Show Preferences Window"])
     {
