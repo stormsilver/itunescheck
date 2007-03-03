@@ -101,6 +101,11 @@
         NSNumber *width = [script evaluateWebScript:@"document.getElementById('body').scrollWidth"];
         //NSLog(@"    h: %i, w: %i", [height intValue], [width intValue]);
         [[self window] setFrame:NSMakeRect(20.0f, 20.0f, [width floatValue], [height floatValue]) display:YES];
+        /*
+        NSRect blank = [[_tabView tabViewItemAtIndex:0] frame];
+        NSRect web = [[_tabView tabViewItemAtIndex:1] frame];
+        NSLog(@"blank: %f, %f\tweb: %f, %f", blank.size.height, blank.size.width, web.size.height, web.size.width);
+        */
         [super showWindow:nil];
         [_tabView transitionIn];
         [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(closeWindow) userInfo:nil repeats:NO];
