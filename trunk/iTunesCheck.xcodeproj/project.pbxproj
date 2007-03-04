@@ -15,6 +15,8 @@
 		E80987820A90DFFC00DCFA61 /* InfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E80987810A90DFFC00DCFA61 /* InfoWindow.m */; };
 		E809886F0A91329000DCFA61 /* InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = E809886E0A91329000DCFA61 /* InfoController.m */; };
 		E825F6840B9A22E800EA4DDB /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = E825F6830B9A22E700EA4DDB /* UserDefaults.plist */; };
+		E825F7F70B9B64AB00EA4DDB /* QuickPlayWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E825F7F50B9B64AB00EA4DDB /* QuickPlayWindow.h */; };
+		E825F7F80B9B64AB00EA4DDB /* QuickPlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E825F7F60B9B64AB00EA4DDB /* QuickPlayWindow.m */; };
 		E85634E60B963C2600CAC5A0 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85634D10B963C2600CAC5A0 /* Carbon.framework */; };
 		E85638E60B964AE800CAC5A0 /* AGRegex.h in Headers */ = {isa = PBXBuildFile; fileRef = E85638DB0B964AE800CAC5A0 /* AGRegex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E85638E70B964AE800CAC5A0 /* AGRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = E85638DC0B964AE800CAC5A0 /* AGRegex.m */; };
@@ -84,6 +86,7 @@
 				E8A187C10B977E4B000852A1 /* WebCore.framework in CopyFiles */,
 				E8A187C20B977E4B000852A1 /* WebKit.framework in CopyFiles */,
 				E85639B10B964DBC00CAC5A0 /* AGRegex.framework in CopyFiles */,
+				E825F7F70B9B64AB00EA4DDB /* QuickPlayWindow.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +108,8 @@
 		E809886D0A91329000DCFA61 /* InfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoController.h; sourceTree = "<group>"; };
 		E809886E0A91329000DCFA61 /* InfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoController.m; sourceTree = "<group>"; };
 		E825F6830B9A22E700EA4DDB /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
+		E825F7F50B9B64AB00EA4DDB /* QuickPlayWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickPlayWindow.h; sourceTree = "<group>"; };
+		E825F7F60B9B64AB00EA4DDB /* QuickPlayWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickPlayWindow.m; sourceTree = "<group>"; };
 		E85634880B963AC500CAC5A0 /* iTunesCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85634D10B963C2600CAC5A0 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		E856389D0B9647A400CAC5A0 /* AGRegex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AGRegex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,8 +131,6 @@
 		E8634FF20B995DDC00F2DB2E /* FindWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindWindowController.m; sourceTree = "<group>"; };
 		E8634FFD0B995E9E00F2DB2E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Find.nib; sourceTree = "<group>"; };
 		E8634FFF0B995EDD00F2DB2E /* iLifeControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iLifeControls.framework; path = Frameworks/iLifeControls.framework; sourceTree = "<group>"; };
-		E86350570B99616100F2DB2E /* FindController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindController.h; sourceTree = "<group>"; };
-		E86350580B99619F00F2DB2E /* FindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindController.m; sourceTree = "<group>"; };
 		E88FE1A50B96619100904FD6 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		E8A184F10B977E47000852A1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Frameworks/JavaScriptCore.framework; sourceTree = "<group>"; };
 		E8A184F20B977E47000852A1 /* JavaScriptGlue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptGlue.framework; path = Frameworks/JavaScriptGlue.framework; sourceTree = "<group>"; };
@@ -139,7 +142,6 @@
 		E8A5E2BF0A9963E1008EA57C /* NSData-Base64Extensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSData-Base64Extensions.m"; sourceTree = "<group>"; };
 		E8C931850AA239650013362E /* PrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsController.h; sourceTree = "<group>"; };
 		E8C931860AA239650013362E /* PrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsController.m; sourceTree = "<group>"; };
-		E8C931930AA23AB10013362E /* Prefdefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefdefs.h; sourceTree = "<group>"; };
 		E8C931E30AA242F10013362E /* iTunesCheck.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = iTunesCheck.icns; sourceTree = "<group>"; };
 		E8C931FC0AA243F40013362E /* PrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsWindowController.h; sourceTree = "<group>"; };
 		E8C931FD0AA243F40013362E /* PrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsWindowController.m; sourceTree = "<group>"; };
@@ -246,10 +248,10 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				E85634880B963AC500CAC5A0 /* iTunesCheck.app */,
-				E86350570B99616100F2DB2E /* FindController.h */,
 				E8634FF10B995DDC00F2DB2E /* FindWindowController.h */,
-				E86350580B99619F00F2DB2E /* FindController.m */,
 				E8634FF20B995DDC00F2DB2E /* FindWindowController.m */,
+				E825F7F50B9B64AB00EA4DDB /* QuickPlayWindow.h */,
+				E825F7F60B9B64AB00EA4DDB /* QuickPlayWindow.m */,
 			);
 			name = iTCWebRenderTest;
 			sourceTree = "<group>";
@@ -259,7 +261,6 @@
 			children = (
 				E8C931FC0AA243F40013362E /* PrefsWindowController.h */,
 				E8C931FD0AA243F40013362E /* PrefsWindowController.m */,
-				E8C931930AA23AB10013362E /* Prefdefs.h */,
 				E8C931850AA239650013362E /* PrefsController.h */,
 				E8C931860AA239650013362E /* PrefsController.m */,
 				E80987800A90DFFC00DCFA61 /* InfoWindow.h */,
@@ -472,6 +473,7 @@
 				E8F052EA0AA62DF9005C56A2 /* BooleanColorTransformer.m in Sources */,
 				E8634E010B9935A000F2DB2E /* AnimatedTabView.m in Sources */,
 				E8634FF40B995DDC00F2DB2E /* FindWindowController.m in Sources */,
+				E825F7F80B9B64AB00EA4DDB /* QuickPlayWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

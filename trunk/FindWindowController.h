@@ -8,10 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class QuickPlayWindow;
 
-@interface FindWindowController : NSWindowController
+@interface FindWindowController : NSObject
 {
-
+    QuickPlayWindow          *_findWindow;
 }
 
 + (id) sharedController;

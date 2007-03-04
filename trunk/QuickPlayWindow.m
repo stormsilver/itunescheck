@@ -1,19 +1,19 @@
 //
-//  InfoWindow.m
-//  iTCWebRenderTest
+//  QuickPlayWindow.m
+//  iTunesCheck
 //
-//  Created by StormSilver on 8/14/06.
-//  Copyright 2006 __MyCompanyName__. All rights reserved.
+//  Created by StormSilver on 3/4/07.
+//  Copyright 2007 __MyCompanyName__. All rights reserved.
 //
 
-#import "InfoWindow.h"
-#import "AnimatedTabView.h"
-#import "PrefsController.h"
 #import <WebKit/WebKit.h>
-#import <WebKit/WebInspector.h>
 #import <WebKit/WebViewPrivate.h>
+#import "QuickPlayWindow.h"
+#import "AnimatedTabView.h"
 
-@implementation InfoWindow
+
+
+@implementation QuickPlayWindow
 
 - (id)init
 {
@@ -22,6 +22,8 @@
     
     return self;
 }
+
+
 - (void) dealloc
 {
     if ([super window])
@@ -30,14 +32,16 @@
     }
     [super dealloc];
 }
+
+
 - (NSWindow *)window
 {
     NSWindow *window = [super window];
     if (!window) {
-        NSPanel *window = [[NSPanel alloc] initWithContentRect:NSMakeRect(20.0f, 20.0f, 1.0f, 1.0f)\
-                                                               styleMask:(NSBorderlessWindowMask | NSUtilityWindowMask) backing:NSBackingStoreBuffered defer:YES];
+        NSPanel *window = [[NSPanel alloc] initWithContentRect:NSMakeRect(10.0f, 10.0f, 1.0f, 1.0f)\
+                                                     styleMask:(NSBorderlessWindowMask | NSUtilityWindowMask) backing:NSBackingStoreBuffered defer:YES];
         [window setBackgroundColor:[NSColor clearColor]];
-        [window setBecomesKeyOnlyIfNeeded:YES];
+        //[window setBecomesKeyOnlyIfNeeded:YES];
         [window setOpaque:NO];
         [window setHasShadow:NO];
         [window setWorksWhenModal:YES];
@@ -84,7 +88,6 @@
 
 - (void) displayPage:(NSString *)pageData relativeTo:(NSURL *)base
 {
-    NSLog(@"settin it up on the line");
     [[self window] orderOut:nil];
     [[self window] setContentSize:[[NSScreen mainScreen] visibleFrame].size];
     [[_webView mainFrame] loadHTMLString:pageData baseURL:base];
@@ -99,39 +102,19 @@
         NSNumber *height = [script evaluateWebScript:@"document.getElementById('body').scrollHeight"];
         NSNumber *width = [script evaluateWebScript:@"document.getElementById('body').scrollWidth"];
         //NSLog(@"    h: %i, w: %i", [height intValue], [width intValue]);
-        [[self window] setFrame:NSMakeRect(20.0f, 20.0f, [width floatValue], [height floatValue]) display:YES];
+        NSRect newFrame = NSMakeRect(0.0f, 0.0f, [width floatValue], [height floatValue]);
+        [[self window] setFrame:newFrame display:YES];
+        //[_webView setFrame:newFrame];
+        
         /*
-        NSRect blank = [[_tabView tabViewItemAtIndex:0] frame];
-        NSRect web = [[_tabView tabViewItemAtIndex:1] frame];
-        NSLog(@"blank: %f, %f\tweb: %f, %f", blank.size.height, blank.size.width, web.size.height, web.size.width);
-        */
+         NSRect blank = [[_tabView tabViewItemAtIndex:0] frame];
+         NSRect web = [[_tabView tabViewItemAtIndex:1] frame];
+         NSLog(@"blank: %f, %f\tweb: %f, %f", blank.size.height, blank.size.width, web.size.height, web.size.width);
+         */
+        [[self window] center];
         [super showWindow:nil];
         [_tabView transitionIn];
-        [NSTimer scheduledTimerWithTimeInterval:[[[PrefsController sharedController] prefForKey:PREFKEY_INFO_DELAY_TIME] floatValue] target:self selector:@selector(closeWindow) userInfo:nil repeats:NO];
+        //[NSTimer scheduledTimerWithTimeInterval:[[[PrefsController sharedController] prefForKey:PREFKEY_INFO_DELAY_TIME] floatValue] target:self selector:@selector(closeWindow) userInfo:nil repeats:NO];
     }
-}
-
-
-- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
-{
-    NSMenuItem *reload = [[NSMenuItem alloc] initWithTitle:@"Reload" action:@selector(displayInfoWindow:) keyEquivalent:@""];
-    [reload setTarget:[NSApp delegate]];
-    
-    NSMenuItem *prefs = [[NSMenuItem alloc] initWithTitle:@"Preferences" action:@selector(displayPrefsWindow:) keyEquivalent:@""];
-    [reload setTarget:[NSApp delegate]];
-    
-    NSMenuItem *inspector = [[NSMenuItem alloc] initWithTitle:@"Inspect Element" action:@selector(showWebInspector:) keyEquivalent:@""];
-    [inspector setTarget:self];
-    [inspector setRepresentedObject:element];
-    
-    return [NSArray arrayWithObjects:prefs, reload, inspector, nil];
-}
-
-- (void) showWebInspector:(id)sender
-{
-    WebInspector *webInspector = [WebInspector sharedWebInspector];
-    [webInspector setWebFrame:[_webView mainFrame]];
-    [webInspector setFocusedDOMNode:[[sender representedObject] objectForKey:WebElementDOMNodeKey]];
-    [webInspector showWindow:nil];
 }
 @end

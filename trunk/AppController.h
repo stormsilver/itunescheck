@@ -13,11 +13,11 @@
 
 + (id) sharedController;
 
-- (void) displayInfo:(id)sender;
 - (void) displayInfoWithNotification:(NSNotification *)note;
 - (void) displayInfo;
 
-- (void) displayPrefsWindow:(id)sender;
-- (void) displayFindWindow:(id)sender;
+- (void) displayInfoWindow:(id)sender;
+- (void) displayPreferencesWindow:(id)sender;
+- (void) displayQuickplayWindow:(id)sender;
 
 @end

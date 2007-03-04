@@ -8,6 +8,31 @@
 
 #import <Cocoa/Cocoa.h>
 
+
+
+#define PREFKEY_WINDOW_TRANSITION_IN_TIME       @"windowTransitionInTime"
+#define PREFKEY_WINDOW_TRANSITION_OUT_TIME      @"windowTransitionOutTime"
+#define PREFKEY_WINDOW_TRANSITION_IN_STYLE      @"windowTransitionInStyle"
+#define PREFKEY_WINDOW_TRANSITION_OUT_STYLE     @"windowTransitionOutStyle"
+
+#define PREFKEY_INFO_VIEW                   @"infoView"
+#define PREFKEY_INFO_DELAY_TIME             @"infoDelayTime"
+#define PREFKEY_IMAGE_SIZE                  @"imageSize"
+
+#define PREFKEY_QUICKPLAY_KEYNAME           @"Show QuickPlay Window"
+#define PREFKEY_PREFERENCES_KEYNAME         @"Show Preferences Window"
+#define PREFKEY_INFOWINDOW_KEYNAME          @"Show Info Window"
+
+#define PREFKEY_HOTKEY_NAME                 @"name"
+#define PREFKEY_HOTKEY_PATH                 @"path"
+#define PREFKEY_HOTKEY_SHOWINFOAFTER        @"showInfoWindowAfter"
+#define PREFKEY_HOTKEY_HOTKEY               @"hotKey"
+#define PREFKEY_HOTKEY_STRINGREP            @"keyComboStringRep"
+#define PREFKEY_HOTKEY_ENABLED              @"enabled"
+#define PREFKEY_HOTKEY_KEYCOMBO_KEYPATH     PREFKEY_HOTKEY_HOTKEY @".keyCombo"
+
+
+
 @class PTHotKey;
 
 @interface PrefsController : NSObject
