@@ -7,7 +7,6 @@
 //
 
 #import "PrefsController.h"
-#import "Prefdefs.h"
 #import "PTHotKeyCenter.h"
 #import "PTHotKey.h"
 #import "PTKeyCombo.h"
@@ -30,30 +29,6 @@ static id sharedController;
 
 - (void) _loadPrefs
 {
-    /*
-    [_prefs setObject:@"classic" forKey:PREFKEY_INFO_VIEW];
-    [_prefs setObject:[NSNumber numberWithInt:160] forKey:PREFKEY_IMAGE_SIZE];
-    
-    PTHotKey *hk = [[PTHotKey alloc] init];
-    [hk setKeyCombo:[PTKeyCombo keyComboWithKeyCode:8 modifiers:2304]];
-    [hk setName:@"Show Info Window"];
-    [hk setTarget:[ScriptController sharedController]];
-    [hk setAction:@selector(runHotKey:)];
-    NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-        @"Show Info Window", @"name",
-        hk, @"hotKey",
-        [NSNumber numberWithBool:NO], @"showInfoWindowAfter",
-        [[hk keyCombo] description], @"keyComboStringRep",
-        [NSNumber numberWithBool:YES], @"enabled",
-        nil];
-    [_hotKeyPlugins addObject:opts];
-    
-    [opts addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:@"Show Info Window"];
-    [opts addObserver:self forKeyPath:@"showInfoWindowAfter" options:NSKeyValueObservingOptionNew context:@"Show Info Window"];
-    [opts addObserver:self forKeyPath:@"hotKey.keyCombo" options:NSKeyValueObservingOptionNew context:@"Show Info Window"];
-    [[PTHotKeyCenter sharedCenter] registerHotKey:hk];
-    [hk release];
-    */
     //Load up the preferences defaults. User preferences are *automatically* applied over these defaults. We don't have to do anything more.
     NSDictionary *defaultPrefs = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UserDefaults" ofType:@"plist"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPrefs];
@@ -68,7 +43,7 @@ static id sharedController;
     NSMutableDictionary *dict;
     while (dict = [enumerator nextObject])
     {
-        NSString *name = [dict objectForKey:@"name"];
+        NSString *name = [dict objectForKey:PREFKEY_HOTKEY_NAME];
         NSDictionary *keyPrefs = [[NSUserDefaults standardUserDefaults] dictionaryForKey:name];
         // only if there's a dictionary for this key
         if (keyPrefs)
@@ -77,20 +52,20 @@ static id sharedController;
             if (pref)
             {
                 PTKeyCombo *keyCombo = [[PTKeyCombo alloc] initWithPlistRepresentation:pref];
-                [[dict objectForKey:@"hotKey"] setKeyCombo:keyCombo];
+                [[dict objectForKey:PREFKEY_HOTKEY_HOTKEY] setKeyCombo:keyCombo];
                 [keyCombo release];
             }
             
-            pref = [keyPrefs objectForKey:@"enabled"];
+            pref = [keyPrefs objectForKey:PREFKEY_HOTKEY_ENABLED];
             if (pref)
             {
-                [dict setValue:pref forKey:@"enabled"];
+                [dict setValue:pref forKey:PREFKEY_HOTKEY_ENABLED];
             }
             
-            pref = [keyPrefs objectForKey:@"showInfoWindowAfter"];
+            pref = [keyPrefs objectForKey:PREFKEY_HOTKEY_SHOWINFOAFTER];
             if (pref)
             {
-                [dict setValue:pref forKey:@"showInfoWindowAfter"];
+                [dict setValue:pref forKey:PREFKEY_HOTKEY_SHOWINFOAFTER];
             }
         }
     }
@@ -112,7 +87,7 @@ static id sharedController;
             // ... so we can load the prefs on top of them
             [self _loadPrefs];
             
-            NSSortDescriptor *nameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+            NSSortDescriptor *nameDescriptor = [[[NSSortDescriptor alloc] initWithKey:PREFKEY_HOTKEY_NAME ascending:YES] autorelease];
             [_hotKeyPlugins sortUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
         }
         
@@ -142,7 +117,7 @@ static id sharedController;
     enumerator = [_hotKeyPlugins objectEnumerator];
     while (dict = [enumerator nextObject])
     {
-        if ([[dict objectForKey:@"name"] isEqualToString:name])
+        if ([[dict objectForKey:PREFKEY_HOTKEY_NAME] isEqualToString:name])
         {
             return [dict objectForKey:key];
         }
@@ -153,7 +128,7 @@ static id sharedController;
 
 - (PTHotKey *) hotKeyAtIndex:(unsigned int)index
 {
-    return [[_hotKeyPlugins objectAtIndex:index] objectForKey:@"hotKey"];
+    return [[_hotKeyPlugins objectAtIndex:index] objectForKey:PREFKEY_HOTKEY_HOTKEY];
 }
 
 - (NSString *) pathForDisplayScript:(NSString *)name
@@ -163,9 +138,9 @@ static id sharedController;
     enumerator = [_displayPlugins objectEnumerator];
     while (dict = [enumerator nextObject])
     {
-        if ([[dict objectForKey:@"name"] isEqualToString:name])
+        if ([[dict objectForKey:PREFKEY_HOTKEY_NAME] isEqualToString:name])
         {
-            return [dict objectForKey:@"path"];
+            return [dict objectForKey:PREFKEY_HOTKEY_PATH];
         }
     }
     
@@ -179,60 +154,15 @@ static id sharedController;
     enumerator = [_hotKeyPlugins objectEnumerator];
     while (dict = [enumerator nextObject])
     {
-        if ([[dict objectForKey:@"name"] isEqualToString:name])
+        if ([[dict objectForKey:PREFKEY_HOTKEY_NAME] isEqualToString:name])
         {
-            return [dict objectForKey:@"path"];
+            return [dict objectForKey:PREFKEY_HOTKEY_PATH];
         }
     }
     
     return nil;
 }
-/*
-- (NSMutableArray *) _parsePlugins:(NSString *)directory
-{
-    // TODO: split this into hotkey and display directories so we don't load a bunch of stuff that we don't need to
-    // like hot keys for display plugins
-    NSEnumerator *enumerator = [[[NSFileManager defaultManager] directoryContentsAtPath:directory] objectEnumerator];
-    if (!enumerator)
-    {
-        return nil;
-    }
-    
-    NSString *name;
-    NSMutableArray *marr= [[NSMutableArray alloc] init];
-    while (name = [enumerator nextObject])
-    {
-        // Filter out entires that start with '.'
-        if ([name characterAtIndex:0] != '.')
-        {
-            NSString *baseName = [name stringByDeletingPathExtension];
-            // Set up a blank hotkey. We'll set it up later
-            PTHotKey *hk = [[PTHotKey alloc] init];
-            [hk setName:baseName];
-            [hk setKeyCombo:[PTKeyCombo clearKeyCombo]];
-            [hk setTarget:[ScriptController sharedController]];
-            [hk setAction:@selector(runHotKey:)];
-            NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                baseName,                                               @"name",
-                [NSString stringWithFormat:@"%@/%@", directory, name],  @"path",
-                [NSNumber numberWithBool:NO],                           @"enabled",
-                hk,                                                     @"hotKey",
-                [[PTKeyCombo clearKeyCombo] description],               @"keyComboStringRep",
-                [NSNumber numberWithBool:NO],                           @"showInfoWindowAfter",
-                nil];
-            [marr addObject:opts];
-            // Register for changes to these keys. This is how we know when the user is changing stuff.
-            [opts addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:baseName];
-            [opts addObserver:self forKeyPath:@"showInfoWindowAfter" options:NSKeyValueObservingOptionNew context:baseName];
-            [opts addObserver:self forKeyPath:@"hotKey.keyCombo" options:NSKeyValueObservingOptionNew context:baseName];
-            [hk release];
-        }
-    }
-    
-    
-    return [marr autorelease];
-}
-*/
+
 - (NSMutableDictionary *) _createDictionaryWithName:(NSString *)name directory:(NSString *)directory
 {
     // Set up a blank hotkey. We'll initialize it later
@@ -242,21 +172,21 @@ static id sharedController;
     [hk setTarget:[ScriptController sharedController]];
     [hk setAction:@selector(runHotKey:)];
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-        name,                                               @"name",
-        [NSNumber numberWithBool:NO],                           @"enabled",
-        hk,                                                     @"hotKey",
-        [[PTKeyCombo clearKeyCombo] description],               @"keyComboStringRep",
-        [NSNumber numberWithBool:NO],                           @"showInfoWindowAfter",
+        name,                                               PREFKEY_HOTKEY_NAME,
+        [NSNumber numberWithBool:NO],                           PREFKEY_HOTKEY_ENABLED,
+        hk,                                                     PREFKEY_HOTKEY_HOTKEY,
+        [[PTKeyCombo clearKeyCombo] description],               PREFKEY_HOTKEY_STRINGREP,
+        [NSNumber numberWithBool:NO],                           PREFKEY_HOTKEY_SHOWINFOAFTER,
         nil];
     // only set the path if a directory was given. This is how we filter out the non-script hotkeys
     if (directory)
     {
-        [opts setObject:[NSString stringWithFormat:@"%@/%@", directory, name] forKey:@"path"];
+        [opts setObject:[NSString stringWithFormat:@"%@/%@", directory, name] forKey:PREFKEY_HOTKEY_PATH];
     }
     // Register for changes to these keys. This is how we know when the user is changing stuff.
-    [opts addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:NULL];
-    [opts addObserver:self forKeyPath:@"showInfoWindowAfter" options:NSKeyValueObservingOptionNew context:NULL];
-    [opts addObserver:self forKeyPath:@"hotKey.keyCombo" options:NSKeyValueObservingOptionNew context:NULL];
+    [opts addObserver:self forKeyPath:PREFKEY_HOTKEY_ENABLED options:NSKeyValueObservingOptionNew context:NULL];
+    [opts addObserver:self forKeyPath:PREFKEY_HOTKEY_SHOWINFOAFTER options:NSKeyValueObservingOptionNew context:NULL];
+    [opts addObserver:self forKeyPath:PREFKEY_HOTKEY_KEYCOMBO_KEYPATH options:NSKeyValueObservingOptionNew context:NULL];
     [hk release];
     
     return opts;
@@ -291,9 +221,9 @@ static id sharedController;
     }
     
     // Add the three non-script hotkeys
-    [marr addObject:[self _createDictionaryWithName:@"Show Info Window" directory:nil]];
-    [marr addObject:[self _createDictionaryWithName:@"Show QuickPlay Window" directory:nil]];
-    [marr addObject:[self _createDictionaryWithName:@"Show Preferences Window" directory:nil]];
+    [marr addObject:[self _createDictionaryWithName:PREFKEY_INFOWINDOW_KEYNAME directory:nil]];
+    [marr addObject:[self _createDictionaryWithName:PREFKEY_QUICKPLAY_KEYNAME directory:nil]];
+    [marr addObject:[self _createDictionaryWithName:PREFKEY_PREFERENCES_KEYNAME directory:nil]];
     
     _hotKeyPlugins = marr;
 }
@@ -322,8 +252,8 @@ static id sharedController;
         {
             NSString *baseName = [name stringByDeletingPathExtension];
             NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                baseName,                                               @"name",
-                [NSString stringWithFormat:@"%@/%@", directory, name],  @"path",
+                baseName,                                               PREFKEY_HOTKEY_NAME,
+                [NSString stringWithFormat:@"%@/%@", directory, name],  PREFKEY_HOTKEY_PATH,
                 nil];
             [marr addObject:opts];
         }
@@ -373,39 +303,39 @@ static id sharedController;
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"(%@) keyPath: %@ -- new value: %@", [object objectForKey:@"name"], keyPath, [change objectForKey:NSKeyValueChangeNewKey]);
-    if ([keyPath isEqualToString:@"enabled"])
+    NSLog(@"(%@) keyPath: %@ -- new value: %@", [object objectForKey:PREFKEY_HOTKEY_NAME], keyPath, [change objectForKey:NSKeyValueChangeNewKey]);
+    if ([keyPath isEqualToString:PREFKEY_HOTKEY_ENABLED])
     {
         // write this back to defaults
-        [self _writeHotKeyPref:[change objectForKey:NSKeyValueChangeNewKey] name:@"enabled" forKeyNamed:[object objectForKey:@"name"]];
+        [self _writeHotKeyPref:[change objectForKey:NSKeyValueChangeNewKey] name:PREFKEY_HOTKEY_ENABLED forKeyNamed:[object objectForKey:PREFKEY_HOTKEY_NAME]];
         if ([[change objectForKey:NSKeyValueChangeNewKey] boolValue])
         {
             // enable the key
-            [[PTHotKeyCenter sharedCenter] registerHotKey:[object objectForKey:@"hotKey"]];
+            [[PTHotKeyCenter sharedCenter] registerHotKey:[object objectForKey:PREFKEY_HOTKEY_HOTKEY]];
         }
         else
         {
             // disable the key
-            [[PTHotKeyCenter sharedCenter] unregisterHotKey:[object objectForKey:@"hotKey"]];
+            [[PTHotKeyCenter sharedCenter] unregisterHotKey:[object objectForKey:PREFKEY_HOTKEY_HOTKEY]];
         }
     }
-    else if ([keyPath isEqualToString:@"showInfoWindowAfter"])
+    else if ([keyPath isEqualToString:PREFKEY_HOTKEY_SHOWINFOAFTER])
     {
         // write this back to defaults
-        [self _writeHotKeyPref:[change objectForKey:NSKeyValueChangeNewKey] name:@"showInfoWindowAfter" forKeyNamed:[object objectForKey:@"name"]];
+        [self _writeHotKeyPref:[change objectForKey:NSKeyValueChangeNewKey] name:PREFKEY_HOTKEY_SHOWINFOAFTER forKeyNamed:[object objectForKey:PREFKEY_HOTKEY_NAME]];
         // do we need to do anything else here?
     }
-    else if ([keyPath isEqualToString:@"hotKey.keyCombo"])
+    else if ([keyPath isEqualToString:PREFKEY_HOTKEY_KEYCOMBO_KEYPATH])
     {
         // Update the string rep of this key
-        [object setObject:[[[object objectForKey:@"hotKey"] keyCombo] description] forKey:@"keyComboStringRep"];
+        [object setObject:[[[object objectForKey:PREFKEY_HOTKEY_HOTKEY] keyCombo] description] forKey:PREFKEY_HOTKEY_STRINGREP];
         // Write the new key back to defaults
-        [self _writeHotKeyPref:[[[object objectForKey:@"hotKey"] keyCombo] plistRepresentation] name:@"keyCombo" forKeyNamed:[object objectForKey:@"name"]];
+        [self _writeHotKeyPref:[[[object objectForKey:PREFKEY_HOTKEY_HOTKEY] keyCombo] plistRepresentation] name:@"keyCombo" forKeyNamed:[object objectForKey:PREFKEY_HOTKEY_NAME]];
         // The key combo changed. Register the new key.
-        if ([[object objectForKey:@"enabled"] boolValue])
+        if ([[object objectForKey:PREFKEY_HOTKEY_ENABLED] boolValue])
         {
             // register the key only if it's enabled
-            [[PTHotKeyCenter sharedCenter] registerHotKey:[object objectForKey:@"hotKey"]];
+            [[PTHotKeyCenter sharedCenter] registerHotKey:[object objectForKey:PREFKEY_HOTKEY_HOTKEY]];
         }
     }
 }

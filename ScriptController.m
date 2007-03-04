@@ -9,7 +9,6 @@
 #import "ScriptController.h"
 #import "NSData-Base64Extensions.h"
 #import "PrefsController.h"
-#import "Prefdefs.h"
 #import "AppController.h"
 
 
@@ -150,18 +149,18 @@ static id sharedController;
     NSLog(@"Running hot key %@", [sender name]);
     NSString *name = [sender name];
     // Handle the three non-script hotkeys
-    if ([name isEqualToString:@"Show Info Window"])
+    if ([name isEqualToString:PREFKEY_INFOWINDOW_KEYNAME])
     {
         // show the info window
-        [[AppController sharedController] displayInfo];
+        [[AppController sharedController] displayInfoWindow:nil];
     }
-    else if ([name isEqualToString:@"Show Preferences Window"])
+    else if ([name isEqualToString:PREFKEY_PREFERENCES_KEYNAME])
     {
-    
+        [[AppController sharedController] displayPreferencesWindow:nil];
     }
-    else if ([name isEqualToString:@"Show Quickplay Window"])
+    else if ([name isEqualToString:PREFKEY_QUICKPLAY_KEYNAME])
     {
-    
+        [[AppController sharedController] displayQuickplayWindow:nil];
     }
     else
     {
@@ -172,7 +171,7 @@ static id sharedController;
             NSAppleEventDescriptor *desc = [self runAppleScript:script];
             if (desc)
             {
-                if ([[[PrefsController sharedController] pref:@"showInfoWindowAfter" forHotKeyNamed:name] boolValue])
+                if ([[[PrefsController sharedController] pref:PREFKEY_HOTKEY_SHOWINFOAFTER forHotKeyNamed:name] boolValue])
                 {
                     // show the info window
                     NSLog(@"showin' the info window after a key press");
@@ -180,57 +179,6 @@ static id sharedController;
             }
         }
     }
-    /*
-    NSMutableDictionary *plugin = [hotKeyPlugins objectForKey:[sender name]];
-    
-    if ([plugin objectForKey:@"overrideAction"])
-    {
-        [[NSApp delegate] performSelector:sel_registerName([[plugin objectForKey:@"overrideAction"] cString]) withObject:self];
-        return;
-    }
-    
-    NSString *action;
-    NSString *path;
-    if ([plugin objectForKey:@"option1Enabled"])
-    {
-        action = [plugin objectForKey:@"option1ActionPath"];
-    } else
-    {
-        action = [plugin objectForKey:@"actionPath"];
-    }
-    
-    if ([[plugin objectForKey:@"kind"] isEqual:@"Built-In"])
-    {
-        path = [[[[NSBundle mainBundle] builtInPlugInsPath] stringByAppendingPathComponent:@"HotKey"] stringByAppendingPathComponent:action];
-    } else
-    {
-        //NSLog(thirdPartyPlugins);
-        path = [thirdPartyPlugins stringByAppendingPathComponent:action];
-    }
-    
-    if (![[NSFileManager defaultManager] isReadableFileAtPath:path])
-    {
-        NSLog(@"Error - file  does not exist or is a directory: %@", path);
-    } else
-    {
-		NSDictionary *errorDict = [[NSDictionary alloc] init];
-        NSAppleScript *theScript = [[NSAppleScript alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:&errorDict];
-        
-		if (![theScript executeAndReturnError:&errorDict])
-        {
-            NSLog(@"%@ returned AppleScript error: %@", path, errorDict);
-        } else
-        {
-            if ([[plugin objectForKey:@"showInfo"] boolValue])
-            {
-                [[InfoController sharedController] display];
-            }
-        }
-        [errorDict release];
-        
-        [theScript release];
-    }
-    */
 }
 
 

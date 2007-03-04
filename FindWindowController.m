@@ -7,6 +7,7 @@
 //
 
 #import "FindWindowController.h"
+#import "QuickPlayWindow.h"
 
 
 @implementation FindWindowController
@@ -31,7 +32,8 @@ static id sharedController;
         
         if (self)
         {
-            [NSBundle loadNibNamed:@"Find" owner:self];
+            //[NSBundle loadNibNamed:@"Find" owner:self];
+            _findWindow = [[QuickPlayWindow alloc] init];
         }
         
         sharedController = self;
@@ -40,14 +42,25 @@ static id sharedController;
     return sharedController;
 }
 
+- (void) dealloc
+{
+    [_findWindow release];
+    [super dealloc];
+}
+/*
 - (void) awakeFromNib
 {
     [[self window] center];
 }
-
+*/
 - (void) show
 {
-    [self showWindow:nil];
+    NSString *path = [[[NSBundle mainBundle] resourcePath] 
+                                stringByAppendingPathComponent:[NSString stringWithFormat:@"Views/%@/find.html", @"classic"]];
+    //NSString *path = @"/Users/ssilver/Documents/Programs/iTCWebRenderTest/Views/classic/index.html";
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSMutableString *page = [NSMutableString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:NULL];
+    [_findWindow displayPage:page relativeTo:url];
 }
 
 @end
