@@ -15,9 +15,7 @@
 		E80987820A90DFFC00DCFA61 /* InfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E80987810A90DFFC00DCFA61 /* InfoWindow.m */; };
 		E809886F0A91329000DCFA61 /* InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = E809886E0A91329000DCFA61 /* InfoController.m */; };
 		E825F6840B9A22E800EA4DDB /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = E825F6830B9A22E700EA4DDB /* UserDefaults.plist */; };
-		E825F7F70B9B64AB00EA4DDB /* QuickPlayWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E825F7F50B9B64AB00EA4DDB /* QuickPlayWindow.h */; };
 		E825F7F80B9B64AB00EA4DDB /* QuickPlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E825F7F60B9B64AB00EA4DDB /* QuickPlayWindow.m */; };
-		E825FFC80B9CB11300EA4DDB /* WebViewWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E825FFC60B9CB11300EA4DDB /* WebViewWindow.h */; };
 		E825FFC90B9CB11300EA4DDB /* WebViewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E825FFC70B9CB11300EA4DDB /* WebViewWindow.m */; };
 		E85634E60B963C2600CAC5A0 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85634D10B963C2600CAC5A0 /* Carbon.framework */; };
 		E85638E60B964AE800CAC5A0 /* AGRegex.h in Headers */ = {isa = PBXBuildFile; fileRef = E85638DB0B964AE800CAC5A0 /* AGRegex.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,9 +34,6 @@
 		E8634D410B992EE700F2DB2E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8634D230B992EE700F2DB2E /* QuartzCore.framework */; };
 		E8634E010B9935A000F2DB2E /* AnimatedTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8634D840B99310800F2DB2E /* AnimatedTabView.m */; };
 		E8634FF40B995DDC00F2DB2E /* FindWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8634FF20B995DDC00F2DB2E /* FindWindowController.m */; };
-		E8634FFE0B995E9E00F2DB2E /* Find.nib in Resources */ = {isa = PBXBuildFile; fileRef = E8634FFC0B995E9E00F2DB2E /* Find.nib */; };
-		E86350170B995EDD00F2DB2E /* iLifeControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8634FFF0B995EDD00F2DB2E /* iLifeControls.framework */; };
-		E863502F0B995EEB00F2DB2E /* iLifeControls.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8634FFF0B995EDD00F2DB2E /* iLifeControls.framework */; };
 		E88FE1A60B96619100904FD6 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E88FE1A50B96619100904FD6 /* libcrypto.dylib */; };
 		E8A187BB0B977E47000852A1 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A184F10B977E47000852A1 /* JavaScriptCore.framework */; };
 		E8A187BC0B977E47000852A1 /* JavaScriptGlue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A184F20B977E47000852A1 /* JavaScriptGlue.framework */; };
@@ -82,14 +77,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E863502F0B995EEB00F2DB2E /* iLifeControls.framework in CopyFiles */,
 				E8A187BF0B977E4B000852A1 /* JavaScriptCore.framework in CopyFiles */,
 				E8A187C00B977E4B000852A1 /* JavaScriptGlue.framework in CopyFiles */,
 				E8A187C10B977E4B000852A1 /* WebCore.framework in CopyFiles */,
 				E8A187C20B977E4B000852A1 /* WebKit.framework in CopyFiles */,
 				E85639B10B964DBC00CAC5A0 /* AGRegex.framework in CopyFiles */,
-				E825F7F70B9B64AB00EA4DDB /* QuickPlayWindow.h in CopyFiles */,
-				E825FFC80B9CB11300EA4DDB /* WebViewWindow.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +126,6 @@
 		E8634D840B99310800F2DB2E /* AnimatedTabView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AnimatedTabView.m; sourceTree = "<group>"; };
 		E8634FF10B995DDC00F2DB2E /* FindWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindWindowController.h; sourceTree = "<group>"; };
 		E8634FF20B995DDC00F2DB2E /* FindWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindWindowController.m; sourceTree = "<group>"; };
-		E8634FFD0B995E9E00F2DB2E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/Find.nib; sourceTree = "<group>"; };
-		E8634FFF0B995EDD00F2DB2E /* iLifeControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iLifeControls.framework; path = Frameworks/iLifeControls.framework; sourceTree = "<group>"; };
 		E88FE1A50B96619100904FD6 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		E8A184F10B977E47000852A1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Frameworks/JavaScriptCore.framework; sourceTree = "<group>"; };
 		E8A184F20B977E47000852A1 /* JavaScriptGlue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptGlue.framework; path = Frameworks/JavaScriptGlue.framework; sourceTree = "<group>"; };
@@ -182,7 +172,6 @@
 				E8A187BD0B977E47000852A1 /* WebCore.framework in Frameworks */,
 				E8A187BE0B977E47000852A1 /* WebKit.framework in Frameworks */,
 				E8634D410B992EE700F2DB2E /* QuartzCore.framework in Frameworks */,
-				E86350170B995EDD00F2DB2E /* iLifeControls.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +196,6 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E8634FFF0B995EDD00F2DB2E /* iLifeControls.framework */,
 				E8A184F10B977E47000852A1 /* JavaScriptCore.framework */,
 				E8A184F20B977E47000852A1 /* JavaScriptGlue.framework */,
 				E8A184F30B977E47000852A1 /* WebCore.framework */,
@@ -297,7 +285,6 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
-				E8634FFC0B995E9E00F2DB2E /* Find.nib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -423,7 +410,6 @@
 				E8F050830AA547C3005C56A2 /* PTKeyboardIcon.tiff in Resources */,
 				E8F0508E0AA547D8005C56A2 /* PTKeyCodes.plist in Resources */,
 				E8F0508F0AA547D8005C56A2 /* PTKeyComboPanel.nib in Resources */,
-				E8634FFE0B995E9E00F2DB2E /* Find.nib in Resources */,
 				E825F6840B9A22E800EA4DDB /* UserDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,14 +509,6 @@
 				29B97319FDCFA39411CA2CEA /* English */,
 			);
 			name = MainMenu.nib;
-			sourceTree = "<group>";
-		};
-		E8634FFC0B995E9E00F2DB2E /* Find.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E8634FFD0B995E9E00F2DB2E /* English */,
-			);
-			name = Find.nib;
 			sourceTree = "<group>";
 		};
 		E8F0508A0AA547D8005C56A2 /* PTKeyCodes.plist */ = {

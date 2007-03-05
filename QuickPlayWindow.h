@@ -7,17 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "WebViewWindow.h"
 
-@class WebView;
-@class AnimatedTabView;
 
-@interface QuickPlayWindow : NSWindowController
+@interface QuickPlayWindow : WebViewWindow
 {
-    WebView             *_webView;
-    AnimatedTabView     *_tabView;
 }
 
-- (void) displayPage:(NSString *)pageData relativeTo:(NSURL *)base;
-- (void) closeWindow;
 
 @end

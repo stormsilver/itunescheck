@@ -7,17 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "WebViewWindow.h"
 
-@class WebView;
-@class AnimatedTabView;
-
-@interface InfoWindow : NSWindowController
+@interface InfoWindow : WebViewWindow
 {
-    WebView             *_webView;
-    AnimatedTabView     *_tabView;
     NSTimer             *_delayTimer;
 }
-- (void) displayPage:(NSString *)pageData relativeTo:(NSURL *)base;
-- (void) closeWindow;
-- (void) showWebInspector:(id)sender;
+
 @end
