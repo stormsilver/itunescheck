@@ -457,4 +457,5 @@ typedef enum {
 
 - (void) transitionIn;
 - (void) transitionOut;
+- (void) queueTabTransition;
 @end

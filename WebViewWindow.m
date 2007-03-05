@@ -1,18 +1,19 @@
 //
-//  QuickPlayWindow.m
+//  WebViewWindow.m
 //  iTunesCheck
 //
-//  Created by StormSilver on 3/4/07.
+//  Created by StormSilver on 3/5/07.
 //  Copyright 2007 __MyCompanyName__. All rights reserved.
 //
 
-#import <WebKit/WebKit.h>
-#import <WebKit/WebViewPrivate.h>
-#import "QuickPlayWindow.h"
+#import "WebViewWindow.h"
 #import "AnimatedTabView.h"
-#import "FindWindowController.h"
+#import "PrefsController.h"
+#import <WebKit/WebKit.h>
+#import <WebKit/WebInspector.h>
+#import <WebKit/WebViewPrivate.h>
 
-@interface SuperWindow : NSPanel
+@interface KeyablePanel : NSPanel
 
 @end
 @implementation SuperWindow
@@ -22,7 +23,7 @@
 }
 @end
 
-@implementation QuickPlayWindow
+
 
 - (id)init
 {
@@ -31,7 +32,6 @@
     
     return self;
 }
-
 
 - (void) dealloc
 {
@@ -42,14 +42,11 @@
     [super dealloc];
 }
 
-
 - (NSWindow *)window
 {
     NSWindow *window = [super window];
     if (!window) {
-        //NSPanel *window = [[NSPanel alloc] initWithContentRect:NSMakeRect(10.0f, 10.0f, 1.0f, 1.0f) styleMask:(NSBorderlessWindowMask | NSUtilityWindowMask) backing:NSBackingStoreBuffered defer:YES];
-        //NSPanel *window = [[NSPanel alloc] initWithContentRect:NSMakeRect(10.0f, 10.0f, 1.0f, 1.0f) styleMask:(NSTitledWindowMask | NSUtilityWindowMask | NSNonactivatingPanelMask) backing:NSBackingStoreBuffered defer:YES];
-        NSWindow *window = [[SuperWindow alloc] initWithContentRect:NSMakeRect(10.0f, 10.0f, 1.0f, 1.0f) styleMask:(NSBorderlessWindowMask | NSUtilityWindowMask | NSNonactivatingPanelMask) backing:NSBackingStoreBuffered defer:NO];
+        NSWindow *window = [[KeyableWindow alloc] initWithContentRect:NSMakeRect(10.0f, 10.0f, 1.0f, 1.0f) styleMask:(NSBorderlessWindowMask | NSUtilityWindowMask | NSNonactivatingPanelMask) backing:NSBackingStoreBuffered defer:NO];
         [window setLevel:NSFloatingWindowLevel];
         [window setBackgroundColor:[NSColor clearColor]];
         //[window setBecomesKeyOnlyIfNeeded:NO];
@@ -101,66 +98,65 @@
 
 - (void) displayPage:(NSString *)pageData relativeTo:(NSURL *)base
 {
+    NSLog(@"settin it up on the line");
     if ([[self window] isVisible])
     {
+        NSLog(@"Window visible... queueing tab transition");
         [_tabView queueTabTransition];
     }
     else
     {
+        NSLog(@"Window not visible... uhm...");
         [[self window] orderOut:nil];
     }
-    [[self window] setContentSize:[[NSScreen mainScreen] visibleFrame].size];
+    if (_delayTimer)
+    {
+        [_delayTimer invalidate];
+        [_delayTimer release];
+        _delayTimer = nil;
+    }
+    //[[self window] setContentSize:[[NSScreen mainScreen] visibleFrame].size];
+    //[[self window] setFrame:[[NSScreen mainScreen] visibleFrame] display:YES];
+    //[[_tabView tabViewItemAtIndex:1] setView:[[[NSView alloc] initWithFrame:[[NSScreen mainScreen] visibleFrame]] autorelease]];
+    [_webView setFrame:[[NSScreen mainScreen] visibleFrame]];
     [[_webView mainFrame] loadHTMLString:pageData baseURL:base];
-}
-
-- (void) webView:(WebView *)sender windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject
-{
-    [windowScriptObject setValue:[FindWindowController sharedController] forKey:@"FindWindowController"];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
-    // Only report feedback for the main frame.
-    if (frame == [sender mainFrame])
-    {
-        WebScriptObject *script = [sender windowScriptObject];
-        NSNumber *height = [script evaluateWebScript:@"document.getElementById('body').scrollHeight"];
-        NSNumber *width = [script evaluateWebScript:@"document.getElementById('body').scrollWidth"];
-        //NSLog(@"    h: %i, w: %i", [height intValue], [width intValue]);
-        [[self window] setFrame:NSMakeRect(0.0f, 0.0f, [width floatValue], [height floatValue]) display:YES];
-        [[self window] center];
-        [[self window] orderFrontRegardless];
-        [_tabView transitionIn];
-        //[NSTimer scheduledTimerWithTimeInterval:[[[PrefsController sharedController] prefForKey:PREFKEY_INFO_DELAY_TIME] floatValue] target:self selector:@selector(closeWindow) userInfo:nil repeats:NO];
-        [[self window] makeKeyWindow];
-        [[self window] makeFirstResponder:_webView];
-    }
+    WebScriptObject *script = [sender windowScriptObject];
+    NSNumber *height = [script evaluateWebScript:@"document.getElementById('body').scrollHeight"];
+    NSNumber *width = [script evaluateWebScript:@"document.getElementById('body').scrollWidth"];
+    //NSLog(@"    h: %i, w: %i", [height intValue], [width intValue]);
+    [[self window] setFrame:NSMakeRect(20.0f, 20.0f, [width floatValue], [height floatValue]) display:YES];
+}
+
+
+- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
+{
+    NSMenuItem *reload = [[NSMenuItem alloc] initWithTitle:@"Reload" action:@selector(displayInfoWindow:) keyEquivalent:@""];
+    [reload setTarget:[AppController sharedController]];
+    
+    NSMenuItem *prefs = [[NSMenuItem alloc] initWithTitle:@"Preferences" action:@selector(displayPrefsWindow:) keyEquivalent:@""];
+    [reload setTarget:[AppController sharedController]];
+    
+    NSMenuItem *inspector = [[NSMenuItem alloc] initWithTitle:@"Inspect Element" action:@selector(showWebInspector:) keyEquivalent:@""];
+    [inspector setTarget:self];
+    [inspector setRepresentedObject:element];
+    
+    return [NSArray arrayWithObjects:prefs, reload, inspector, nil];
 }
 
 - (void) webView:(WebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WebFrame *)frame
 {
     NSLog(@"[JS ALERT]    %@", message);
 }
-/*
-- (void) webView:(WebView *)sender setContentRect:(NSRect)contentRect
+
+- (void) showWebInspector:(id)sender
 {
-    NSLog(@"setContentRect: %@", NSRectToString(contentRect));
+    WebInspector *webInspector = [WebInspector sharedWebInspector];
+    [webInspector setWebFrame:[_webView mainFrame]];
+    [webInspector setFocusedDOMNode:[[sender representedObject] objectForKey:WebElementDOMNodeKey]];
+    [webInspector showWindow:nil];
 }
-- (void) webView:(WebView *)sender setFrame:(NSRect)frame
-{
-    NSLog(@"setFrame: %@", NSRectToString(frame));
-}
-- (NSRect) webViewContentRect:(WebView *)sender
-{
-    NSRect rect = [[self window] frame];
-    NSLog(@"webViewContentRect: %@", NSRectToString(rect));
-    return rect;
-}
-- (NSRect) webViewFrame:(WebView *)sender
-{
-    NSRect rect = [[self window] frame];
-    NSLog(@"webViewFrame: %@", NSRectToString(rect));
-    return rect;
-}
-*/
 @end

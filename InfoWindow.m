@@ -9,6 +9,7 @@
 #import "InfoWindow.h"
 #import "AnimatedTabView.h"
 #import "PrefsController.h"
+#import "FindWindowController.h"
 #import <WebKit/WebKit.h>
 #import <WebKit/WebInspector.h>
 #import <WebKit/WebViewPrivate.h>
@@ -85,8 +86,26 @@
 - (void) displayPage:(NSString *)pageData relativeTo:(NSURL *)base
 {
     NSLog(@"settin it up on the line");
-    [[self window] orderOut:nil];
-    [[self window] setContentSize:[[NSScreen mainScreen] visibleFrame].size];
+    if ([[self window] isVisible])
+    {
+        NSLog(@"Window visible... queueing tab transition");
+        [_tabView queueTabTransition];
+    }
+    else
+    {
+        NSLog(@"Window not visible... uhm...");
+        [[self window] orderOut:nil];
+    }
+    if (_delayTimer)
+    {
+        [_delayTimer invalidate];
+        [_delayTimer release];
+        _delayTimer = nil;
+    }
+    //[[self window] setContentSize:[[NSScreen mainScreen] visibleFrame].size];
+    //[[self window] setFrame:[[NSScreen mainScreen] visibleFrame] display:YES];
+    //[[_tabView tabViewItemAtIndex:1] setView:[[[NSView alloc] initWithFrame:[[NSScreen mainScreen] visibleFrame]] autorelease]];
+    [_webView setFrame:[[NSScreen mainScreen] visibleFrame]];
     [[_webView mainFrame] loadHTMLString:pageData baseURL:base];
 }
 
@@ -100,14 +119,9 @@
         NSNumber *width = [script evaluateWebScript:@"document.getElementById('body').scrollWidth"];
         //NSLog(@"    h: %i, w: %i", [height intValue], [width intValue]);
         [[self window] setFrame:NSMakeRect(20.0f, 20.0f, [width floatValue], [height floatValue]) display:YES];
-        /*
-        NSRect blank = [[_tabView tabViewItemAtIndex:0] frame];
-        NSRect web = [[_tabView tabViewItemAtIndex:1] frame];
-        NSLog(@"blank: %f, %f\tweb: %f, %f", blank.size.height, blank.size.width, web.size.height, web.size.width);
-        */
         [super showWindow:nil];
         [_tabView transitionIn];
-        [NSTimer scheduledTimerWithTimeInterval:[[[PrefsController sharedController] prefForKey:PREFKEY_INFO_DELAY_TIME] floatValue] target:self selector:@selector(closeWindow) userInfo:nil repeats:NO];
+        _delayTimer = [[NSTimer scheduledTimerWithTimeInterval:[[[PrefsController sharedController] prefForKey:PREFKEY_INFO_DELAY_TIME] floatValue] target:self selector:@selector(closeWindow) userInfo:nil repeats:NO] retain];
     }
 }
 
