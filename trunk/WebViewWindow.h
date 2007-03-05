@@ -7,11 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
+#import <WebKit/WebInspector.h>
+#import <WebKit/WebViewPrivate.h>
+#import "AnimatedTabView.h"
 
 @class WebView;
 @class AnimatedTabView;
 
-@interface InfoWindow : NSWindowController
+@interface WebViewWindow : NSWindowController
 {
     WebView             *_webView;
     AnimatedTabView     *_tabView;

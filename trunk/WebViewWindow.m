@@ -7,23 +7,20 @@
 //
 
 #import "WebViewWindow.h"
-#import "AnimatedTabView.h"
 #import "PrefsController.h"
-#import <WebKit/WebKit.h>
-#import <WebKit/WebInspector.h>
-#import <WebKit/WebViewPrivate.h>
+#import "AppController.h"
 
 @interface KeyablePanel : NSPanel
 
 @end
-@implementation SuperWindow
+@implementation KeyablePanel
 - (BOOL) canBecomeKeyWindow
 {
     return YES;
 }
 @end
 
-
+@implementation WebViewWindow
 
 - (id)init
 {
@@ -46,7 +43,7 @@
 {
     NSWindow *window = [super window];
     if (!window) {
-        NSWindow *window = [[KeyableWindow alloc] initWithContentRect:NSMakeRect(10.0f, 10.0f, 1.0f, 1.0f) styleMask:(NSBorderlessWindowMask | NSUtilityWindowMask | NSNonactivatingPanelMask) backing:NSBackingStoreBuffered defer:NO];
+        NSWindow *window = [[KeyablePanel alloc] initWithContentRect:NSMakeRect(10.0f, 10.0f, 1.0f, 1.0f) styleMask:(NSBorderlessWindowMask | NSUtilityWindowMask | NSNonactivatingPanelMask) backing:NSBackingStoreBuffered defer:NO];
         [window setLevel:NSFloatingWindowLevel];
         [window setBackgroundColor:[NSColor clearColor]];
         //[window setBecomesKeyOnlyIfNeeded:NO];
@@ -108,12 +105,6 @@
     {
         NSLog(@"Window not visible... uhm...");
         [[self window] orderOut:nil];
-    }
-    if (_delayTimer)
-    {
-        [_delayTimer invalidate];
-        [_delayTimer release];
-        _delayTimer = nil;
     }
     //[[self window] setContentSize:[[NSScreen mainScreen] visibleFrame].size];
     //[[self window] setFrame:[[NSScreen mainScreen] visibleFrame] display:YES];
