@@ -13,6 +13,6 @@
 @interface QuickPlayWindow : WebViewWindow
 {
 }
-
+- (void) resize;
 
 @end

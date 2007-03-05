@@ -13,13 +13,16 @@
 @interface FindWindowController : NSObject
 {
     QuickPlayWindow         *_findWindow;
+    NSMutableDictionary     *_playlists;
 }
 
 + (id) sharedController;
 
 - (void) show;
+- (void) close;
 
-- (NSArray *) resultsForSearch:(NSString *)search;
+- (NSArray *) resultsForSearch:(NSString *)search inPlaylist:(NSString *)playlist;
 - (NSArray *) playlists;
+- (void) resize;
 
 @end

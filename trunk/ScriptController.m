@@ -146,7 +146,7 @@ static id sharedController;
 
 - (void) runHotKey:(id)sender
 {
-    NSLog(@"Running hot key %@", [sender name]);
+    NSLog(@"[Hot Key]  %@", [sender name]);
     NSString *name = [sender name];
     // Handle the three non-script hotkeys
     if ([name isEqualToString:PREFKEY_INFOWINDOW_KEYNAME])
@@ -182,6 +182,36 @@ static id sharedController;
 }
 
 
+- (NSAppleEventDescriptor *) searchFor:(NSString *)search inPlaylist:(NSString *)playlist
+{
+    //First we'll set up the path to the AppleScript we need to run
+    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Scripts/findSong.applescript"];
+    NSMutableString *findScript = [NSMutableString stringWithContentsOfFile:path];
+    
+    //Then we'll enter the user's search string into the script
+    [findScript replaceOccurrencesOfString:@"searchValue" withString:search options:NSLiteralSearch range:NSMakeRange(0, [findScript length])];
+    //And we'll enter the user's selected playlist into the script
+    [findScript replaceOccurrencesOfString:@"playlistValue" withString:playlist options:NSLiteralSearch range:NSMakeRange(0, [findScript length])];
+    NSError *error;
+    if (![findScript writeToFile:@"/Users/ssilver/Desktop/find.applescript" atomically:NO encoding:NSUnicodeStringEncoding error:&error])
+    {
+        NSLog(@"Could not write file: %@", error);
+    }
+    //then we'll run it
+	NSAppleScript *theScript = [[NSAppleScript alloc] initWithSource:findScript];
+	NSDictionary *errorDict;
+    NSAppleEventDescriptor *rval = [theScript executeAndReturnError:&errorDict];
+    if (!rval)
+    {
+        NSLog(@"Search error!\n%@", errorDict);
+        [theScript release];
+        return nil;
+    }
+	[theScript release];
+    
+    return rval;
+}
+
 - (NSAppleEventDescriptor *) runAppleScript:(NSString *)script
 {
     NSAppleScript *theScript;
@@ -191,7 +221,6 @@ static id sharedController;
     theScript = [[NSAppleScript alloc] initWithContentsOfURL:[NSURL fileURLWithPath:script] error:&errorDict];
     if (!theScript)
     {
-        //NSLog(@"!theScript");
         NSLog(@"Error: Tried to load script \"%@\" but couldn't because %@", [NSURL fileURLWithPath:script], errorDict);
         [theScript release];
         return nil;
@@ -200,7 +229,6 @@ static id sharedController;
     desc = [theScript executeAndReturnError:&errorDict];
     if (!desc)
     {
-        //NSLog(@"!desc");
         [theScript release];
         return nil;
     }

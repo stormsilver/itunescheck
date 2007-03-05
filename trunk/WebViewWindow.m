@@ -115,11 +115,12 @@
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
-    WebScriptObject *script = [sender windowScriptObject];
+    WebScriptObject *script = [_webView windowScriptObject];
     NSNumber *height = [script evaluateWebScript:@"document.getElementById('body').scrollHeight"];
     NSNumber *width = [script evaluateWebScript:@"document.getElementById('body').scrollWidth"];
     //NSLog(@"    h: %i, w: %i", [height intValue], [width intValue]);
-    [[self window] setFrame:NSMakeRect(20.0f, 20.0f, [width floatValue], [height floatValue]) display:YES];
+    NSPoint origin = [[self window] frame].origin;
+    [[self window] setFrame:NSMakeRect(origin.x, origin.y, [width floatValue], [height floatValue]) display:YES];
 }
 
 
