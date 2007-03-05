@@ -37,6 +37,30 @@
 		{
 			background-image: url("./images/playAlt.tif");
 		}
+		#searchResultsContainer
+		{
+			max-height: 550px;
+			overflow: auto;
+		}
+		#searchResultsTable
+		{
+			border: 0;
+			max-width: 450px;
+		}
+		#searchResultsTable td
+		{
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			border-left: 1px solid #ccc;
+		}
+		.evenRow
+		{
+			background-color: rgba(47, 68, 40, 0.5);
+		}
+		.oddRow
+		{
+			background-color: rgba(78, 113, 67, 0.5);
+		}
 	</style>
 	<script type="text/javascript" src="./js/util.js"></script>
 	<script type="text/javascript" src="./js/text.js"></script>
@@ -53,8 +77,8 @@
 		</select>
 	</div>
 	<div id="searchResultsContainer">
-		<ul id="searchResultsList">
-		</ul>
+		<table id="searchResultsTable">
+		</table>
 	</div>
 </div>
 <script type="text/javascript">

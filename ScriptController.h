@@ -17,5 +17,6 @@
 
 - (NSString *) infoForTag:(NSString *)tag;
 - (void) runHotKey:(id)sender;
+- (NSAppleEventDescriptor *) searchFor:(NSString *)search inPlaylist:(NSString *)playlist;
 - (NSAppleEventDescriptor *) runAppleScript:(NSString *)script;
 @end

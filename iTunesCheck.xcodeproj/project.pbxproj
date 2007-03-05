@@ -186,11 +186,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		080E96DDFE201D6D7F000001 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E80987680A90DF2400DCFA61 /* AppController.h */,
+				E80987690A90DF2400DCFA61 /* AppController.m */,
+				E8634FF10B995DDC00F2DB2E /* FindWindowController.h */,
+				E8634FF20B995DDC00F2DB2E /* FindWindowController.m */,
+				E8C931FC0AA243F40013362E /* PrefsWindowController.h */,
+				E8C931FD0AA243F40013362E /* PrefsWindowController.m */,
+				E8C931850AA239650013362E /* PrefsController.h */,
+				E8C931860AA239650013362E /* PrefsController.m */,
+				E8A5DF580A991493008EA57C /* ScriptController.h */,
+				E8A5DF590A991493008EA57C /* ScriptController.m */,
+				E809886D0A91329000DCFA61 /* InfoController.h */,
+				E809886E0A91329000DCFA61 /* InfoController.m */,
 			);
-			name = Classes;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
@@ -221,32 +233,14 @@
 		29B97314FDCFA39411CA2CEA /* iTCWebRenderTest */ = {
 			isa = PBXGroup;
 			children = (
-				E825FFC60B9CB11300EA4DDB /* WebViewWindow.h */,
-				E825FFC70B9CB11300EA4DDB /* WebViewWindow.m */,
-				E8634D7E0B9930AA00F2DB2E /* AnimatedTabView.h */,
-				E8634D840B99310800F2DB2E /* AnimatedTabView.m */,
 				E85638DA0B964AAF00CAC5A0 /* AGRegex */,
-				E8F052E70AA62DF9005C56A2 /* BooleanColorTransformer.h */,
-				E8F052E80AA62DF9005C56A2 /* BooleanColorTransformer.m */,
-				E8F050740AA547C2005C56A2 /* PTHotKey.h */,
-				E8F050750AA547C2005C56A2 /* PTHotKey.m */,
-				E8F050760AA547C2005C56A2 /* PTHotKeyCenter.h */,
-				E8F050770AA547C2005C56A2 /* PTHotKeyCenter.m */,
-				E8F050790AA547C3005C56A2 /* PTKeyBroadcaster.h */,
-				E8F0507A0AA547C3005C56A2 /* PTKeyBroadcaster.m */,
-				E8F0507B0AA547C3005C56A2 /* PTKeyCombo.h */,
-				E8F0507C0AA547C3005C56A2 /* PTKeyCombo.m */,
-				E8F0507D0AA547C3005C56A2 /* PTKeyComboPanel.h */,
-				E8F0507E0AA547C3005C56A2 /* PTKeyComboPanel.m */,
-				080E96DDFE201D6D7F000001 /* Classes */,
+				E825006A0B9CB7CA00EA4DDB /* PT HotKeys */,
+				080E96DDFE201D6D7F000001 /* Controllers */,
+				E825006D0B9CB80C00EA4DDB /* Views */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				E85634880B963AC500CAC5A0 /* iTunesCheck.app */,
-				E8634FF10B995DDC00F2DB2E /* FindWindowController.h */,
-				E8634FF20B995DDC00F2DB2E /* FindWindowController.m */,
-				E825F7F50B9B64AB00EA4DDB /* QuickPlayWindow.h */,
-				E825F7F60B9B64AB00EA4DDB /* QuickPlayWindow.m */,
 			);
 			name = iTCWebRenderTest;
 			sourceTree = "<group>";
@@ -254,21 +248,11 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E8C931FC0AA243F40013362E /* PrefsWindowController.h */,
-				E8C931FD0AA243F40013362E /* PrefsWindowController.m */,
-				E8C931850AA239650013362E /* PrefsController.h */,
-				E8C931860AA239650013362E /* PrefsController.m */,
-				E80987800A90DFFC00DCFA61 /* InfoWindow.h */,
+				E8F052E70AA62DF9005C56A2 /* BooleanColorTransformer.h */,
+				E8F052E80AA62DF9005C56A2 /* BooleanColorTransformer.m */,
 				E8A5E2BE0A9963E1008EA57C /* NSData-Base64Extensions.h */,
 				E8A5E2BF0A9963E1008EA57C /* NSData-Base64Extensions.m */,
-				E80987810A90DFFC00DCFA61 /* InfoWindow.m */,
-				E8A5DF580A991493008EA57C /* ScriptController.h */,
-				E8A5DF590A991493008EA57C /* ScriptController.m */,
-				E809886D0A91329000DCFA61 /* InfoController.h */,
-				E809886E0A91329000DCFA61 /* InfoController.m */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				E80987680A90DF2400DCFA61 /* AppController.h */,
-				E80987690A90DF2400DCFA61 /* AppController.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -297,6 +281,38 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E825006A0B9CB7CA00EA4DDB /* PT HotKeys */ = {
+			isa = PBXGroup;
+			children = (
+				E8F050740AA547C2005C56A2 /* PTHotKey.h */,
+				E8F050750AA547C2005C56A2 /* PTHotKey.m */,
+				E8F050760AA547C2005C56A2 /* PTHotKeyCenter.h */,
+				E8F050770AA547C2005C56A2 /* PTHotKeyCenter.m */,
+				E8F050790AA547C3005C56A2 /* PTKeyBroadcaster.h */,
+				E8F0507A0AA547C3005C56A2 /* PTKeyBroadcaster.m */,
+				E8F0507B0AA547C3005C56A2 /* PTKeyCombo.h */,
+				E8F0507C0AA547C3005C56A2 /* PTKeyCombo.m */,
+				E8F0507D0AA547C3005C56A2 /* PTKeyComboPanel.h */,
+				E8F0507E0AA547C3005C56A2 /* PTKeyComboPanel.m */,
+			);
+			name = "PT HotKeys";
+			sourceTree = "<group>";
+		};
+		E825006D0B9CB80C00EA4DDB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E825F7F50B9B64AB00EA4DDB /* QuickPlayWindow.h */,
+				E825F7F60B9B64AB00EA4DDB /* QuickPlayWindow.m */,
+				E825FFC60B9CB11300EA4DDB /* WebViewWindow.h */,
+				E825FFC70B9CB11300EA4DDB /* WebViewWindow.m */,
+				E8634D7E0B9930AA00F2DB2E /* AnimatedTabView.h */,
+				E8634D840B99310800F2DB2E /* AnimatedTabView.m */,
+				E80987800A90DFFC00DCFA61 /* InfoWindow.h */,
+				E80987810A90DFFC00DCFA61 /* InfoWindow.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		E85638DA0B964AAF00CAC5A0 /* AGRegex */ = {

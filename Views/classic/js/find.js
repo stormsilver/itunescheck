@@ -18,22 +18,37 @@ function FindController_new()
 	
 	fc.performSearch = function()
 	{
-		var results = fc.fwc.resultsForSearch(document.getElementById('searchField').value);
+		var results = fc.fwc.resultsForSearchInPlaylist(document.getElementById('searchField').value, 'SelecTron');
 		var resultsText = '';
 		for (var i = 0; i < results.length; ++i)
 		{
-			resultsText += '<ul>' + results[i] + '</ul>';
+			resultsText += '<tr class="' + (i%2==0?'evenRow':'oddRow') + '"><td>' + results[i][0] + '</td><td>' + results[i][1] + '</td></tr>';
 		}
-		Text.fill('searchResultsList', resultsText);
+		Text.fill('searchResultsTable', resultsText);
 		Util.show('searchResultsContainer');
+		fc.fwc.resize();
 	};
 	
-	fc.checkKeyPress = function(event)
+	fc.watchSearchReturnKey = function(event)
 	{
 		//alert("keypress: " + Util.checkKeyEvent(event));
 		if ('return' == Util.checkKeyEvent(event))
 		{
 			fc.performSearch();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	};
+	
+	fc.watchEscapeKey = function(event)
+	{
+		//alert("keypress: " + Util.checkKeyEvent(event));
+		if ('escape' == Util.checkKeyEvent(event))
+		{
+			fc.fwc.close();
 			return true;
 		}
 		else
@@ -51,7 +66,8 @@ function initFind()
 	FindController.populatePlaylistSelect('playlistSelect');
 
 	var searchField = document.getElementById('searchField');
-	Util.addEventToObject(searchField, 'keypress', FindController.checkKeyPress);
+	Util.addEventToObject(searchField, 'keypress', FindController.watchSearchReturnKey);
+	Util.addEventToObject(document, 'keypress', FindController.watchEscapeKey);
 	Util.hide('searchResultsContainer');
 	searchField.focus();
 }
