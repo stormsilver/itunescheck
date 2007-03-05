@@ -12,11 +12,14 @@
 
 @interface FindWindowController : NSObject
 {
-    QuickPlayWindow          *_findWindow;
+    QuickPlayWindow         *_findWindow;
 }
 
 + (id) sharedController;
 
 - (void) show;
+
+- (NSArray *) resultsForSearch:(NSString *)search;
+- (NSArray *) playlists;
 
 @end

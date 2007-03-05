@@ -123,7 +123,6 @@ static void ClearBitmapImageRep(NSBitmapImageRep *bitmap) {
              break;
      }
      */
-    
     switch (style)
     {
         case CICopyMachine:
@@ -269,15 +268,20 @@ static void ClearBitmapImageRep(NSBitmapImageRep *bitmap) {
 
 - (void) transitionIn
 {
-    // equalize the frame sizes... this makes the animate draw in the correct spot
-    [[[self tabViewItemAtIndex:0] view] setFrame:[self frame]];
-    [[[self tabViewItemAtIndex:1] view] setFrame:[self frame]];
+    TransitionStyle style = [[[PrefsController sharedController] prefForKey:PREFKEY_WINDOW_TRANSITION_IN_STYLE] intValue];
+    if (style > TransitionStyleDelimiter)
+    {
+        // I'm not sure why we have to do this but if we don't then CoreImage transitions will composite with the second view being blank.
+        // equalize the frame sizes... this makes the animate draw in the correct spot
+        [[[self tabViewItemAtIndex:0] view] setFrame:[self frame]];
+        [[[self tabViewItemAtIndex:1] view] setFrame:[self frame]];
+    }
     // ensure the first tab item is selected... you never know
     [self selectTabViewItemAtIndex:0];
     [self _transitionFrom:0 to:1
-           withTransition:[[[PrefsController sharedController] prefForKey:PREFKEY_WINDOW_TRANSITION_OUT_STYLE] intValue]
-           time:[[[PrefsController sharedController] prefForKey:PREFKEY_WINDOW_TRANSITION_IN_TIME] floatValue]
-           hideTo:YES];
+           withTransition:style
+                     time:[[[PrefsController sharedController] prefForKey:PREFKEY_WINDOW_TRANSITION_IN_TIME] floatValue]
+                   hideTo:YES];
     // switch to the second tab item once the animation has been completed
     [self selectTabViewItemAtIndex:1];
 }
@@ -285,12 +289,44 @@ static void ClearBitmapImageRep(NSBitmapImageRep *bitmap) {
 - (void) transitionOut
 {
     [self selectTabViewItemAtIndex:1];
+    NSView *blankView = [[[NSView alloc] initWithFrame:[[NSScreen mainScreen] visibleFrame]] autorelease];
+    [[self tabViewItemAtIndex:0] setView:blankView];
     [self _transitionFrom:1 to:0
-    withTransition:[[[PrefsController sharedController] prefForKey:PREFKEY_WINDOW_TRANSITION_OUT_STYLE] intValue]
-    time:[[[PrefsController sharedController] prefForKey:PREFKEY_WINDOW_TRANSITION_OUT_TIME] floatValue]
-    hideTo:NO];
+           withTransition:[[[PrefsController sharedController] prefForKey:PREFKEY_WINDOW_TRANSITION_OUT_STYLE] intValue]
+                     time:[[[PrefsController sharedController] prefForKey:PREFKEY_WINDOW_TRANSITION_OUT_TIME] floatValue]
+                   hideTo:NO];
     [self selectTabViewItemAtIndex:0];
 }
+
+- (void) queueTabTransition
+{
+    TransitionStyle style = [[[PrefsController sharedController] prefForKey:PREFKEY_WINDOW_TRANSITION_IN_STYLE] intValue];
+    // We have to queue the transition differently based on whether it'll be a CI or CG transition.
+    if (style < TransitionStyleDelimiter)
+    {
+        // here we capture a snapshot of tab 1 and draw it onto tab 0
+        NSView *webView = [[self tabViewItemAtIndex:1] view];
+        NSRect rect = [webView visibleRect];
+        NSBitmapImageRep *finalContentBitmap = [webView bitmapImageRepForCachingDisplayInRect:rect];
+        ClearBitmapImageRep(finalContentBitmap);
+        [webView cacheDisplayInRect:rect toBitmapImageRep:finalContentBitmap];
+        NSImageView *imageView = [[NSImageView alloc] init];
+        NSImage *image = [[NSImage alloc] init];
+        [image addRepresentation:finalContentBitmap];
+        [imageView setImage:image];
+        [[self tabViewItemAtIndex:0] setView:imageView];
+        [image release];
+        [imageView release];
+    }
+    else
+    {
+        // this isn't ideal, but it looks okay
+        [[self window] orderOut:nil];
+    }
+    [self selectTabViewItemAtIndex:0];
+}
+
+
 
 
 

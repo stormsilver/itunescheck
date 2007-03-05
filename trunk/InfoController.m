@@ -82,7 +82,7 @@
             while (match = [enumerator nextObject])
             {
                 NSString *name = [match groupAtIndex:1];
-                NSLog(name);
+                //NSLog(name);
                 NSString *info = [sc infoForTag:name];
                 if (info)
                 {

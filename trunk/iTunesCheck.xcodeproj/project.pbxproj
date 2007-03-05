@@ -17,6 +17,8 @@
 		E825F6840B9A22E800EA4DDB /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = E825F6830B9A22E700EA4DDB /* UserDefaults.plist */; };
 		E825F7F70B9B64AB00EA4DDB /* QuickPlayWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E825F7F50B9B64AB00EA4DDB /* QuickPlayWindow.h */; };
 		E825F7F80B9B64AB00EA4DDB /* QuickPlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E825F7F60B9B64AB00EA4DDB /* QuickPlayWindow.m */; };
+		E825FFC80B9CB11300EA4DDB /* WebViewWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E825FFC60B9CB11300EA4DDB /* WebViewWindow.h */; };
+		E825FFC90B9CB11300EA4DDB /* WebViewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E825FFC70B9CB11300EA4DDB /* WebViewWindow.m */; };
 		E85634E60B963C2600CAC5A0 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85634D10B963C2600CAC5A0 /* Carbon.framework */; };
 		E85638E60B964AE800CAC5A0 /* AGRegex.h in Headers */ = {isa = PBXBuildFile; fileRef = E85638DB0B964AE800CAC5A0 /* AGRegex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E85638E70B964AE800CAC5A0 /* AGRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = E85638DC0B964AE800CAC5A0 /* AGRegex.m */; };
@@ -87,6 +89,7 @@
 				E8A187C20B977E4B000852A1 /* WebKit.framework in CopyFiles */,
 				E85639B10B964DBC00CAC5A0 /* AGRegex.framework in CopyFiles */,
 				E825F7F70B9B64AB00EA4DDB /* QuickPlayWindow.h in CopyFiles */,
+				E825FFC80B9CB11300EA4DDB /* WebViewWindow.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +113,8 @@
 		E825F6830B9A22E700EA4DDB /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
 		E825F7F50B9B64AB00EA4DDB /* QuickPlayWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickPlayWindow.h; sourceTree = "<group>"; };
 		E825F7F60B9B64AB00EA4DDB /* QuickPlayWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickPlayWindow.m; sourceTree = "<group>"; };
+		E825FFC60B9CB11300EA4DDB /* WebViewWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewWindow.h; sourceTree = "<group>"; };
+		E825FFC70B9CB11300EA4DDB /* WebViewWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewWindow.m; sourceTree = "<group>"; };
 		E85634880B963AC500CAC5A0 /* iTunesCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85634D10B963C2600CAC5A0 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		E856389D0B9647A400CAC5A0 /* AGRegex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AGRegex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +233,8 @@
 		29B97314FDCFA39411CA2CEA /* iTCWebRenderTest */ = {
 			isa = PBXGroup;
 			children = (
+				E825FFC60B9CB11300EA4DDB /* WebViewWindow.h */,
+				E825FFC70B9CB11300EA4DDB /* WebViewWindow.m */,
 				E8634D7E0B9930AA00F2DB2E /* AnimatedTabView.h */,
 				E8634D840B99310800F2DB2E /* AnimatedTabView.m */,
 				E85638DA0B964AAF00CAC5A0 /* AGRegex */,
@@ -474,6 +481,7 @@
 				E8634E010B9935A000F2DB2E /* AnimatedTabView.m in Sources */,
 				E8634FF40B995DDC00F2DB2E /* FindWindowController.m in Sources */,
 				E825F7F80B9B64AB00EA4DDB /* QuickPlayWindow.m in Sources */,
+				E825FFC90B9CB11300EA4DDB /* WebViewWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

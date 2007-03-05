@@ -38,6 +38,9 @@
 			background-image: url("./images/playAlt.tif");
 		}
 	</style>
+	<script type="text/javascript" src="./js/util.js"></script>
+	<script type="text/javascript" src="./js/text.js"></script>
+	<script type="text/javascript" src="./js/find.js"></script>
 </head>
 <body>
 <div id="body">
@@ -46,9 +49,16 @@
 	<div id="windowBody">
 		<input type="text" id="searchField" />
 		<br />
-		<select>
+		<select id="playlistSelect">
 		</select>
 	</div>
+	<div id="searchResultsContainer">
+		<ul id="searchResultsList">
+		</ul>
+	</div>
 </div>
+<script type="text/javascript">
+	initFind();
+</script>
 </body>
 </html>

@@ -181,7 +181,7 @@ static id sharedController;
     // only set the path if a directory was given. This is how we filter out the non-script hotkeys
     if (directory)
     {
-        [opts setObject:[NSString stringWithFormat:@"%@/%@", directory, name] forKey:PREFKEY_HOTKEY_PATH];
+        [opts setObject:[NSString stringWithFormat:@"%@/%@.scpt", directory, name] forKey:PREFKEY_HOTKEY_PATH];
     }
     // Register for changes to these keys. This is how we know when the user is changing stuff.
     [opts addObserver:self forKeyPath:PREFKEY_HOTKEY_ENABLED options:NSKeyValueObservingOptionNew context:NULL];
@@ -303,7 +303,7 @@ static id sharedController;
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"(%@) keyPath: %@ -- new value: %@", [object objectForKey:PREFKEY_HOTKEY_NAME], keyPath, [change objectForKey:NSKeyValueChangeNewKey]);
+    //NSLog(@"(%@) keyPath: %@ -- new value: %@", [object objectForKey:PREFKEY_HOTKEY_NAME], keyPath, [change objectForKey:NSKeyValueChangeNewKey]);
     if ([keyPath isEqualToString:PREFKEY_HOTKEY_ENABLED])
     {
         // write this back to defaults
