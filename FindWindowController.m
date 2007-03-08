@@ -203,6 +203,12 @@ static id sharedController;
     [_findWindow resize];
 }
 
+- (void) playSong:(NSString *)path
+{
+    [[ScriptController sharedController] playSongWithID:path];
+    [self close];
+}
+
 + (NSString *) webScriptNameForSelector:(SEL)sel
 {
     NSString *name = nil;
@@ -222,6 +228,10 @@ static id sharedController;
     {
         name = @"close";
     }
+    else if (sel == @selector(playSong:))
+    {
+        name = @"playSong";
+    }
 
     return name;
 }
@@ -230,7 +240,7 @@ static id sharedController;
 {
     BOOL excluded = YES;
     
-    if (sel == @selector(playlists) || sel == @selector(resultsForSearch:inPlaylist:) || sel == @selector(resize) || sel == @selector(close))
+    if (sel == @selector(playlists) || sel == @selector(resultsForSearch:inPlaylist:) || sel == @selector(resize) || sel == @selector(close) || sel == @selector(playSong:))
     {
         excluded = NO;
     }

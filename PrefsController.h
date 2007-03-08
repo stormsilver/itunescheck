@@ -9,13 +9,17 @@
 #import <Cocoa/Cocoa.h>
 
 
+#define PREFKEY_INITIAL_SETUP_DONE          @"initialSetupDone"
 
 #define PREFKEY_WINDOW_TRANSITION_IN_TIME       @"windowTransitionInTime"
 #define PREFKEY_WINDOW_TRANSITION_OUT_TIME      @"windowTransitionOutTime"
 #define PREFKEY_WINDOW_TRANSITION_IN_STYLE      @"windowTransitionInStyle"
 #define PREFKEY_WINDOW_TRANSITION_OUT_STYLE     @"windowTransitionOutStyle"
 
+#define PREFKEY_INFO_ORIGIN                 @"infoOrigin"
 #define PREFKEY_INFO_VIEW                   @"infoView"
+// 0: always,   1: song change,     2: hot key only
+#define PREFKEY_INFO_SHOW_ON                @"showInfoWindowOn"
 #define PREFKEY_INFO_DELAY_TIME             @"infoDelayTime"
 #define PREFKEY_IMAGE_SIZE                  @"imageSize"
 
@@ -42,7 +46,12 @@
 }
 + (id) sharedController;
 
-- (id) prefForKey:(id)key;
+- (NSArray *) transitionStyles;
+
+- (void) save;
+
+- (void) setPref:(id)pref forKey:(NSString *)key;
+- (id) prefForKey:(NSString *)key;
 - (id) pref:(NSString *)key forHotKeyNamed:(NSString *)name;
 - (PTHotKey *) hotKeyAtIndex:(unsigned int)index;
 - (NSString *) pathForDisplayScript:(NSString *)name;

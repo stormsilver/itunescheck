@@ -23,8 +23,6 @@ static id sharedController;
         
         if (self)
         {
-            _infoController = [InfoController sharedController];
-            _prefsController = [PrefsController sharedController];
         }
         
         sharedController = self;
@@ -35,44 +33,43 @@ static id sharedController;
 - (void) dealloc
 {
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
-    //[_infoController release];
-    //[_prefsController release];
     [super dealloc];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(displayInfoWithNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
-    //[self displayPrefsWindow:nil];
-    //[self displayInfo];
-    //[self displayQuickplayWindow:nil];
+    // show the prefs window if the app's never been run before
+    if (![[[PrefsController sharedController] prefForKey:PREFKEY_INITIAL_SETUP_DONE] boolValue])
+    {
+        [self displayPreferencesWindow:nil];
+        [[PrefsController sharedController] setPref:[NSNumber numberWithBool:YES] forKey:PREFKEY_INITIAL_SETUP_DONE];
+    }
 }
+
 
 - (void) displayInfo
 {
-    [_infoController displayView:[_prefsController prefForKey:PREFKEY_INFO_VIEW]];
+    [[InfoController sharedController] displayView:[[PrefsController sharedController] prefForKey:PREFKEY_INFO_VIEW]];
 }
 - (void) displayInfoWithNotification:(NSNotification *)note
 {
-    [_infoController displayView:[_prefsController prefForKey:PREFKEY_INFO_VIEW] fromNotification:note];
+    [[InfoController sharedController] displayView:[[PrefsController sharedController] prefForKey:PREFKEY_INFO_VIEW] fromNotification:note];
 }
-
-
-
 - (void) displayInfoWindow:(id)sender
 {
     [self displayInfo];
 }
 
+
 - (void) displayPreferencesWindow:(id)sender
 {
-    PrefsWindowController *pwc = [PrefsWindowController sharedController];
-    [pwc show];
+    [[PrefsWindowController sharedController] show];
 }
+
 
 - (void) displayQuickplayWindow:(id)sender
 {
-    FindWindowController *fc = [FindWindowController sharedController];
-    [fc show];
+    [[FindWindowController sharedController] show];
 }
 @end

@@ -20,7 +20,9 @@
     WebView             *_webView;
     AnimatedTabView     *_tabView;
 }
+
 - (void) displayPage:(NSString *)pageData relativeTo:(NSURL *)base;
+- (void) userDidMoveWindow;
 - (void) closeWindow;
 - (void) showWebInspector:(id)sender;
 

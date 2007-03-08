@@ -192,18 +192,32 @@ static id sharedController;
     [findScript replaceOccurrencesOfString:@"searchValue" withString:search options:NSLiteralSearch range:NSMakeRange(0, [findScript length])];
     //And we'll enter the user's selected playlist into the script
     [findScript replaceOccurrencesOfString:@"playlistValue" withString:playlist options:NSLiteralSearch range:NSMakeRange(0, [findScript length])];
+    
+    return [self runAppleScriptFromString:findScript];
+}
+
+- (void) playSongWithID:(NSString *)songID
+{
+    NSString *script = [NSString stringWithFormat:@"tell application \"iTunes\"\nplay %@\nend tell", songID];
+    [self runAppleScriptFromString:script];
+}
+
+- (NSAppleEventDescriptor *) runAppleScriptFromString:(NSString *)script
+{
+    /*
+    // write the script to a file
     NSError *error;
-    if (![findScript writeToFile:@"/Users/ssilver/Desktop/find.applescript" atomically:NO encoding:NSUnicodeStringEncoding error:&error])
+    if (![script writeToFile:@"/Users/ssilver/Desktop/string.applescript" atomically:NO encoding:NSUTF8StringEncoding error:&error])
     {
         NSLog(@"Could not write file: %@", error);
     }
-    //then we'll run it
-	NSAppleScript *theScript = [[NSAppleScript alloc] initWithSource:findScript];
+    */
+	NSAppleScript *theScript = [[NSAppleScript alloc] initWithSource:script];
 	NSDictionary *errorDict;
     NSAppleEventDescriptor *rval = [theScript executeAndReturnError:&errorDict];
     if (!rval)
     {
-        NSLog(@"Search error!\n%@", errorDict);
+        NSLog(@"Error running script string. \n%@", errorDict);
         [theScript release];
         return nil;
     }

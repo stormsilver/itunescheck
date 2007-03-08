@@ -34,6 +34,9 @@
 		E8634D410B992EE700F2DB2E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8634D230B992EE700F2DB2E /* QuartzCore.framework */; };
 		E8634E010B9935A000F2DB2E /* AnimatedTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8634D840B99310800F2DB2E /* AnimatedTabView.m */; };
 		E8634FF40B995DDC00F2DB2E /* FindWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8634FF20B995DDC00F2DB2E /* FindWindowController.m */; };
+		E87919E90B9F2B110055E30D /* RoundedNumberTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E87919E70B9F2B110055E30D /* RoundedNumberTransformer.m */; };
+		E87920A00B9F8C850055E30D /* WebPanel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E879209E0B9F8C850055E30D /* WebPanel.h */; };
+		E87920A10B9F8C850055E30D /* WebPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = E879209F0B9F8C850055E30D /* WebPanel.m */; };
 		E88FE1A60B96619100904FD6 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E88FE1A50B96619100904FD6 /* libcrypto.dylib */; };
 		E8A187BB0B977E47000852A1 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A184F10B977E47000852A1 /* JavaScriptCore.framework */; };
 		E8A187BC0B977E47000852A1 /* JavaScriptGlue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8A184F20B977E47000852A1 /* JavaScriptGlue.framework */; };
@@ -82,6 +85,7 @@
 				E8A187C10B977E4B000852A1 /* WebCore.framework in CopyFiles */,
 				E8A187C20B977E4B000852A1 /* WebKit.framework in CopyFiles */,
 				E85639B10B964DBC00CAC5A0 /* AGRegex.framework in CopyFiles */,
+				E87920A00B9F8C850055E30D /* WebPanel.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +130,11 @@
 		E8634D840B99310800F2DB2E /* AnimatedTabView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AnimatedTabView.m; sourceTree = "<group>"; };
 		E8634FF10B995DDC00F2DB2E /* FindWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindWindowController.h; sourceTree = "<group>"; };
 		E8634FF20B995DDC00F2DB2E /* FindWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindWindowController.m; sourceTree = "<group>"; };
+		E87919E60B9F2B110055E30D /* RoundedNumberTransformer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RoundedNumberTransformer.h; sourceTree = "<group>"; };
+		E87919E70B9F2B110055E30D /* RoundedNumberTransformer.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundedNumberTransformer.m; sourceTree = "<group>"; };
+		E879209E0B9F8C850055E30D /* WebPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPanel.h; sourceTree = "<group>"; };
+		E879209F0B9F8C850055E30D /* WebPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPanel.m; sourceTree = "<group>"; };
+		E87921330B9F9E040055E30D /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		E88FE1A50B96619100904FD6 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		E8A184F10B977E47000852A1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Frameworks/JavaScriptCore.framework; sourceTree = "<group>"; };
 		E8A184F20B977E47000852A1 /* JavaScriptGlue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptGlue.framework; path = Frameworks/JavaScriptGlue.framework; sourceTree = "<group>"; };
@@ -233,6 +242,7 @@
 		29B97314FDCFA39411CA2CEA /* iTCWebRenderTest */ = {
 			isa = PBXGroup;
 			children = (
+				E87921330B9F9E040055E30D /* TODO */,
 				E85638DA0B964AAF00CAC5A0 /* AGRegex */,
 				E825006A0B9CB7CA00EA4DDB /* PT HotKeys */,
 				080E96DDFE201D6D7F000001 /* Controllers */,
@@ -248,6 +258,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E87919E60B9F2B110055E30D /* RoundedNumberTransformer.h */,
+				E87919E70B9F2B110055E30D /* RoundedNumberTransformer.m */,
 				E8F052E70AA62DF9005C56A2 /* BooleanColorTransformer.h */,
 				E8F052E80AA62DF9005C56A2 /* BooleanColorTransformer.m */,
 				E8A5E2BE0A9963E1008EA57C /* NSData-Base64Extensions.h */,
@@ -303,6 +315,8 @@
 		E825006D0B9CB80C00EA4DDB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E879209E0B9F8C850055E30D /* WebPanel.h */,
+				E879209F0B9F8C850055E30D /* WebPanel.m */,
 				E825F7F50B9B64AB00EA4DDB /* QuickPlayWindow.h */,
 				E825F7F60B9B64AB00EA4DDB /* QuickPlayWindow.m */,
 				E825FFC60B9CB11300EA4DDB /* WebViewWindow.h */,
@@ -484,6 +498,8 @@
 				E8634FF40B995DDC00F2DB2E /* FindWindowController.m in Sources */,
 				E825F7F80B9B64AB00EA4DDB /* QuickPlayWindow.m in Sources */,
 				E825FFC90B9CB11300EA4DDB /* WebViewWindow.m in Sources */,
+				E87919E90B9F2B110055E30D /* RoundedNumberTransformer.m in Sources */,
+				E87920A10B9F8C850055E30D /* WebPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

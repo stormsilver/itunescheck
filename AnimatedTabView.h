@@ -430,8 +430,6 @@ typedef enum {
 	CGSwap,
 	CGCube,
 	CGWarpSwitch,
-	
-    TransitionStyleDelimiter,
     
     CICopyMachine,
     CIDisintegrate,

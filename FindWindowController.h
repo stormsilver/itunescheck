@@ -24,5 +24,6 @@
 - (NSArray *) resultsForSearch:(NSString *)search inPlaylist:(NSString *)playlist;
 - (NSArray *) playlists;
 - (void) resize;
+- (void) playSong:(NSString *)path;
 
 @end
