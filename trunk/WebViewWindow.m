@@ -9,16 +9,13 @@
 #import "WebViewWindow.h"
 #import "PrefsController.h"
 #import "AppController.h"
+#import "WebPanel.h"
 
-@interface KeyablePanel : NSPanel
 
+@interface NSWindow (NSWindowPrivate)
+- (void)_setContentHasShadow:(BOOL)hasShadow;
 @end
-@implementation KeyablePanel
-- (BOOL) canBecomeKeyWindow
-{
-    return YES;
-}
-@end
+
 
 @implementation WebViewWindow
 
@@ -43,20 +40,25 @@
 {
     NSWindow *window = [super window];
     if (!window) {
-        NSWindow *window = [[KeyablePanel alloc] initWithContentRect:NSMakeRect(10.0f, 10.0f, 1.0f, 1.0f) styleMask:(NSBorderlessWindowMask | NSUtilityWindowMask | NSNonactivatingPanelMask) backing:NSBackingStoreBuffered defer:NO];
+    /*
+        KeyablePanel *window = [[KeyablePanel alloc] initWithContentRect:NSMakeRect(10.0f, 10.0f, 1.0f, 1.0f) styleMask:(NSBorderlessWindowMask | NSUtilityWindowMask | NSNonactivatingPanelMask) backing:NSBackingStoreBuffered defer:NO];
         [window setLevel:NSFloatingWindowLevel];
-        [window setBackgroundColor:[NSColor clearColor]];
-        //[window setBecomesKeyOnlyIfNeeded:NO];
-        [window setOpaque:NO];
+        [window setBecomesKeyOnlyIfNeeded:NO];
         [window setHasShadow:NO];
-        //[window setWorksWhenModal:YES];
-        //[window setAcceptsMouseMovedEvents:YES];
-        //[window setIgnoresMouseEvents:NO];
-        //[window setFloatingPanel:YES];
-        //[window setReleasedWhenClosed:YES];
-        //[window setMovableByWindowBackground:YES];
-        //[window setHidesOnDeactivate:NO];
-        //[window setDelegate:self];
+        */
+        WebPanel *window = [[WebPanel alloc] initWithContentRect:NSMakeRect(1.0f, 1.0f, 1.0f, 1.0f) styleMask:(NSBorderlessWindowMask | NSUtilityWindowMask) backing:NSBackingStoreBuffered defer:YES];
+        [window setBackgroundColor:[NSColor clearColor]];
+        [window setOpaque:NO];
+        [window setHasShadow:YES];
+        [window _setContentHasShadow:NO];
+        [window setWorksWhenModal:YES];
+        [window setAcceptsMouseMovedEvents:YES];
+        [window setIgnoresMouseEvents:NO];
+        [window setFloatingPanel:YES];
+        [window setReleasedWhenClosed:YES];
+        [window setMovableByWindowBackground:YES];
+        [window setHidesOnDeactivate:NO];
+        [window setDelegate:self];
         
         _tabView = [[AnimatedTabView alloc] init];
         
@@ -65,9 +67,8 @@
         [_webView setUIDelegate:self];
         [_webView setDrawsBackground:NO];
         [_webView setMaintainsBackForwardList:NO];
-        //[_webView _setDashboardBehavior:WebDashboardBehaviorAlwaysSendMouseEventsToAllWindows to:YES];
-        //[_webView _setDashboardBehavior:WebDashboardBehaviorAlwaysAcceptsFirstMouse to:YES];
-        //[[_webView windowScriptObject] setValue:[FindWindowController sharedController] forKey:@"FindWindowController"];
+        [_webView _setDashboardBehavior:WebDashboardBehaviorAlwaysSendMouseEventsToAllWindows to:YES];
+        [_webView _setDashboardBehavior:WebDashboardBehaviorAlwaysAcceptsFirstMouse to:YES];
         
         NSView *blankView = [[[NSView alloc] initWithFrame:[[NSScreen mainScreen] visibleFrame]] autorelease];
         NSTabViewItem *blankTabItem = [[NSTabViewItem alloc] init];
@@ -93,6 +94,11 @@
     [[self window] orderOut:nil];
 }
 
+- (void) userDidMoveWindow
+{
+
+}
+
 - (void) displayPage:(NSString *)pageData relativeTo:(NSURL *)base
 {
     NSLog(@"settin it up on the line");
@@ -106,9 +112,7 @@
         NSLog(@"Window not visible... uhm...");
         [[self window] orderOut:nil];
     }
-    //[[self window] setContentSize:[[NSScreen mainScreen] visibleFrame].size];
-    //[[self window] setFrame:[[NSScreen mainScreen] visibleFrame] display:YES];
-    //[[_tabView tabViewItemAtIndex:1] setView:[[[NSView alloc] initWithFrame:[[NSScreen mainScreen] visibleFrame]] autorelease]];
+    
     [_webView setFrame:[[NSScreen mainScreen] visibleFrame]];
     [[_webView mainFrame] loadHTMLString:pageData baseURL:base];
 }

@@ -22,7 +22,7 @@ function FindController_new()
 		var resultsText = '';
 		for (var i = 0; i < results.length; ++i)
 		{
-			resultsText += '<tr class="' + (i%2==0?'evenRow':'oddRow') + '"><td>' + results[i][0] + '</td><td>' + results[i][1] + '</td></tr>';
+			resultsText += '<tr class="' + (i%2==0?'evenRow':'oddRow') + '" ondblclick="FindController.play(\'' + results[i][2] + '\');"><td>' + results[i][0] + '</td><td>' + results[i][1] + '</td></tr>';
 		}
 		Text.fill('searchResultsTable', resultsText);
 		Util.show('searchResultsContainer');
@@ -56,6 +56,12 @@ function FindController_new()
 			return false;
 		}
 	};
+	
+	fc.play = function(path)
+	{
+		//alert("playing " + path);
+		fc.fwc.playSong(path);
+	}
 	
 	return fc;
 };

@@ -10,6 +10,7 @@
 #import "PrefsController.h"
 #import "PTKeyComboPanel.h"
 #import "BooleanColorTransformer.h"
+#import "RoundedNumberTransformer.h"
 
 
 @implementation PrefsWindowController
@@ -27,8 +28,8 @@
 
 + (void) initialize
 {
-    BooleanColorTransformer *enabler = [[[BooleanColorTransformer alloc] init] autorelease];
-    [NSValueTransformer setValueTransformer:enabler forName:@"BooleanColorTransformer"];
+    [NSValueTransformer setValueTransformer:[[[BooleanColorTransformer alloc] init] autorelease] forName:@"BooleanColorTransformer"];
+    [NSValueTransformer setValueTransformer:[[[RoundedNumberTransformer alloc] init] autorelease] forName:@"RoundedNumberTransformer"];
 }
 
 - (id) init
@@ -53,22 +54,21 @@
     //show transparency in the color panel
     [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
     
-    //select the first tab item
-    //[[[[prefsWindow contentView] subviews] lastObject] selectFirstTabViewItem:nil];
-    
     [[self window] center];
-    //NSLog(@"%@", self);
-    //[positioner bind:@"backgroundColor" toObject:[NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.backgroundColor" options:[NSDictionary dictionaryWithObject:NSUnarchiveFromDataTransformerName forKey:@"NSValueTransformerName"]];
-    //[_roundedView bind:@"backgroundColor" toObject:[NSUserDefaultsController sharedUserDefaultsController] withKeyPath:@"values.backgroundColor" options:[NSDictionary dictionaryWithObject:NSUnarchiveFromDataTransformerName forKey:@"NSValueTransformerName"]];
-    
-    // set the sort descriptors for the hot key plugins list
-    //NSSortDescriptor *nameDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
-    //[_arrayController setSortDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+    [[self window] setLevel:NSFloatingWindowLevel];
 }
 
 - (void) show
 {
-    [self showWindow:nil];
+    if ([[self window] isKeyWindow])
+    {
+        [[self window] performClose:nil];
+    }
+    else
+    {
+        [NSApp activateIgnoringOtherApps:YES];
+        [[self window] makeKeyAndOrderFront:nil];
+    }
 }
 
 - (IBAction) changeHotKey:(id)sender
@@ -85,5 +85,11 @@
 - (IBAction) visitWebsite:(id)sender
 {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[sender title]]];
+}
+
+
+- (void) windowShouldClose:(NSNotification *)note
+{
+    [[PrefsController sharedController] save];
 }
 @end

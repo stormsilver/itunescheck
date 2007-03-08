@@ -7,8 +7,6 @@
 
 @interface AppController : NSObject
 {
-    InfoController  *_infoController;
-    PrefsController *_prefsController;
 }
 
 + (id) sharedController;

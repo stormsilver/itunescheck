@@ -99,15 +99,26 @@ static id sharedController;
 
 - (void) dealloc
 {
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self save];
     [_displayPlugins release];
     [_hotKeyPlugins release];
     [super dealloc];
 }
 
-- (id) prefForKey:(id)key
+- (void) save
+{
+    NSLog(@"saving defaults");
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (id) prefForKey:(NSString *)key
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:key];
+}
+
+- (void) setPref:(id)pref forKey:(NSString *)key
+{
+    [[NSUserDefaults standardUserDefaults] setObject:pref forKey:key];
 }
 
 - (id) pref:(NSString *)key forHotKeyNamed:(NSString *)name
@@ -340,5 +351,30 @@ static id sharedController;
     }
 }
 
+
+
+- (NSArray *) transitionStyles
+{
+    // these are taken from the TransitionStyle enum in AnimatedTabView.h
+    return [NSArray arrayWithObjects:@"None",
+        @"CGFade",
+        @"CGZoom",
+        @"CGReveal",
+        @"CGSlide",
+        @"CGWarpFade",
+        @"CGSwap",
+        @"CGCube",
+        @"CGWarpSwitch",
+        
+        @"CICopyMachine",
+        @"CIDisintegrate",
+        @"CIDissolve",
+        @"CIFlash",
+        @"CIMod",
+        @"CIPageCurl",
+        @"CIRipple",
+        @"CISwipe",
+        nil];
+}
 
 @end
