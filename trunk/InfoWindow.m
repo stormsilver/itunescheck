@@ -13,11 +13,34 @@
 
 - (void) displayPage:(NSString *)pageData relativeTo:(NSURL *)base
 {
-    if (_delayTimer)
+    switch ([[[PrefsController sharedController] prefForKey:PREFKEY_INFO_SHOW_ON] intValue])
     {
-        [_delayTimer invalidate];
-        [_delayTimer release];
-        _delayTimer = nil;
+        // always
+        case 0:
+            break;
+        
+        // song change
+        case 1:
+            if (_delayTimer)
+            {
+                [_delayTimer invalidate];
+                [_delayTimer release];
+                _delayTimer = nil;
+            }
+            break;
+        
+        // hot key only
+        case 2:
+            if (_delayTimer)
+            {
+                [_delayTimer invalidate];
+                [_delayTimer release];
+                _delayTimer = nil;
+            }
+            break;
+        
+        default:
+            break;
     }
     [super displayPage:pageData relativeTo:base];
 }
@@ -106,7 +129,25 @@
     [[self window] setFrame:NSMakeRect(origin.x, origin.y, [width floatValue], [height floatValue]) display:YES];
     [[self window] orderFrontRegardless];
     [_tabView transitionIn];
-    _delayTimer = [[NSTimer scheduledTimerWithTimeInterval:[[[PrefsController sharedController] prefForKey:PREFKEY_INFO_DELAY_TIME] floatValue] target:self selector:@selector(closeWindow) userInfo:nil repeats:NO] retain];
+    switch ([[[PrefsController sharedController] prefForKey:PREFKEY_INFO_SHOW_ON] intValue])
+    {
+        // always
+        case 0:
+            break;
+            
+        // song change
+        case 1:
+            _delayTimer = [[NSTimer scheduledTimerWithTimeInterval:[[[PrefsController sharedController] prefForKey:PREFKEY_INFO_DELAY_TIME] floatValue] target:self selector:@selector(closeWindow) userInfo:nil repeats:NO] retain];
+            break;
+            
+        // hot key only
+        case 2:
+            _delayTimer = [[NSTimer scheduledTimerWithTimeInterval:[[[PrefsController sharedController] prefForKey:PREFKEY_INFO_DELAY_TIME] floatValue] target:self selector:@selector(closeWindow) userInfo:nil repeats:NO] retain];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

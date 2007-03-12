@@ -11,6 +11,7 @@
 #import "PTHotKey.h"
 #import "PTKeyCombo.h"
 #import "ScriptController.h"
+#import "AppController.h"
 
 
 @implementation PrefsController
@@ -87,8 +88,8 @@ static id sharedController;
             // ... so we can load the prefs on top of them
             [self _loadPrefs];
             
-            NSSortDescriptor *nameDescriptor = [[[NSSortDescriptor alloc] initWithKey:PREFKEY_HOTKEY_NAME ascending:YES] autorelease];
-            [_hotKeyPlugins sortUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+            // Observe anything we need to
+            [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:PREFKEY_INFO_SHOW_ON options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
         }
         
         sharedController = self;
@@ -107,7 +108,7 @@ static id sharedController;
 
 - (void) save
 {
-    NSLog(@"saving defaults");
+    //NSLog(@"saving defaults");
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -236,6 +237,10 @@ static id sharedController;
     [marr addObject:[self _createDictionaryWithName:PREFKEY_QUICKPLAY_KEYNAME directory:nil]];
     [marr addObject:[self _createDictionaryWithName:PREFKEY_PREFERENCES_KEYNAME directory:nil]];
     
+    // Sort it so it shows in nice alphabetical order in the prefs window
+    NSSortDescriptor *nameDescriptor = [[[NSSortDescriptor alloc] initWithKey:PREFKEY_HOTKEY_NAME ascending:YES] autorelease];
+    [marr sortUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+    
     _hotKeyPlugins = marr;
 }
 - (void) loadDisplayPlugins
@@ -349,6 +354,60 @@ static id sharedController;
             [[PTHotKeyCenter sharedCenter] registerHotKey:[object objectForKey:PREFKEY_HOTKEY_HOTKEY]];
         }
     }
+    else if ([keyPath isEqualToString:PREFKEY_INFO_SHOW_ON])
+    {
+        switch ([[change objectForKey:NSKeyValueChangeNewKey] intValue])
+        {
+            // song change
+            case 1:
+                // tell the application that we want notifications
+                [[AppController sharedController] beginListeningTo:APPKEY_LISTENER_ITUNES];
+                switch ([[change objectForKey:NSKeyValueChangeOldKey] intValue])
+                {
+                    case 0:
+                        // close the window
+                        [[AppController sharedController] displayInfoWindow];
+                        break;
+                    default:
+                        break;
+                }
+                break;
+                
+            // always
+            case 0:
+                // tell the application that we don't want any more notifications
+                [[AppController sharedController] beginListeningTo:APPKEY_LISTENER_ITUNES];
+                switch ([[change objectForKey:NSKeyValueChangeOldKey] intValue])
+                {
+                    case 1:
+                    case 2:
+                        // open the window
+                        [[AppController sharedController] displayInfoWindow];
+                        break;
+                    default:
+                        break;
+                }
+                break;
+                
+            // hot key only
+            case 2:
+                // tell the application that we don't want any more notifications
+                [[AppController sharedController] stopListeningTo:APPKEY_LISTENER_ITUNES];
+                switch ([[change objectForKey:NSKeyValueChangeOldKey] intValue])
+                {
+                    case 0:
+                        // close the window
+                        [[AppController sharedController] displayInfoWindow];
+                        break;
+                    default:
+                        break;
+                }
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
 
@@ -356,6 +415,8 @@ static id sharedController;
 - (NSArray *) transitionStyles
 {
     // these are taken from the TransitionStyle enum in AnimatedTabView.h
+    // right now this is a 1-1 mapping. The order is important and everything. That should probably be fixed
+    // so we can remove stuff if we want
     return [NSArray arrayWithObjects:@"None",
         @"CGFade",
         @"CGZoom",

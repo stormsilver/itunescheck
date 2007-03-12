@@ -45,6 +45,7 @@
     WebScriptObject *script = [_webView windowScriptObject];
     NSNumber *height = [script evaluateWebScript:@"document.getElementById('body').scrollHeight"];
     NSNumber *width = [script evaluateWebScript:@"document.getElementById('body').scrollWidth"];
+    //NSLog(@"    h: %i, w: %i", [height intValue], [width intValue]);
     // set the new size. note the 0,0 origin. we don't really care about where it is, just how big it is.
     [[self window] setFrame:NSMakeRect(0.0f, 0.0f, [width floatValue], [height floatValue]) display:NO];
     // now that we have a new size, center it
