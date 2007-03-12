@@ -36,3 +36,4 @@ N   set when the info window shows
     which do non-standard things.
 *   a way to ignore certain itunes notifications (because things like Frequence and HotMixRadio send updates frequently)
     - use the above special parse strings to ignore notes if it includes that string
+*   option for debug console for view developers (log JS errors... very easy)

@@ -23,6 +23,9 @@ static id sharedController;
         
         if (self)
         {
+            // This will cause the prefs controller to initialize itself. It's about the most core object 
+            // to the application so we HAVE to have it and if it breaks, the whole app is done dealing.
+            [PrefsController sharedController];
         }
         
         sharedController = self;
@@ -38,27 +41,50 @@ static id sharedController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(displayInfoWithNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
     // show the prefs window if the app's never been run before
     if (![[[PrefsController sharedController] prefForKey:PREFKEY_INITIAL_SETUP_DONE] boolValue])
     {
         [self displayPreferencesWindow:nil];
         [[PrefsController sharedController] setPref:[NSNumber numberWithBool:YES] forKey:PREFKEY_INITIAL_SETUP_DONE];
     }
+    
+    // show the info window if the setting is "always"
+    if ([[[PrefsController sharedController] prefForKey:PREFKEY_INFO_SHOW_ON] intValue] == 0)
+    {
+        [self displayInfoWindow];
+    }
 }
 
 
-- (void) displayInfo
+- (void) beginListeningTo:(NSString *)object
+{
+    if ([object isEqualToString:APPKEY_LISTENER_ITUNES])
+    {
+        NSLog(@"turning ON itunes listening");
+        [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(displayInfoWindowWithNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
+    }
+}
+- (void) stopListeningTo:(NSString *)object
+{
+    if ([object isEqualToString:APPKEY_LISTENER_ITUNES])
+    {
+        NSLog(@"turning off itunes listening");
+        [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:@"com.apple.iTunes.playerInfo" object:nil];
+    }
+}
+
+
+- (void) displayInfoWindow
 {
     [[InfoController sharedController] displayView:[[PrefsController sharedController] prefForKey:PREFKEY_INFO_VIEW]];
 }
-- (void) displayInfoWithNotification:(NSNotification *)note
+- (void) displayInfoWindowWithNotification:(NSNotification *)note
 {
     [[InfoController sharedController] displayView:[[PrefsController sharedController] prefForKey:PREFKEY_INFO_VIEW] fromNotification:note];
 }
 - (void) displayInfoWindow:(id)sender
 {
-    [self displayInfo];
+    [self displayInfoWindow];
 }
 
 
