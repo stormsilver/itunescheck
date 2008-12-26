@@ -1,0 +1,398 @@
+// !$*UTF8*$!
+{
+	089C165DFE840E0CC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 45}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = E864CB240EFEFF1500A99170 /* iTunesCheck */;
+		activeTarget = 8D1107260486CEB800E47090 /* iTunesCheck */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* iTunesCheck */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = E864CB290EFEFF3300A99170 /* Code sense */;
+		executables = (
+			E864CB240EFEFF1500A99170 /* iTunesCheck */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					354,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					466,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXSymbolsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXSymbolsDataSource_SymbolNameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					16,
+					200,
+					50,
+					406,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXSymbolsDataSource_SymbolTypeIconID,
+					PBXSymbolsDataSource_SymbolNameID,
+					PBXSymbolsDataSource_SymbolTypeID,
+					PBXSymbolsDataSource_ReferenceNameID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					426,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 251960473;
+			PBXWorkspaceStateSaveDate = 251960473;
+		};
+		sourceControlManager = E864CB280EFEFF3300A99170 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 258}";
+		};
+	};
+	8D1107260486CEB800E47090 /* iTunesCheck */ = {
+		activeExec = 0;
+		executables = (
+			E864CB240EFEFF1500A99170 /* iTunesCheck */,
+		);
+	};
+	E80F0C150F04AC7600B9AEF7 /* GeneralPreferencesController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{185, 47}";
+			sepNavVisRange = "{0, 359}";
+		};
+	};
+	E80F0C160F04AC7600B9AEF7 /* GeneralPreferencesController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 924}}";
+			sepNavSelRange = "{250, 838}";
+			sepNavVisRange = "{249, 844}";
+		};
+	};
+	E80F0C930F04B70500B9AEF7 /* HotKeyPreferencesController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{244, 27}";
+			sepNavVisRange = "{0, 357}";
+		};
+	};
+	E80F0C940F04B70500B9AEF7 /* HotKeyPreferencesController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 868}}";
+			sepNavSelRange = "{931, 0}";
+			sepNavVisRange = "{0, 1097}";
+		};
+	};
+	E864CB240EFEFF1500A99170 /* iTunesCheck */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = iTunesCheck;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	E864CB280EFEFF3300A99170 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	E864CB290EFEFF3300A99170 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	E864CB2A0EFEFF4200A99170 /* ApplicationController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{221, 0}";
+			sepNavVisRange = "{0, 401}";
+		};
+	};
+	E864CB2B0EFEFF4200A99170 /* ApplicationController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 798}}";
+			sepNavSelRange = "{535, 0}";
+			sepNavVisRange = "{0, 1535}";
+		};
+	};
+	E864CB380EFF00A600A99170 /* BundleController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{295, 0}";
+			sepNavVisRange = "{0, 927}";
+		};
+	};
+	E864CB390EFF00A600A99170 /* BundleController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {732, 3724}}";
+			sepNavSelRange = "{236, 0}";
+			sepNavVisRange = "{42, 302}";
+		};
+	};
+	E864CB610EFF06B100A99170 /* iTunes.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1074, 6440}}";
+			sepNavSelRange = "{9079, 13}";
+			sepNavVisRange = "{7715, 2472}";
+		};
+	};
+	E864CB6D0EFF09CD00A99170 /* iTCBundle */ = {
+		activeExec = 0;
+	};
+	E864CB770EFF0A6E00A99170 /* AbstractBundle.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{543, 0}";
+			sepNavVisRange = "{0, 768}";
+		};
+	};
+	E864CB780EFF0A6E00A99170 /* AbstractBundle.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 854}}";
+			sepNavSelRange = "{515, 0}";
+			sepNavVisRange = "{3, 846}";
+		};
+	};
+	E864CBCD0EFF71C300A99170 /* InfoWindow */ = {
+		activeExec = 0;
+	};
+	E864CBEF0EFF740C00A99170 /* NetStormsilverItunescheckInfowindowInfoController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{394, 0}";
+			sepNavVisRange = "{0, 424}";
+		};
+	};
+	E864CBF00EFF740C00A99170 /* NetStormsilverItunescheckInfowindowInfoController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1104, 4620}}";
+			sepNavSelRange = "{8787, 0}";
+			sepNavVisRange = "{8611, 2237}";
+		};
+	};
+	E864CBF20EFF745900A99170 /* defines.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{257, 56}";
+			sepNavVisRange = "{0, 313}";
+		};
+	};
+	E864CC690F00301500A99170 /* WebPanel.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 335}";
+		};
+	};
+	E864CC6A0F00301500A99170 /* WebPanel.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1038, 2114}}";
+			sepNavSelRange = "{571, 1043}";
+			sepNavVisRange = "{0, 1611}";
+		};
+	};
+	E864CC6B0F00301500A99170 /* WebViewWindowController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{188, 0}";
+			sepNavVisRange = "{0, 461}";
+		};
+	};
+	E864CC6C0F00301500A99170 /* WebViewWindowController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1218, 2156}}";
+			sepNavSelRange = "{3108, 0}";
+			sepNavVisRange = "{2658, 2239}";
+		};
+	};
+	E864CD5C0F0034BD00A99170 /* iTC.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{222, 0}";
+			sepNavVisRange = "{0, 222}";
+		};
+	};
+	E864CD740F00376800A99170 /* AGRegex */ = {
+		activeExec = 0;
+	};
+	E864CD890F00379A00A99170 /* AGRegex.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {4236, 6230}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2838}";
+		};
+	};
+	E864CD9F0F00385200A99170 /* chartables.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 2688}}";
+			sepNavSelRange = "{489, 47}";
+			sepNavVisRange = "{0, 1850}";
+		};
+	};
+	E864D1510F018FA000A99170 /* PreferencesController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{721, 0}";
+			sepNavVisRange = "{0, 1434}";
+		};
+	};
+	E864D1520F018FA000A99170 /* PreferencesController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 5166}}";
+			sepNavSelRange = "{2464, 0}";
+			sepNavVisRange = "{1986, 1563}";
+		};
+	};
+	E864D2B20F01B1F100A99170 /* NSData-Base64Extensions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1307}";
+		};
+	};
+	E864D2B30F01B1F100A99170 /* NSData-Base64Extensions.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 826}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{346, 1909}";
+		};
+	};
+	E864D37B0F02176900A99170 /* PTHotKey.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 823}";
+		};
+	};
+	E864D37E0F02176900A99170 /* PTHotKeyCenter.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 3360}}";
+			sepNavSelRange = "{4300, 56}";
+			sepNavVisRange = "{3713, 1135}";
+		};
+	};
+	E864D3820F02176900A99170 /* PTKeyCombo.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 711}";
+		};
+	};
+	E864D3830F02176900A99170 /* PTKeyCombo.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 2534}}";
+			sepNavSelRange = "{2242, 0}";
+			sepNavVisRange = "{1987, 930}";
+		};
+	};
+	E864D56A0F02C70F00A99170 /* PreferencesWindowController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{449, 0}";
+			sepNavVisRange = "{0, 994}";
+		};
+	};
+	E864D56B0F02C70F00A99170 /* PreferencesWindowController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 4466}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{281, 1746}";
+		};
+	};
+	E864D6380F02E69F00A99170 /* InfoWindowPreferencePane */ = {
+		activeExec = 0;
+	};
+	E864D68D0F02E8E800A99170 /* NetStormsilverItunescheckInfowindowPreferencesController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{213, 47}";
+			sepNavVisRange = "{0, 391}";
+		};
+	};
+	E864D68E0F02E8E800A99170 /* NetStormsilverItunescheckInfowindowPreferencesController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 980}}";
+			sepNavSelRange = "{775, 192}";
+			sepNavVisRange = "{341, 835}";
+		};
+	};
+}
