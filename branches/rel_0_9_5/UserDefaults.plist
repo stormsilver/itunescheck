@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Next Song</key>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>keyCombo</key>
+		<dict>
+			<key>keyCode</key>
+			<integer>124</integer>
+			<key>modifiers</key>
+			<integer>35072</integer>
+		</dict>
+	</dict>
+	<key>Play_Pause</key>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>keyCombo</key>
+		<dict>
+			<key>keyCode</key>
+			<integer>49</integer>
+			<key>modifiers</key>
+			<integer>2304</integer>
+		</dict>
+	</dict>
+	<key>Previous Song</key>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>keyCombo</key>
+		<dict>
+			<key>keyCode</key>
+			<integer>123</integer>
+			<key>modifiers</key>
+			<integer>35072</integer>
+		</dict>
+	</dict>
+	<key>Show Info Window</key>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>keyCombo</key>
+		<dict>
+			<key>keyCode</key>
+			<integer>8</integer>
+			<key>modifiers</key>
+			<integer>2304</integer>
+		</dict>
+	</dict>
+	<key>Show Preferences Window</key>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>keyCombo</key>
+		<dict>
+			<key>keyCode</key>
+			<integer>35</integer>
+			<key>modifiers</key>
+			<integer>2304</integer>
+		</dict>
+	</dict>
+	<key>Show QuickPlay Window</key>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>keyCombo</key>
+		<dict>
+			<key>keyCode</key>
+			<integer>3</integer>
+			<key>modifiers</key>
+			<integer>2304</integer>
+		</dict>
+	</dict>
+	<key>WebKitScriptDebuggerEnabled</key>
+	<true/>
+	<key>imageSize</key>
+	<integer>160</integer>
+	<key>infoDelayTime</key>
+	<real>3</real>
+	<key>infoView</key>
+	<string>classic</string>
+	<key>showInfoWindowOn</key>
+	<integer>1</integer>
+	<key>windowTransitionInStyle</key>
+	<integer>10</integer>
+	<key>windowTransitionInTime</key>
+	<real>1</real>
+	<key>windowTransitionOutStyle</key>
+	<integer>6</integer>
+	<key>windowTransitionOutTime</key>
+	<real>1</real>
+</dict>
+</plist>
