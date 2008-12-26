@@ -299,7 +299,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 7}, {186, 537}}</string>
+							<string>{{0, 0}, {186, 537}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -401,9 +401,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>E80F0C680F04B52100B9AEF7</string>
+				<string>E867FB270F05A70C00254F3D</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>E80F0C690F04B52100B9AEF7</string>
+				<string>E867FB280F05A70C00254F3D</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -532,7 +532,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>252026729.27826101</real>
+	<real>252028684.40880099</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -547,19 +547,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E80F0CFA0F0596F900B9AEF7</string>
-		<string>E80F0CFB0F0596F900B9AEF7</string>
-		<string>E80F0C740F04B52100B9AEF7</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>E80F0CFC0F0596F900B9AEF7</string>
-		<string>E80F0CFD0F0596F900B9AEF7</string>
-		<string>E80F0CFE0F0596F900B9AEF7</string>
-		<string>/Users/ssilver/Desktop/iTunesCheck/iTunesCheck.xcodeproj</string>
-		<string>E80F0CFF0F0596F900B9AEF7</string>
-		<string>E80F0D010F0596F900B9AEF7</string>
+		<string>/Users/ssilver/Documents/Programs/iTunesCheck/iTunesCheck.xcodeproj</string>
 		<string>E864CB430EFF035300A99170</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>E80F0D000F0596F900B9AEF7</string>
 	</array>
 	<key>WindowString</key>
 	<string>499 281 913 596 0 0 1440 878 </string>
@@ -641,7 +630,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>E864CB430EFF035300A99170</string>
-				<string>E80F0C6A0F04B52100B9AEF7</string>
+				<string>E867FB290F05A70C00254F3D</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
