@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Title</title>
+	<link rel="stylesheet" rev="stylesheet" href="./css/classic.css" type="text/css" media="screen" charset="utf-8" />
+	<style type="text/css">
+		#windowBody
+		{
+			z-index: 50;
+			position: relative;
+		}
+		#quickplay
+		{
+			position: absolute;
+			text-align: center;
+			z-index: 49;
+			right: 0;
+			top: 0;
+			font-size: 150%;
+			width: 100%;
+			line-height: 0.7em;
+			letter-spacing: 0.3em;
+		}
+		#playButton
+		{
+			width: 14px;
+			height: 14px;
+			background-image: url("./images/play.tif");
+			position: absolute;
+			right: 0.6em;
+			bottom: 0.6em;
+			z-index: 51;
+		}
+		#playButton:active
+		{
+			background-image: url("./images/playAlt.tif");
+		}
+		#searchResultsContainer
+		{
+			max-height: 550px;
+			max-width: 450px;
+			text-overflow: ellipsis;
+			overflow: auto;
+		}
+		#searchResultsTable
+		{
+			border-spacing: 0;
+		}
+		#searchResultsTable td
+		{
+			/*white-space: nowrap;*/
+			border: 0;
+			margin: 0;
+			padding: 0.2em;
+		}
+		#searchResultsTable tr:hover
+		{
+			background-color: rgba(0, 255, 0, 0.3);
+			text-decoration: underline;
+		}
+		.evenRow
+		{
+			background-color: rgba(47, 68, 40, 0.5);
+		}
+		.oddRow
+		{
+			background-color: rgba(78, 113, 67, 0.5);
+		}
+	</style>
+	<script type="text/javascript" src="./js/util.js"></script>
+	<script type="text/javascript" src="./js/text.js"></script>
+	<script type="text/javascript" src="./js/find.js"></script>
+</head>
+<body>
+<div id="body">
+	<div id="quickplay">quickplay</div>
+	<div id="windowBody">
+		<input type="text" id="searchField" />
+		<div>
+			<select id="playlistSelect">
+			</select>
+			<button>Play</button>
+			<button>Play All</button>
+		</div>
+	</div>
+	<div id="searchResultsContainer">
+		<table id="searchResultsTable">
+		</table>
+	</div>
+</div>
+<script type="text/javascript">
+	initFind();
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Title</title>
+	<link rel="stylesheet" rev="stylesheet" href="./css/classic.css" type="text/css" media="screen" charset="utf-8" />
+	
+    <script type="text/javascript" src="./js/util.js"></script>
+    <script type="text/javascript" src="./js/yui/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="./js/yui/element/element-beta-min.js"></script>
+    <script type="text/javascript" src="./js/yui/dragdrop/dragdrop-min.js"></script>
+    <script type="text/javascript" src="./js/yui/animation/animation-min.js"></script>
+    <script type="text/javascript" src="./js/DDList.js"></script>
+    <script type="text/javascript" src="./js/DDSource.js"></script>
+    
+    <style type="text/css">
+    	#body
+    	{
+    		font-size: 18pt;
+    		z-index: 2;
+    	}
+    	#trashcan
+    	{
+    		position: absolute;
+    		z-index: 1;
+    		width: 100%;
+    		height: 100%;
+    		background-color: #cc0000;
+    	}
+    	#tagSource
+    	{
+    		position: absolute;
+    		top: 0;
+    		right: 0;
+    		background-color: #999;
+    		color: #fff;
+    		margin: 1em;
+    		padding: 0.4em;
+    		z-index: 3;
+    	}
+    	#tagSource ul
+    	{
+    		padding: 0;
+    		margin: 0;
+    	}
+    	#tagSource li
+    	{
+    		list-style: none;
+    	}
+    </style>
+</head>
+<body>
+<div id="body">
+	<table border="0">
+		<tr>
+			<td>
+				<div id="artwork">[[artwork]]</div>
+			</td>
+			<td style="vertical-align:top;">
+				<div class="large bold shadow" id="title">[[title]]</div>
+				<div class="large" id="artist">[[artist]]</div>
+				<div class="italic" id="album">[[album]]</div>
+				<div class="large" id="rating">[[rating]]</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="tagSource">
+	<ul>
+		<li><div id="playcount_src">[[playcount]]</div></li>
+		<li><div id="title_src">[[title]]</div></li>
+	</ul>
+</div>
+
+<div id="trashcan"></div>
+<div id="placeholder" class="large">&nbsp;</div>
+
+
+<script type="text/javascript">
+	YAHOO.example.DDApp = function()
+	{
+		var Dom = YAHOO.util.Dom;
+		var DDM = YAHOO.util.DragDropMgr;
+		return {
+			init: function() {
+				new YAHOO.example.DDList("title", "activeTags");
+				new YAHOO.example.DDList("artist", "activeTags");
+				new YAHOO.example.DDList("album", "activeTags");
+				new YAHOO.example.DDList("rating", "activeTags");
+				new YAHOO.example.DDList("artwork", "activeTags");
+				
+				new YAHOO.example.DDSource("playcount_src", "inactiveTags");
+				new YAHOO.example.DDSource("title_src", "inactiveTags");
+				
+				var body = new YAHOO.util.DDTarget("body", "nonOrderable");
+				body.addToGroup("activeTags");
+				
+				var trash = new YAHOO.util.DDTarget("trashcan", "nonOrderable");
+				trash.addToGroup("activeTags");
+				DDM.mode = DDM.INTERSECT;
+			}
+		};
+	} ();
+
+	YAHOO.util.Event.addListener(window, "load", YAHOO.example.DDApp.init);
+</script>
+</body>
+</html>
