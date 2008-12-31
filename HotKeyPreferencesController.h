@@ -11,7 +11,9 @@
 
 @interface HotKeyPreferencesController : NSObject <SS_PreferencePaneProtocol>
 {
-    IBOutlet NSView     *prefsView;
+    IBOutlet NSView             *prefsView;
 }
+
+- (IBAction) changeHotKey:(id)sender;
 
 @end

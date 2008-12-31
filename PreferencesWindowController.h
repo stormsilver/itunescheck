@@ -10,24 +10,27 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class PreferencesController, BundleController, GeneralPreferencesController, HotKeyPreferencesController;
+@class PreferencesController, BundleController, GeneralPreferencesController, HotKeyPreferencesController, ShortcutRecorderTextView;
 
 @interface PreferencesWindowController : NSWindowController
 {
-    IBOutlet PreferencesController   *preferencesController;
-    BundleController        *bundleController;
+    IBOutlet PreferencesController          *preferencesController;
+    BundleController                        *bundleController;
     
-    NSMutableDictionary *preferencePanes;
-    NSMutableArray *panesOrder;
+    NSMutableDictionary                     *preferencePanes;
+    NSMutableArray                          *panesOrder;
     
-    NSToolbar      *prefsToolbar;
-    NSMutableDictionary     *prefsToolbarItems;
+    NSToolbar                               *prefsToolbar;
+    NSMutableDictionary                     *prefsToolbarItems;
     
     IBOutlet GeneralPreferencesController   *generalPreferencesController;
-    IBOutlet HotKeyPreferencesController   *hotKeyPreferencesController;
+    IBOutlet HotKeyPreferencesController    *hotKeyPreferencesController;
+    
+    ShortcutRecorderTextView                *shortcutRecorderTextView;
 }
 
-- (BOOL)loadPrefsPaneNamed:(NSString *)name display:(BOOL)disp;
-- (IBAction)prefsToolbarItemClicked:(NSToolbarItem*)item;
+- (BOOL) loadPrefsPaneNamed:(NSString *)name display:(BOOL)disp;
+
+- (IBAction) prefsToolbarItemClicked:(NSToolbarItem*)item;
 
 @end

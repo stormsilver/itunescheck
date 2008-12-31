@@ -29,7 +29,6 @@
 - (void) setTarget:(id)target forDisplayTag:(NSString *)tag;
 - (id) targetForDisplayTag:(NSString *)tag;
 
-- (void) setTarget:(id)target forHotKeyNamed:(NSString *)name;
 - (void) setTarget:(id)target forHotKeyNamed:(NSString *)name withKeyCode:(int)keyCode andModifiers:(int)modifiers;
 - (id) targetForHotKeyNamed:(NSString *)name;
 - (NSArray *) hotKeys;

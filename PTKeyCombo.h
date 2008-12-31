@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Carbon/Carbon.h>
 
+
+// Some default values
+#define ShortcutRecorderEmptyFlags 0
+#define ShortcutRecorderAllFlags ShortcutRecorderEmptyFlags | (NSCommandKeyMask | NSAlternateKeyMask | NSControlKeyMask | NSShiftKeyMask | NSFunctionKeyMask)
+#define ShortcutRecorderEmptyCode -1
+
+// These keys will cancel the recoding mode if not pressed with any modifier
+#define ShortcutRecorderEscapeKey 53
+#define ShortcutRecorderBackspaceKey 51
+#define ShortcutRecorderDeleteKey 117
+
+unsigned int SRCocoaToCarbonFlags( unsigned int cocoaFlags );
 
 @interface PTKeyCombo : NSObject <NSCopying>
 {
@@ -18,6 +31,7 @@
 + (id)clearKeyCombo;
 + (id)keyComboWithKeyCode: (int)keyCode modifiers: (int)modifiers;
 - (id)initWithKeyCode: (int)keyCode modifiers: (int)modifiers;
+- (id)initWithKeyCode: (int)keyCode andCocoaModifiers: (unsigned int)modifiers;
 
 - (id)initWithPlistRepresentation: (id)plist;
 - (id)plistRepresentation;

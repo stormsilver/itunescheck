@@ -85,7 +85,11 @@ static PreferencesController *sharedPreferencesController = nil;
     return automatic;
 }
 
-
+- (void) finalize
+{
+    [self save];
+    [super finalize];
+}
 
 
 
@@ -107,19 +111,49 @@ static PreferencesController *sharedPreferencesController = nil;
     [displayTags setObject:target forKey:tag];
 }
 
-// when the keycombo comes from a plist
-- (void) setTarget:(id)target forHotKeyNamed:(NSString *)name
-{
-    
-}
+
+
+
 // when the keycombo comes from code only
 - (void) setTarget:(id)target forHotKeyNamed:(NSString *)name withKeyCode:(int)keyCode andModifiers:(int)modifiers
 {
     //NSLog(@"setTarget:%@", target);
+    // create a 'blank' dictionary
     NSMutableDictionary *keyDictionary = [self initializeHotKeyNamed:name withTarget:target];
-    PTKeyCombo *kc = [[PTKeyCombo alloc] initWithKeyCode:keyCode modifiers:modifiers];
-    [[keyDictionary objectForKey:PREFKEY_HOTKEY_HOTKEY] setKeyCombo:kc];
-    [keyDictionary setObject:[NSNumber numberWithBool:YES] forKey:PREFKEY_HOTKEY_ENABLED];
+    PTKeyCombo *keyCombo;
+    
+    // get values for each key
+    NSDictionary *keyPrefs = [[NSUserDefaults standardUserDefaults] dictionaryForKey:name];
+    // only if there's a dictionary for this key
+    if (keyPrefs)
+    {
+        id pref = [keyPrefs objectForKey:@"keyCombo"];
+        if (pref)
+        {
+            keyCombo = [[PTKeyCombo alloc] initWithPlistRepresentation:pref];
+            [[keyDictionary objectForKey:PREFKEY_HOTKEY_HOTKEY] setKeyCombo:keyCombo];
+        }
+        else
+        {
+            keyCombo = [[PTKeyCombo alloc] initWithKeyCode:keyCode modifiers:modifiers];
+        }
+        
+        pref = [keyPrefs objectForKey:PREFKEY_HOTKEY_ENABLED];
+        if (pref)
+        {
+            [keyDictionary setValue:pref forKey:PREFKEY_HOTKEY_ENABLED];
+        }
+    }
+    else
+    {
+        // no preferences located
+        keyCombo = [[PTKeyCombo alloc] initWithKeyCode:keyCode modifiers:modifiers];
+    }
+    
+    // write actual values into the dictionary
+    [[keyDictionary objectForKey:PREFKEY_HOTKEY_HOTKEY] setKeyCombo:keyCombo];
+    
+    // set the dictionary in the appropriate places
     [hotKeys setObject:keyDictionary forKey:name];
     if (!hotKeysArray)
     {
@@ -214,7 +248,7 @@ static PreferencesController *sharedPreferencesController = nil;
     [hk setAction:action];
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  name,                                                   PREFKEY_HOTKEY_NAME,
-                                 [NSNumber numberWithBool:NO],                           PREFKEY_HOTKEY_ENABLED,
+                                 [NSNumber numberWithBool:YES],                          PREFKEY_HOTKEY_ENABLED,
                                  hk,                                                     PREFKEY_HOTKEY_HOTKEY,
                                  [[PTKeyCombo clearKeyCombo] description],               PREFKEY_HOTKEY_STRINGREP,
                                  nil];
@@ -324,21 +358,21 @@ static PreferencesController *sharedPreferencesController = nil;
 
 - (void) writeHotKeyPref:(id)pref name:(NSString *)key forKeyNamed:(NSString *)name
 {
-//    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:name];
-//    if (!dict)
-//    {
-//        // init a new dictionary
-//        dict = [NSDictionary dictionaryWithObject:pref forKey:key];
-//        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:name];
-//    }
-//    else
-//    {
-//        // convert the dictionary to a mutable one
-//        NSMutableDictionary *mutableDict = [NSMutableDictionary dictionaryWithDictionary:dict];
-//        // set the value
-//        [mutableDict setValue:pref forKey:key];
-//        [[NSUserDefaults standardUserDefaults] setObject:mutableDict forKey:name];
-//    }
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:name];
+    if (!dict)
+    {
+        // init a new dictionary
+        dict = [NSDictionary dictionaryWithObject:pref forKey:key];
+        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:name];
+    }
+    else
+    {
+        // convert the dictionary to a mutable one
+        NSMutableDictionary *mutableDict = [NSMutableDictionary dictionaryWithDictionary:dict];
+        // set the value
+        [mutableDict setValue:pref forKey:key];
+        [[NSUserDefaults standardUserDefaults] setObject:mutableDict forKey:name];
+    }
 }
 
 - (SEL) hotKeySelectorForName:(NSString *)name
