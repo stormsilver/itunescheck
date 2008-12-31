@@ -7,8 +7,25 @@
 //
 
 #import "PTKeyCombo.h"
-
 #import <Carbon/Carbon.h>
+
+
+
+unsigned int SRCocoaToCarbonFlags( unsigned int cocoaFlags )
+{
+	unsigned int carbonFlags = ShortcutRecorderEmptyFlags;
+	
+	if (cocoaFlags & NSCommandKeyMask) carbonFlags |= cmdKey;
+	if (cocoaFlags & NSAlternateKeyMask) carbonFlags |= optionKey;
+	if (cocoaFlags & NSControlKeyMask) carbonFlags |= controlKey;
+	if (cocoaFlags & NSShiftKeyMask) carbonFlags |= shiftKey;
+	if (cocoaFlags & NSFunctionKeyMask) carbonFlags |= NSFunctionKeyMask;
+	
+	return carbonFlags;
+}
+
+
+
 
 @implementation PTKeyCombo
 
@@ -30,6 +47,19 @@
 	{
 		mKeyCode = keyCode;
 		mModifiers = modifiers;
+	}
+	
+	return self;
+}
+
+- (id)initWithKeyCode: (int)keyCode andCocoaModifiers: (unsigned int)modifiers
+{
+	self = [super init];
+	
+	if( self )
+	{
+		mKeyCode = keyCode;
+		mModifiers = SRCocoaToCarbonFlags(modifiers);
 	}
 	
 	return self;

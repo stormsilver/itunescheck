@@ -111,9 +111,12 @@
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
+    NSString *widthScript = @"var d = document.getElementById('body');var cs = getComputedStyle(d, '');var width = (d.scrollWidth + parseInt(cs.borderLeftWidth) + parseInt(cs.borderRightWidth) + parseInt(cs.marginLeft) + parseInt(cs.marginRight));width;";
+    NSString *heightScript = @"var d = document.getElementById('body');var cs = getComputedStyle(d, '');var height = (d.scrollHeight + parseInt(cs.borderTopWidth) + parseInt(cs.borderBottomWidth) + parseInt(cs.marginTop) + parseInt(cs.marginBottom));height;";
     WebScriptObject *script = [sender windowScriptObject];
-    float height = [[script evaluateWebScript:@"document.getElementById('body').scrollHeight;"] floatValue];
-    float width = [[script evaluateWebScript:@"document.getElementById('body').scrollWidth;"] floatValue];
+    float height = [[script evaluateWebScript:heightScript] floatValue];
+    float width = [[script evaluateWebScript:widthScript] floatValue];
+    //NSLog(@"width: %f, height: %f", width, height);
     // TODO: all SORTS of math to be done here
     // origin calculations
     // width/height constraints

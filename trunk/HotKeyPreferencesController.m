@@ -7,7 +7,11 @@
 //
 
 #import "HotKeyPreferencesController.h"
-
+#import "PTKeyComboPanel.h"
+#import "PreferencesController.h"
+#import "PTKeyCombo.h"
+#import "PTHotKey.h"
+#import "ShortcutRecorderCell.h"
 
 @implementation HotKeyPreferencesController
 static HotKeyPreferencesController *sharedPreferencesController = nil;
@@ -62,6 +66,18 @@ static HotKeyPreferencesController *sharedPreferencesController = nil;
 - (BOOL)allowsVerticalResizing
 {
     return NO;
+}
+
+- (IBAction) changeHotKey:(id)sender
+{
+    if ([sender representedObject] != nil && [[sender representedObject] isKindOfClass:[PTHotKey class]])
+    {
+        ShortcutRecorderCell *recorderCell = (ShortcutRecorderCell *)sender;
+        PTHotKey *hotKey = [sender representedObject];
+        PTKeyCombo *newKeyCombo = [recorderCell keyCombo];
+        NSLog(@"Changing %@ to %@", hotKey, newKeyCombo);
+        [hotKey setKeyCombo:newKeyCombo];
+    }
 }
 
 @end

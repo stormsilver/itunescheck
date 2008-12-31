@@ -25,6 +25,11 @@
 	return self;
 }
 
+- (id)copyWithZone:(NSZone*)zone;
+{
+	return [self retain];
+}
+
 - (void)dealloc
 {
 	[mName release];
@@ -35,7 +40,8 @@
 
 - (NSString*)description
 {
-	return [NSString stringWithFormat: @"<%@: %@>", NSStringFromClass( [self class] ), [self keyCombo]];
+	//return [NSString stringWithFormat: @"<%@: %@>", NSStringFromClass( [self class] ), [self keyCombo]];
+    return [mKeyCombo description];
 }
 
 #pragma mark -

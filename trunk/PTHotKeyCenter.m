@@ -58,10 +58,12 @@ static id _sharedHotKeyCenter = nil;
 	OSStatus err;
 	EventHotKeyID hotKeyID;
 	EventHotKeyRef carbonHotKey;
-/*
+    
 	if([mHotKeys objectForKey:[hotKey name]])
+    {
+        //NSLog(@"key already registered, deregistering first");
     	[self unregisterHotKey: hotKey];
-*/	
+    }
 	if( [[hotKey keyCombo] isValidHotKeyCombo] == NO )
     {
         //NSLog(@"not valid keycombo:");

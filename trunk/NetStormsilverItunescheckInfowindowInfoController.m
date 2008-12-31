@@ -142,14 +142,12 @@
                     }
                 }
             }
-            /*
-             // Write the source code to a file
-             NSError *error;
-             if (![page writeToFile:@"/Users/ssilver/Desktop/test.html" atomically:NO encoding:NSUTF8StringEncoding error:&error])
-             {
-             NSLog(@"Could not write file: %@", error);
-             }
-             */
+            //// Write the source code to a file
+            //NSError *error;
+            //if (![page writeToFile:@"/Users/ssilver/Desktop/test.html" atomically:NO encoding:NSUTF8StringEncoding error:&error])
+            //{
+            //    NSLog(@"Could not write file: %@", error);
+            //}
             // Create and show the info window
             [windowController displayPage:page relativeTo:url];
         }

@@ -14,4 +14,7 @@
     IBOutlet NSView     *prefsView;
 }
 
+- (IBAction) quitProgram:(id)sender;
+- (IBAction) visitWebsite:(id)sender;
+
 @end

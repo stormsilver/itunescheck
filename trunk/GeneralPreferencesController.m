@@ -63,4 +63,13 @@ static GeneralPreferencesController *sharedPreferencesController = nil;
     return NO;
 }
 
+- (IBAction) quitProgram:(id)sender
+{
+    [NSApp terminate:sender];
+}
+- (IBAction) visitWebsite:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[sender title]]];
+}
+
 @end

@@ -10,7 +10,7 @@
 #import <Carbon/Carbon.h>
 #import "PTKeyCombo.h"
 
-@interface PTHotKey : NSObject
+@interface PTHotKey : NSObject <NSCopying>
 {
 	NSString*		mName;
 	PTKeyCombo*		mKeyCombo;

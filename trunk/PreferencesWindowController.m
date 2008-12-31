@@ -14,6 +14,8 @@
 #import "GeneralPreferencesController.h"
 #import "HotKeyPreferencesController.h"
 #import <iTCBundle/SS_PreferencePaneProtocol.h>
+#import "ShortcutRecorderCell.h"
+#import "ShortcutRecorderTextView.h"
 
 
 @interface PreferencesWindowController (Private)
@@ -136,6 +138,11 @@
     //NSLog(@"Done awaking. panesOrder: %@, preferencePanes: %@", panesOrder, preferencePanes);
 }
 
+- (void) windowShouldClose:(NSNotification *)note
+{
+    [preferencesController save];
+}
+
 float ToolbarHeightForWindow(NSWindow *window)
 {
     NSToolbar *toolbar;
@@ -146,15 +153,14 @@ float ToolbarHeightForWindow(NSWindow *window)
     
     if (toolbar && [toolbar isVisible])
     {
-        windowFrame = [NSWindow contentRectForFrameRect:[window frame]
-                                              styleMask:[window styleMask]];
+        windowFrame = [NSWindow contentRectForFrameRect:[window frame] styleMask:[window styleMask]];
         toolbarHeight = NSHeight(windowFrame) - NSHeight([[window contentView] frame]);
     }
     
     return toolbarHeight;
 }
 
-- (BOOL)loadPrefsPaneNamed:(NSString *)name display:(BOOL)disp
+- (BOOL) loadPrefsPaneNamed:(NSString *)name display:(BOOL)disp
 {
     id tempPane = nil;
     tempPane = [preferencePanes objectForKey:name];
@@ -254,6 +260,23 @@ float ToolbarHeightForWindow(NSWindow *window)
 - (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag
 {
     return [prefsToolbarItems objectForKey:itemIdentifier];
+}
+
+- (id)windowWillReturnFieldEditor:(NSWindow *)window toObject:(id)anObject
+{
+    if ([anObject isKindOfClass:[NSTableView class]])
+    {
+        NSTableColumn *column = [anObject tableColumnWithIdentifier:@"ShortcutTableColumn"];
+        if (column && [[column dataCell] isKindOfClass:[ShortcutRecorderCell class]])
+        {
+            if (!shortcutRecorderTextView)
+            {
+                shortcutRecorderTextView = [[ShortcutRecorderTextView alloc] init];
+            }
+            return shortcutRecorderTextView;
+        }
+    }
+    return nil;
 }
 
 

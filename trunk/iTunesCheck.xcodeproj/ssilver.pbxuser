@@ -95,8 +95,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 252028670;
-			PBXWorkspaceStateSaveDate = 252028670;
+			PBXPerProjectTemplateStateSaveDate = 252285022;
+			PBXWorkspaceStateSaveDate = 252285022;
 		};
 		sourceControlManager = E864CB280EFEFF3300A99170 /* Source Control */;
 		userBuildSettings = {
@@ -118,29 +118,57 @@
 	E80F0C150F04AC7600B9AEF7 /* GeneralPreferencesController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
-			sepNavSelRange = "{185, 47}";
-			sepNavVisRange = "{0, 359}";
+			sepNavSelRange = "{428, 0}";
+			sepNavVisRange = "{0, 435}";
 		};
 	};
 	E80F0C160F04AC7600B9AEF7 /* GeneralPreferencesController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {976, 924}}";
-			sepNavSelRange = "{250, 838}";
-			sepNavVisRange = "{249, 844}";
+			sepNavIntBoundsRect = "{{0, 0}, {976, 1050}}";
+			sepNavSelRange = "{1088, 194}";
+			sepNavVisRange = "{568, 719}";
 		};
 	};
 	E80F0C930F04B70500B9AEF7 /* HotKeyPreferencesController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
-			sepNavSelRange = "{244, 27}";
-			sepNavVisRange = "{0, 357}";
+			sepNavSelRange = "{232, 0}";
+			sepNavVisRange = "{0, 404}";
 		};
 	};
 	E80F0C940F04B70500B9AEF7 /* HotKeyPreferencesController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {976, 868}}";
-			sepNavSelRange = "{931, 0}";
-			sepNavVisRange = "{0, 1097}";
+			sepNavIntBoundsRect = "{{0, 0}, {976, 1176}}";
+			sepNavSelRange = "{1379, 0}";
+			sepNavVisRange = "{799, 998}";
+		};
+	};
+	E82A48350F09A799009C4593 /* ShortcutRecorderCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{469, 0}";
+			sepNavVisRange = "{0, 475}";
+		};
+	};
+	E82A48360F09A799009C4593 /* ShortcutRecorderCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1014, 2058}}";
+			sepNavSelRange = "{2683, 0}";
+			sepNavVisRange = "{1705, 1622}";
+		};
+	};
+	E82A48A70F0A9B0E009C4593 /* ShortcutRecorderTextView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{309, 65}";
+			sepNavVisRange = "{0, 380}";
+		};
+	};
+	E82A48A80F0A9B0E009C4593 /* ShortcutRecorderTextView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 938}}";
+			sepNavSelRange = "{634, 0}";
+			sepNavVisRange = "{264, 1208}";
 		};
 	};
 	E864CB240EFEFF1500A99170 /* iTunesCheck */ = {
@@ -174,6 +202,7 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			repositoryName = "";
 		};
 	};
 	E864CB290EFEFF3300A99170 /* Code sense */ = {
@@ -244,9 +273,9 @@
 	};
 	E864CBF00EFF740C00A99170 /* NetStormsilverItunescheckInfowindowInfoController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1104, 4620}}";
-			sepNavSelRange = "{8787, 0}";
-			sepNavVisRange = "{8611, 2237}";
+			sepNavIntBoundsRect = "{{0, 0}, {1104, 4648}}";
+			sepNavSelRange = "{5215, 303}";
+			sepNavVisRange = "{3, 1769}";
 		};
 	};
 	E864CBF20EFF745900A99170 /* defines.h */ = {
@@ -279,9 +308,9 @@
 	};
 	E864CC6C0F00301500A99170 /* WebViewWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1218, 2156}}";
-			sepNavSelRange = "{3108, 0}";
-			sepNavVisRange = "{2658, 2239}";
+			sepNavIntBoundsRect = "{{0, 0}, {1566, 2156}}";
+			sepNavSelRange = "{4040, 0}";
+			sepNavVisRange = "{2802, 2594}";
 		};
 	};
 	E864CD5C0F0034BD00A99170 /* iTC.h */ = {
@@ -311,15 +340,15 @@
 	E864D1510F018FA000A99170 /* PreferencesController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
-			sepNavSelRange = "{721, 0}";
-			sepNavVisRange = "{0, 1434}";
+			sepNavSelRange = "{895, 0}";
+			sepNavVisRange = "{0, 1371}";
 		};
 	};
 	E864D1520F018FA000A99170 /* PreferencesController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {976, 5166}}";
-			sepNavSelRange = "{2464, 0}";
-			sepNavVisRange = "{1986, 1563}";
+			sepNavIntBoundsRect = "{{0, 0}, {1086, 5446}}";
+			sepNavSelRange = "{13485, 0}";
+			sepNavVisRange = "{8583, 2615}";
 		};
 	};
 	E864D2B20F01B1F100A99170 /* NSData-Base64Extensions.h */ = {
@@ -339,43 +368,78 @@
 	E864D37B0F02176900A99170 /* PTHotKey.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{284, 0}";
+			sepNavVisRange = "{0, 835}";
+		};
+	};
+	E864D37C0F02176900A99170 /* PTHotKey.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 1722}}";
+			sepNavSelRange = "{667, 0}";
+			sepNavVisRange = "{231, 736}";
+		};
+	};
+	E864D37D0F02176900A99170 /* PTHotKeyCenter.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 823}";
+			sepNavVisRange = "{0, 800}";
 		};
 	};
 	E864D37E0F02176900A99170 /* PTHotKeyCenter.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {976, 3360}}";
-			sepNavSelRange = "{4300, 56}";
-			sepNavVisRange = "{3713, 1135}";
+			sepNavIntBoundsRect = "{{0, 0}, {976, 3486}}";
+			sepNavSelRange = "{1135, 41}";
+			sepNavVisRange = "{923, 1213}";
+		};
+	};
+	E864D3800F02176900A99170 /* PTKeyBroadcaster.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 464}";
+		};
+	};
+	E864D3810F02176900A99170 /* PTKeyBroadcaster.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 1064}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{162, 1265}";
 		};
 	};
 	E864D3820F02176900A99170 /* PTKeyCombo.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 711}";
+			sepNavSelRange = "{1046, 0}";
+			sepNavVisRange = "{0, 1329}";
 		};
 	};
 	E864D3830F02176900A99170 /* PTKeyCombo.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {976, 2534}}";
-			sepNavSelRange = "{2242, 0}";
-			sepNavVisRange = "{1987, 930}";
+			sepNavIntBoundsRect = "{{0, 0}, {976, 2926}}";
+			sepNavSelRange = "{1868, 60}";
+			sepNavVisRange = "{1216, 938}";
+		};
+	};
+	E864D3840F02176900A99170 /* PTKeyComboPanel.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 806}";
 		};
 	};
 	E864D56A0F02C70F00A99170 /* PreferencesWindowController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {976, 746}}";
-			sepNavSelRange = "{449, 0}";
-			sepNavVisRange = "{0, 994}";
+			sepNavSelRange = "{1049, 24}";
+			sepNavVisRange = "{0, 1209}";
 		};
 	};
 	E864D56B0F02C70F00A99170 /* PreferencesWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {976, 4466}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{281, 1746}";
+			sepNavIntBoundsRect = "{{0, 0}, {976, 4928}}";
+			sepNavSelRange = "{9357, 0}";
+			sepNavVisRange = "{8578, 1360}";
 		};
 	};
 	E864D6380F02E69F00A99170 /* InfoWindowPreferencePane */ = {

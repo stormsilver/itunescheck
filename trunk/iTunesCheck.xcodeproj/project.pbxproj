@@ -13,6 +13,8 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		E80F0C420F04B10E00B9AEF7 /* GeneralPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F0C160F04AC7600B9AEF7 /* GeneralPreferencesController.m */; };
 		E80F0C950F04B70500B9AEF7 /* HotKeyPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F0C940F04B70500B9AEF7 /* HotKeyPreferencesController.m */; };
+		E82A49200F0B42B0009C4593 /* ShortcutRecorderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E82A48A80F0A9B0E009C4593 /* ShortcutRecorderTextView.m */; };
+		E82A49210F0B42B1009C4593 /* ShortcutRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E82A48360F09A799009C4593 /* ShortcutRecorderCell.m */; };
 		E864CB2C0EFEFF4200A99170 /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E864CB2B0EFEFF4200A99170 /* ApplicationController.m */; };
 		E864CB3A0EFF00A600A99170 /* BundleController.m in Sources */ = {isa = PBXBuildFile; fileRef = E864CB390EFF00A600A99170 /* BundleController.m */; };
 		E864CB790EFF0A6E00A99170 /* AbstractBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = E864CB770EFF0A6E00A99170 /* AbstractBundle.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -138,6 +140,10 @@
 		E80F0C160F04AC7600B9AEF7 /* GeneralPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPreferencesController.m; sourceTree = "<group>"; };
 		E80F0C930F04B70500B9AEF7 /* HotKeyPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotKeyPreferencesController.h; sourceTree = "<group>"; };
 		E80F0C940F04B70500B9AEF7 /* HotKeyPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotKeyPreferencesController.m; sourceTree = "<group>"; };
+		E82A48350F09A799009C4593 /* ShortcutRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutRecorderCell.h; sourceTree = "<group>"; };
+		E82A48360F09A799009C4593 /* ShortcutRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutRecorderCell.m; sourceTree = "<group>"; };
+		E82A48A70F0A9B0E009C4593 /* ShortcutRecorderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutRecorderTextView.h; sourceTree = "<group>"; };
+		E82A48A80F0A9B0E009C4593 /* ShortcutRecorderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutRecorderTextView.m; sourceTree = "<group>"; };
 		E864CB2A0EFEFF4200A99170 /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
 		E864CB2B0EFEFF4200A99170 /* ApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationController.m; sourceTree = "<group>"; };
 		E864CB380EFF00A600A99170 /* BundleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleController.h; sourceTree = "<group>"; };
@@ -350,12 +356,12 @@
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				E864D1A60F01981000A99170 /* UserDefaults.plist */,
-				E864CB380EFF00A600A99170 /* BundleController.h */,
-				E864CB390EFF00A600A99170 /* BundleController.m */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				E864CB2B0EFEFF4200A99170 /* ApplicationController.m */,
 				E864CB2A0EFEFF4200A99170 /* ApplicationController.h */,
+				E864CB2B0EFEFF4200A99170 /* ApplicationController.m */,
+				E864CB380EFF00A600A99170 /* BundleController.h */,
+				E864CB390EFF00A600A99170 /* BundleController.m */,
 				E864D56A0F02C70F00A99170 /* PreferencesWindowController.h */,
 				E864D56B0F02C70F00A99170 /* PreferencesWindowController.m */,
 				E864D1510F018FA000A99170 /* PreferencesController.h */,
@@ -365,6 +371,10 @@
 				E80F0C160F04AC7600B9AEF7 /* GeneralPreferencesController.m */,
 				E80F0C930F04B70500B9AEF7 /* HotKeyPreferencesController.h */,
 				E80F0C940F04B70500B9AEF7 /* HotKeyPreferencesController.m */,
+				E82A48350F09A799009C4593 /* ShortcutRecorderCell.h */,
+				E82A48360F09A799009C4593 /* ShortcutRecorderCell.m */,
+				E82A48A70F0A9B0E009C4593 /* ShortcutRecorderTextView.h */,
+				E82A48A80F0A9B0E009C4593 /* ShortcutRecorderTextView.m */,
 			);
 			name = iTunesCheck;
 			sourceTree = "<group>";
@@ -654,6 +664,8 @@
 				E864D56C0F02C70F00A99170 /* PreferencesWindowController.m in Sources */,
 				E80F0C420F04B10E00B9AEF7 /* GeneralPreferencesController.m in Sources */,
 				E80F0C950F04B70500B9AEF7 /* HotKeyPreferencesController.m in Sources */,
+				E82A49200F0B42B0009C4593 /* ShortcutRecorderTextView.m in Sources */,
+				E82A49210F0B42B1009C4593 /* ShortcutRecorderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
