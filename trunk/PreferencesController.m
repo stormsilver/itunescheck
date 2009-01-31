@@ -10,6 +10,7 @@
 #import "PTHotKeyCenter.h"
 #import "PTHotKey.h"
 #import "PTKeyCombo.h"
+#import <AGRegex/AGRegex.h>
 #include <wctype.h>
 
 @interface PreferencesController (Private)
@@ -93,11 +94,10 @@ static PreferencesController *sharedPreferencesController = nil;
 
 
 
-
-
 - (void) save
 {
-    //NSLog(@"saving defaults");
+    NSLog(@"saving defaults");
+    [[[NSUserDefaultsController sharedUserDefaultsController] defaults] synchronize];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -180,14 +180,14 @@ static PreferencesController *sharedPreferencesController = nil;
 }
 
 
-- (id) prefForKey:(NSString *)key
+- (id) preferenceForKey:(NSString *)key
 {
-    return [self prefForBundle:[[NSBundle mainBundle] bundleIdentifier] key:key];
+    return [self preferenceForKey:key forBundle:[[NSBundle mainBundle] bundleIdentifier]];
 }
-- (id) prefForBundle:(NSString*)bundleIdentifier key:(NSString *)key
+- (id) preferenceForKey:(NSString *)key forBundle:(NSString *)bundleIdentifier
 {
     id rval = nil;
-    NSMutableDictionary *bundleDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:bundleIdentifier];
+    NSMutableDictionary *bundleDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:[self sanitizeBundleIdentifier:bundleIdentifier]];
 
     if (bundleDictionary)
     {
@@ -200,7 +200,8 @@ static PreferencesController *sharedPreferencesController = nil;
 
 - (void) setPreferences:(NSDictionary *)dict forBundle:(NSString *)bundleIdentifier;
 {
-    NSMutableDictionary *bundleDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:bundleIdentifier];
+    NSString *sanitizedBundleIdentifier = [self sanitizeBundleIdentifier:bundleIdentifier];
+    NSMutableDictionary *bundleDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:sanitizedBundleIdentifier];
     if (!bundleDictionary)
     {
         // set the prefs to the dictionary passed to us
@@ -214,18 +215,27 @@ static PreferencesController *sharedPreferencesController = nil;
         bundleDictionary = d;
     }
     //NSLog(@"setPreferences:%@ forBundle:%@", bundleDictionary, bundleIdentifier);
-    [[NSUserDefaults standardUserDefaults] setObject:bundleDictionary forKey:bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] setObject:bundleDictionary forKey:sanitizedBundleIdentifier];
 }
 
-- (void) setPrefForBundle:(NSString *)bundleIdentifier key:(NSString *)key value:(id)value
+- (void) setPreference:(id)value forKey:(NSString *)key forBundle:(NSString *)bundleIdentifier
 {
-    NSMutableDictionary *bundleDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:bundleIdentifier];
+    NSString *sanitizedBundleIdentifier = [self sanitizeBundleIdentifier:bundleIdentifier];
+    NSMutableDictionary *bundleDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:sanitizedBundleIdentifier];
     if (!bundleDictionary)
     {
         bundleDictionary = [NSMutableDictionary dictionaryWithCapacity:1];
     }
     [bundleDictionary setObject:value forKey:key];
-    [[NSUserDefaults standardUserDefaults] setObject:bundleDictionary forKey:bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] setObject:bundleDictionary forKey:sanitizedBundleIdentifier];
+}
+
+- (NSString *) sanitizeBundleIdentifier:(NSString *)bundleIdentifier
+{
+    // filter periods
+    AGRegex *regex = [AGRegex regexWithPattern:@"\\."];
+    NSString *sanitized = [regex replaceWithString:@"" inString:bundleIdentifier];
+    return sanitized;
 }
 @end
 
@@ -377,7 +387,9 @@ static PreferencesController *sharedPreferencesController = nil;
 
 - (SEL) hotKeySelectorForName:(NSString *)name
 {
-    NSString *camelCase = [name stringByReplacingOccurrencesOfString:@" " withString:@""];
+    // filter spaces, question marks, etc.
+    AGRegex *regex = [AGRegex regexWithPattern:@"[^a-zA-Z0-9]"];
+    NSString *camelCase = [regex replaceWithString:@"" inString:name];
     unichar first = [camelCase characterAtIndex:0];
     // lowercase the letter... use the wide version of tolower()
     first = towlower(first);

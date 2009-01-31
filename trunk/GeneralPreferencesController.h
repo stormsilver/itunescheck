@@ -12,9 +12,15 @@
 @interface GeneralPreferencesController : NSObject <SS_PreferencePaneProtocol>
 {
     IBOutlet NSView     *prefsView;
+    IBOutlet NSView     *aboutView;
+    IBOutlet NSWindow   *window;
+    IBOutlet NSTextField    *versionLabel;
+    
+    BOOL                aboutVisible;
 }
 
 - (IBAction) quitProgram:(id)sender;
 - (IBAction) visitWebsite:(id)sender;
+- (IBAction) about:(id)sender;
 
 @end

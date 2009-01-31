@@ -6,6 +6,10 @@
 	<real>160</real>
 	<key>view</key>
 	<string>classic</string>
+	<key>delayTime</key>
+	<integer>5</integer>
+	<key>showWindowOn</key>
+	<integer>0</integer>
 	<key>viewBundle</key>
 	<string>net.stormsilver.itunescheck.InfoWindow</string>
 </dict>

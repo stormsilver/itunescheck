@@ -30,13 +30,13 @@
     // for each bundle, add a button for it to the debug window
     NSEnumerator *bundleEnum = [[bundleController bundleInstances] objectEnumerator];
     AbstractBundle *bundle;
-    NSRect frame = NSMakeRect(10, 0, 75, 32);
+    NSRect frame = NSMakeRect(10, 0, 125, 32);
     while (bundle = [bundleEnum nextObject])
     {
         if ([bundle isHotKeyBundle])
         {
             //        NSLog(@"got a bundle of %@", [thing class]);
-            frame.origin.y += 10;
+            frame.origin.y += 32;
             NSButton *button = [[NSButton alloc] initWithFrame:frame];
             [button setButtonType:NSMomentaryPushInButton];
             [button setBezelStyle:NSRoundedBezelStyle];

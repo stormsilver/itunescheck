@@ -8,8 +8,9 @@
 
 #import "NetStormsilverItunescheckInfowindowInfoController.h"
 #import <AGRegex/AGRegex.h>
-#import "iTunes.h"
+#import <iTCBundle/iTunes.h>
 #import <QuartzCore/CIFilter.h>
+#import <WebKit/WebKit.h>
 #import "NSData-Base64Extensions.h"
 
 @implementation InfoController : AbstractBundle
@@ -19,6 +20,7 @@
     if (self != nil)
     {
         windowController = [[WebViewWindowController alloc] init];
+        [windowController setFrameLoadDelegate:self];
     }
     return self;
 }
@@ -37,6 +39,16 @@
     [preferencesController setTarget:self forDisplayTag:@"artwork"];
     
     [preferencesController setTarget:self forHotKeyNamed:@"Show Info Window" withKeyCode:8 andModifiers:2304];
+
+    //[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.netstormsilveritunescheckInfoWindow.showWindowOn" options:NSKeyValueObservingOptionNew context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self forKeyPath:@"netstormsilveritunescheckInfoWindow.showWindowOn" options:NSKeyValueObservingOptionNew context:nil];
+    [self startListening];
+}
+
+- (void) finalize
+{
+    [self stopListening];
+    [super finalize];
 }
 
 - (NSString *) shortName
@@ -46,8 +58,8 @@
 
 - (void) showInfoWindowHotKey
 {
-    NSString *bundleId = [preferencesController prefForBundle:bundleIdentifier key:@"viewBundle"];
-    NSString *view = [preferencesController prefForBundle:bundleIdentifier key:@"view"];
+    NSString *bundleId = [preferencesController preferenceForKey:@"viewBundle" forBundle:bundleIdentifier];
+    NSString *view = [preferencesController preferenceForKey:@"view" forBundle:bundleIdentifier];
     NSBundle *bundle = [NSBundle bundleWithIdentifier:bundleId];
     if (bundle)
     {
@@ -60,20 +72,38 @@
 }
 - (BOOL) defaultAction
 {
-    NSString *bundleId = [preferencesController prefForBundle:bundleIdentifier key:@"viewBundle"];
-    NSString *view = [preferencesController prefForBundle:bundleIdentifier key:@"view"];
-    NSBundle *bundle = [NSBundle bundleWithIdentifier:bundleId];
-    if (bundle)
-    {
-        [self displayBundle:bundle view:view];
-        return YES;
-    }
-    else
-    {
-        NSLog(@"Could not instantiate bundle %@", bundleId);
-        return NO;
-    }
+    //NSString *bundleId = [preferencesController preferenceForKey:@"viewBundle" forBundle:bundleIdentifier ];
+    //NSString *view = [preferencesController preferenceForKey:@"view" forBundle:bundleIdentifier ];
+    //NSBundle *bundle = [NSBundle bundleWithIdentifier:bundleId];
+    //if (bundle)
+    //{
+    //    [self displayBundle:bundle view:view];
+    //    return YES;
+    //}
+    //else
+    //{
+    //    NSLog(@"Could not instantiate bundle %@", bundleId);
+    //    return NO;
+    //}
+    
+    id values = [[NSUserDefaultsController sharedUserDefaultsController] values];
+    NSDictionary *dict = [values valueForKey:@"netstormsilveritunescheckInfoWindow"];
+    NSLog(@"bleh: %@", [dict valueForKey:@"showWindowOn"]);
+    //NSLog(@"netstormsilveritunescheckInfoWindow.showWindowOn: %@", [values valueForKeyPath:@"netstormsilveritunescheckInfoWindow.showWindowOn"]);
+    NSLog(@"value is: %@", [[NSUserDefaultsController sharedUserDefaultsController] valueForKeyPath:@"values.netstormsilveritunescheckInfoWindow.showWindowOn"]);
+    return YES;
 }
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"Observed value for key path: %@ of object: %@, change: %@", keyPath, object, change);
+}
+
+
+
+
+
+
+
 
 - (BOOL) isHotKeyBundle
 {
@@ -85,28 +115,37 @@
     return YES;
 }
 
-//- (void) displayView:(NSString *)view fromNotification:(NSNotification *)aNotification
-//{
-//    //NSLog(@"%@", aNotification);
-//    NSLog(@"Received iTunes notification.");
-//    if (aNotification)
-//    {
-//        static NSDictionary *previousTrackInfo = nil;
-//        NSDictionary *trackInfo = [aNotification userInfo];
-//        if (
-//            ![[trackInfo objectForKey:@"Name"] isEqual:[previousTrackInfo objectForKey:@"Name"]] ||
-//            ![[trackInfo objectForKey:@"Album"] isEqual:[previousTrackInfo objectForKey:@"Album"]] ||
-//            ![[trackInfo objectForKey:@"Artist"] isEqual:[previousTrackInfo objectForKey:@"Artist"]] ||
-//            ![[trackInfo objectForKey:@"Genre"] isEqual:[previousTrackInfo objectForKey:@"Genre"]] ||
-//            ![[trackInfo objectForKey:@"Total Time"] isEqual:[previousTrackInfo objectForKey:@"Total Time"]]
-//            )
-//        {
-//            [self displayView:view];
-//            [previousTrackInfo release];
-//            previousTrackInfo = [trackInfo retain];
-//        }
-//    }
-//}
+- (void) startListening
+{
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(displayFromNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
+}
+
+- (void) stopListening
+{
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:@"com.apple.iTunes.playerInfo" object:nil];
+}
+
+- (void) displayFromNotification:(NSNotification *)aNotification
+{
+    //NSLog(@"%@", aNotification);
+    NSLog(@"Received iTunes notification.");
+    if (aNotification)
+    {
+        static NSDictionary *previousTrackInfo = nil;
+        NSDictionary *trackInfo = [aNotification userInfo];
+        if (
+            ![[trackInfo objectForKey:@"Name"] isEqual:[previousTrackInfo objectForKey:@"Name"]] ||
+            ![[trackInfo objectForKey:@"Album"] isEqual:[previousTrackInfo objectForKey:@"Album"]] ||
+            ![[trackInfo objectForKey:@"Artist"] isEqual:[previousTrackInfo objectForKey:@"Artist"]] ||
+            ![[trackInfo objectForKey:@"Genre"] isEqual:[previousTrackInfo objectForKey:@"Genre"]] ||
+            ![[trackInfo objectForKey:@"Total Time"] isEqual:[previousTrackInfo objectForKey:@"Total Time"]]
+            )
+        {
+            [self showInfoWindowHotKey];
+            previousTrackInfo = trackInfo;
+        }
+    }
+}
 
 - (void) displayBundle:(NSBundle *)bundle view:(NSString *)view
 {
@@ -150,6 +189,12 @@
             //}
             // Create and show the info window
             [windowController displayPage:page relativeTo:url];
+            if (delayTimer)
+            {
+                [delayTimer invalidate];
+                delayTimer = nil;
+            }
+            delayTimer = [NSTimer scheduledTimerWithTimeInterval:[[preferencesController preferenceForKey:PREFKEY_DELAY_TIME forBundle:bundleIdentifier] intValue] target:self selector:@selector(closeWindow) userInfo:nil repeats:NO];
         }
         else
         {
@@ -162,6 +207,33 @@
         // view was nil!
         NSLog(@"nil view for [InfoController displayView:]. Are preferences broken?");
     }
+}
+
+- (void) closeWindow
+{
+    if (delayTimer)
+    {
+        [delayTimer invalidate];
+        delayTimer = nil;
+    }
+    [windowController closeWindow];
+}
+
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
+{
+    WebScriptObject *script = [sender windowScriptObject];
+    float height = [[script evaluateWebScript:HEIGHT_SCRIPT] floatValue];
+    float width = [[script evaluateWebScript:WIDTH_SCRIPT] floatValue];
+    //NSLog(@"width: %f, height: %f", width, height);
+    // TODO: all SORTS of math to be done here
+    // origin calculations
+    // width/height constraints
+    // paddings against the sides of the screen
+    // oh yeah, don't forget it might be on a different screen...
+    NSPoint origin = [[windowController window] frame].origin;
+    [sender setFrame:NSMakeRect(0, 0, width, height)];
+    [[windowController window] setFrame:NSMakeRect(origin.x, origin.y, width, height) display:YES];
+    [windowController showWindow:nil];
 }
 
 
@@ -282,7 +354,7 @@
         if (art)
         {
             NSImage *image = [art data];
-            float imagePrefSize = [[preferencesController prefForBundle:bundleIdentifier key:@"artworkSize"] floatValue];
+            float imagePrefSize = [[preferencesController preferenceForKey:@"artworkSize" forBundle:bundleIdentifier] floatValue];
             NSSize imageSize = [image size];
             if ( imageSize.width > imagePrefSize || imageSize.height > imagePrefSize )
             {

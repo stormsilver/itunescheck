@@ -7,7 +7,7 @@
 //
 
 #import "GeneralPreferencesController.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @implementation GeneralPreferencesController
 
@@ -26,6 +26,8 @@ static GeneralPreferencesController *sharedPreferencesController = nil;
 - (void) awakeFromNib
 {
     sharedPreferencesController = self;
+    aboutVisible = NO;
+    [versionLabel setStringValue:[NSString stringWithFormat:@"Version %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]]];
 }
 
 - (NSView *) paneView
@@ -70,6 +72,20 @@ static GeneralPreferencesController *sharedPreferencesController = nil;
 - (IBAction) visitWebsite:(id)sender
 {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[sender title]]];
+}
+
+- (IBAction) about:(id)sender
+{
+    if (!aboutVisible)
+    {
+        aboutVisible = YES;
+        [[[window contentView] animator] replaceSubview:prefsView with:aboutView];
+    }
+    else
+    {
+        aboutVisible = NO;
+        [[[window contentView] animator] replaceSubview:aboutView with:prefsView];
+    }
 }
 
 @end

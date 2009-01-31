@@ -27,6 +27,8 @@
     IBOutlet HotKeyPreferencesController    *hotKeyPreferencesController;
     
     ShortcutRecorderTextView                *shortcutRecorderTextView;
+    
+    NSView                                  *currentView;
 }
 
 - (BOOL) loadPrefsPaneNamed:(NSString *)name display:(BOOL)disp;

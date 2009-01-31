@@ -1,0 +1,4 @@
+* isStreaming flag
+
+BUGS
+* clicking the about button and then switching to a different prefpane should switch out about view

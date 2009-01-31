@@ -83,7 +83,7 @@
             }
             else
             {
-                NSLog([NSString stringWithFormat:@"Did not load bundle: %@ because its Principal Class was already used in another Preference pane.", paneBundle]);
+                NSLog([NSString stringWithFormat:@"Did not load bundle: %@ because its Principal Class (%@) was already used in another Preference pane.", paneBundle, paneName]);
             }
         }
         else
@@ -162,71 +162,57 @@ float ToolbarHeightForWindow(NSWindow *window)
 
 - (BOOL) loadPrefsPaneNamed:(NSString *)name display:(BOOL)disp
 {
-    id tempPane = nil;
-    tempPane = [preferencePanes objectForKey:name];
-    if (!tempPane)
+    id pane = nil;
+    pane = [preferencePanes objectForKey:name];
+    if (!pane)
     {
         NSLog([NSString stringWithFormat:@"Could not load preference pane \"%@\", because that pane does not exist.", name]);
         return NO;
     }
     
-    NSView *prefsView = nil;
-    prefsView = [tempPane paneView];
-    if (!prefsView)
+    NSView *newView = nil;
+    newView = [pane paneView];
+    if (!newView)
     {
         NSLog([NSString stringWithFormat:@"Could not load \"%@\" preference pane because its view could not be loaded from the bundle.", name]);
         return NO;
     }
     
-    // Get rid of old view before resizing, for display purposes.
-    if (disp)
-    {
-        NSView *tempView = [[NSView alloc] initWithFrame:[[[self window] contentView] frame]];
-        [[self window] setContentView:tempView];
-        [tempView release]; 
-    }
-    
-    // Preserve upper left point of window during resize.
-    NSRect newFrame = [[self window] frame];
-    newFrame.size.height = [prefsView frame].size.height + ([[self window] frame].size.height - [[[self window] contentView] frame].size.height);
-    newFrame.size.width = [prefsView frame].size.width;
-    newFrame.origin.y += ([[[self window] contentView] frame].size.height - [prefsView frame].size.height);
-    
-    id <SS_PreferencePaneProtocol> pane = [preferencePanes objectForKey:name];
-    [[self window] setShowsResizeIndicator:([pane allowsHorizontalResizing] || [pane allowsHorizontalResizing])];
-    
-    [[self window] setFrame:newFrame display:disp animate:disp];
-    
-    [[self window] setContentView:prefsView];
-    
-    // Set appropriate resizing on window.
-    NSSize theSize = [[self window] frame].size;
-    theSize.height -= ToolbarHeightForWindow([self window]);
-    [[self window] setMinSize:theSize];
-    
     BOOL canResize = NO;
     if ([pane allowsHorizontalResizing])
     {
-        theSize.width = FLT_MAX;
         canResize = YES;
     }
     if ([pane allowsVerticalResizing])
     {
-        theSize.height = FLT_MAX;
         canResize = YES;
     }
-    [[self window] setMaxSize:theSize];
+    
     [[self window] setShowsResizeIndicator:canResize];
-    
-//    if ((prefsToolbarItems && ([prefsToolbarItems count] > 1)) || alwaysShowsToolbar) {
-        [[self window] setTitle:name];
-//    }
-    
-//    // Update defaults
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject:name forKey:Last_Pane_Defaults_Key];
-    
+    [[self window] setTitle:name];
     [prefsToolbar setSelectedItemIdentifier:name];
+    
+    [newView setWantsLayer:YES];
+    
+    // Preserve upper left point of window during resize.
+    NSRect newFrame = [[self window] frame];
+    newFrame.size.height = [newView frame].size.height + ([[self window] frame].size.height - [[[self window] contentView] frame].size.height);
+    newFrame.origin.y += ([currentView frame].size.height - [newView frame].size.height);
+    newFrame.size.width = [newView frame].size.width;
+    
+    [NSAnimationContext beginGrouping];
+    if (!currentView)
+    {
+        [[[self window] contentView] addSubview:newView];
+    }
+    else
+    {
+        [[[[self window] contentView] animator] replaceSubview:currentView with:newView];
+    }
+    currentView = newView;
+    [[self window] setFrame:newFrame display:disp animate:disp];
+    [[currentView animator] setFrameOrigin:NSMakePoint(0, 0)];
+    [NSAnimationContext endGrouping];
     
     return YES;
 }

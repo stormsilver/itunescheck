@@ -7,7 +7,7 @@
 //
 
 #import "NetStormsilverItunescheckInfowindowPreferencesController.h"
-
+#import <iTCBundle/BundleController.h>
 
 @implementation InfoWindowPreferencesController
 
@@ -64,6 +64,16 @@
 - (BOOL)allowsVerticalResizing
 {
     return NO;
+}
+
+- (NSArray *) windowStyles
+{
+//    NSArray *bundles = [[BundleController sharedController] displayBundles];
+    NSMutableArray *bundleNames = [NSMutableArray array];
+    
+    
+    
+    return bundleNames;
 }
 
 @end
