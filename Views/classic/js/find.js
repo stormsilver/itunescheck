@@ -15,10 +15,11 @@ function FindController_new()
 		}
 		Text.fill(select, playlistText);
 	};
-	
+
 	fc.performSearch = function()
 	{
-		var results = fc.fwc.resultsForSearchInPlaylist(document.getElementById('searchField').value, 'SelecTron');
+	    var playlistSelect = document.getElementById('playlistSelect');
+		var results = fc.fwc.resultsForSearchInPlaylist(document.getElementById('searchField').value, playlistSelect[playlistSelect.selectedIndex].value);
 		var resultsText = '';
 		for (var i = 0; i < results.length; ++i)
 		{

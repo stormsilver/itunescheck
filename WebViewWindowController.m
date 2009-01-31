@@ -20,6 +20,8 @@
 
 @implementation WebViewWindowController
 
+@synthesize frameLoadDelegate;
+
 - (id)init
 {
     self = [super init];
@@ -54,7 +56,7 @@
         //_tabView = [[AnimatedTabView alloc] init];
         
         _webView = [[WebView alloc] initWithFrame:[[NSScreen mainScreen] visibleFrame] frameName:nil groupName:nil];
-        [_webView setFrameLoadDelegate:self];
+        [_webView setFrameLoadDelegate:[self frameLoadDelegate]];
         [_webView setUIDelegate:self];
         [_webView setDrawsBackground:NO];
         [_webView setMaintainsBackForwardList:NO];
@@ -84,6 +86,33 @@
     [[self window] orderOut:nil];
 }
 
+- (void) resizeWindow
+{
+    // first make sure that none of these calculations make it to the screen
+    [[self window] disableFlushWindow];
+    [[self window] disableScreenUpdatesUntilFlush];
+    // save the current frame so that we can do a smooth transition from it at the end
+    NSRect savedFrame = [[self window] frame];
+    // go ahead and max out the webview size so it'll recalculate its size based on a full screen
+    [_webView setFrame:[[NSScreen mainScreen] visibleFrame]];
+    WebScriptObject *script = [_webView windowScriptObject];
+    float height = [[script evaluateWebScript:HEIGHT_SCRIPT] floatValue];
+    float width = [[script evaluateWebScript:WIDTH_SCRIPT] floatValue];
+    //NSLog(@"    h: %i, w: %i", [height intValue], [width intValue]);
+    // set the new size. note the 0,0 origin. we don't really care about where it is, just how big it is.
+    [[self window] setFrame:NSMakeRect(0.0f, 0.0f, width, height) display:NO];
+    // now that we have a new size, center it
+    [[self window] center];
+    // snag this frame so that we can animate TO it
+    NSRect newFrame = [[self window] frame];
+    // restore the old frame so that we can animate FROM it
+    [[self window] setFrame:savedFrame display:NO];
+    // enable screen drawing again
+    [[self window] enableFlushWindow];
+    // now set the new frame and animate
+    [[self window] setFrame:newFrame display:YES animate:YES];
+}
+
 - (void) userDidMoveWindow
 {
 
@@ -107,25 +136,6 @@
     // TODO: make this screen-agnostic
     [_webView setFrame:[[NSScreen mainScreen] visibleFrame]];
     [[_webView mainFrame] loadHTMLString:pageData baseURL:base];
-}
-
-- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
-{
-    NSString *widthScript = @"var d = document.getElementById('body');var cs = getComputedStyle(d, '');var width = (d.scrollWidth + parseInt(cs.borderLeftWidth) + parseInt(cs.borderRightWidth) + parseInt(cs.marginLeft) + parseInt(cs.marginRight));width;";
-    NSString *heightScript = @"var d = document.getElementById('body');var cs = getComputedStyle(d, '');var height = (d.scrollHeight + parseInt(cs.borderTopWidth) + parseInt(cs.borderBottomWidth) + parseInt(cs.marginTop) + parseInt(cs.marginBottom));height;";
-    WebScriptObject *script = [sender windowScriptObject];
-    float height = [[script evaluateWebScript:heightScript] floatValue];
-    float width = [[script evaluateWebScript:widthScript] floatValue];
-    //NSLog(@"width: %f, height: %f", width, height);
-    // TODO: all SORTS of math to be done here
-    // origin calculations
-    // width/height constraints
-    // paddings against the sides of the screen
-    // oh yeah, don't forget it might be on a different screen...
-    NSPoint origin = [[self window] frame].origin;
-    [sender setFrame:NSMakeRect(0, 0, width, height)];
-    [[self window] setFrame:NSMakeRect(origin.x, origin.y, width, height) display:YES];
-    [self showWindow:nil];
 }
 
 

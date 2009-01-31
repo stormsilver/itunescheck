@@ -58,13 +58,18 @@ static id _sharedHotKeyCenter = nil;
 	OSStatus err;
 	EventHotKeyID hotKeyID;
 	EventHotKeyRef carbonHotKey;
+    PTHotKey *currentHotKey = [mHotKeys objectForKey:[hotKey name]];
     
-	if([mHotKeys objectForKey:[hotKey name]])
+    if (hotKey == currentHotKey)
+    {
+        //return YES;
+    }
+	if (currentHotKey)
     {
         //NSLog(@"key already registered, deregistering first");
     	[self unregisterHotKey: hotKey];
     }
-	if( [[hotKey keyCombo] isValidHotKeyCombo] == NO )
+	if ([[hotKey keyCombo] isValidHotKeyCombo] == NO)
     {
         //NSLog(@"not valid keycombo:");
         return YES;
@@ -78,7 +83,7 @@ static id _sharedHotKeyCenter = nil;
 								[[hotKey keyCombo] modifiers],
 								hotKeyID,
 								GetEventDispatcherTarget(),
-								nil,
+								0,
 								&carbonHotKey );
 
 	if( err )
@@ -101,17 +106,20 @@ static id _sharedHotKeyCenter = nil;
     //NSLog(@"unregisterHotKey: %@", hotKey);
 	OSStatus err;
 	EventHotKeyRef carbonHotKey;
+    PTHotKey *oldHotKey = [mHotKeys objectForKey:[hotKey name]];
 
-	if(![mHotKeys objectForKey:[hotKey name]])
+	if(!oldHotKey)
+    {
 		return;
+    }
 	
-	carbonHotKey = [hotKey carbonHotKey];
+	carbonHotKey = [oldHotKey carbonHotKey];
 	NSAssert( carbonHotKey != nil, @"" );
 
 	err = UnregisterEventHotKey( carbonHotKey );
 	//Watch as we ignore 'err':
 
-	[mHotKeys removeObjectForKey: [hotKey name]];
+	[mHotKeys removeObjectForKey:[oldHotKey name]];
 	
 	[self _updateEventHandler];
     //NSLog(@"Eo unregisterHotKey:");
@@ -212,7 +220,7 @@ static id _sharedHotKeyCenter = nil;
 	
 
 	NSAssert( hotKeyID.signature == 'PTHk', @"Invalid hot key id" );
-	NSAssert( hotKeyID.id != nil, @"Invalid hot key id" );
+	NSAssert( (PTHotKey*)hotKeyID.id != nil, @"Invalid hot key id" );
 
 	hotKey = (PTHotKey*)hotKeyID.id;
 

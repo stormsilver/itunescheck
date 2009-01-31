@@ -72,14 +72,14 @@ static BundleController *sharedBundleController = nil;
 {
     return [bundleInstances allValues];
 }
-//- (NSArray *) displayBundles
-//{
-//    return [NSArray arrayWithArray:displayBundles];
-//}
-//- (NSArray *) hotKeyBundles
-//{
-//    return [NSArray arrayWithArray:hotKeyBundles];
-//}
+- (NSArray *) displayBundles
+{
+    return [NSArray arrayWithArray:displayBundles];
+}
+- (NSArray *) hotKeyBundles
+{
+    return [NSArray arrayWithArray:hotKeyBundles];
+}
 - (NSArray *) preferencePanes
 {
     return [NSArray arrayWithArray:preferencePanes];
@@ -158,14 +158,14 @@ static BundleController *sharedBundleController = nil;
                     // add the bundle to various lists
                     //[bundles addObject:currBundle];
                     [bundleInstances setObject:currInstance forKey:bundleId];
-//                    if ([currInstance isDisplayBundle])
-//                    {
-//                        [displayBundles addObject:currInstance];
-//                    }
-//                    if ([currInstance isHotKeyBundle])
-//                    {
-//                        [hotKeyBundles addObject:currInstance];
-//                    }
+                    if ([currInstance isDisplayBundle])
+                    {
+                        [displayBundles addObject:currInstance];
+                    }
+                    if ([currInstance isHotKeyBundle])
+                    {
+                        [hotKeyBundles addObject:currInstance];
+                    }
                     
                     NSEnumerator* enumerator = [[NSBundle pathsForResourcesOfType:PREFPANE_BUNDLE_EXT inDirectory:[currBundle builtInPlugInsPath]] objectEnumerator];
                     NSString* panePath;

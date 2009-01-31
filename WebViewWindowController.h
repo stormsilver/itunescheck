@@ -14,11 +14,15 @@
 @interface WebViewWindowController : NSWindowController
 {
     WebView          *_webView;
+    id               frameLoadDelegate;
 }
 
 - (void) displayPage:(NSString *)pageData relativeTo:(NSURL *)base;
 - (void) userDidMoveWindow;
 - (void) closeWindow;
+- (void) resizeWindow;
 - (void) showWebInspector:(id)sender;
+
+@property (assign) id frameLoadDelegate;
 
 @end

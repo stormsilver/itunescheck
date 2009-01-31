@@ -21,15 +21,15 @@
     //NSMutableArray *bundles;
     NSMutableDictionary *bundleInstances;
     NSMutableArray *preferencePanes;
-//    NSMutableArray *displayBundles;
-//    NSMutableArray *hotKeyBundles;
+    NSMutableArray *displayBundles;
+    NSMutableArray *hotKeyBundles;
 }
 
 + (BundleController*) sharedController;
 //- (NSArray *) bundles;
 - (AbstractBundle *) controllerForBundleIdentifier:(NSString *)bundleIdentifier;
 - (NSArray *) bundleInstances;
-//- (NSArray*) displayBundles;
-//- (NSArray*) hotKeyBundles;
+- (NSArray*) displayBundles;
+- (NSArray*) hotKeyBundles;
 - (NSArray *) preferencePanes;
 @end

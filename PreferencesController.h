@@ -33,10 +33,11 @@
 - (id) targetForHotKeyNamed:(NSString *)name;
 - (NSArray *) hotKeys;
 
-- (id) prefForKey:(NSString *)key;
-- (id) prefForBundle:(NSString *)bundleIdentifier key:(NSString *)key;
+- (id) preferenceForKey:(NSString *)key;
+- (id) preferenceForKey:(NSString *)key forBundle:(NSString *)bundleIdentifier;
 
 - (void) setPreferences:(NSDictionary *)dict forBundle:(NSString *)bundleIdentifier;
-- (void) setPrefForBundle:(NSString *)bundleIdentifier key:(NSString *)key value:(id)value;
+- (void) setPreference:(id)value forKey:(NSString *)key forBundle:(NSString *)bundleIdentifier;
 
+- (NSString *) sanitizeBundleIdentifier:(NSString *)bundleIdentifier;
 @end
